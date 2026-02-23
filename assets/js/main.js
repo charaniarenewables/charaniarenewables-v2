@@ -27,3 +27,24 @@ document.querySelectorAll(".nav a").forEach(link => {
     link.classList.add("active");
   }
 });
+(function () {
+  const header = document.getElementById("siteHeader");
+  const menuBtn = document.getElementById("menuBtn");
+  const mobilePanel = document.getElementById("mobilePanel");
+
+  // sticky shadow on scroll
+  const onScroll = () => {
+    if (!header) return;
+    header.classList.toggle("is-scrolled", window.scrollY > 8);
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  // mobile menu
+  if (menuBtn && mobilePanel) {
+    menuBtn.addEventListener("click", () => {
+      mobilePanel.classList.toggle("is-open");
+      mobilePanel.setAttribute("aria-hidden", mobilePanel.classList.contains("is-open") ? "false" : "true");
+    });
+  }
+})();
