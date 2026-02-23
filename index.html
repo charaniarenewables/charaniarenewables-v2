@@ -14,195 +14,135 @@
 </head>
 
 <body>
-  <!-- Topbar -->
-  <div class="topbar">
-    <div class="container">
-      <div class="topbar__left">
-        <span class="pill">Hybrid Integrator • B2B-first</span>
+  <header class="site-header" id="siteHeader">
+  <div class="site-header__inner">
+    <a class="brand" href="index.html" aria-label="Charania Renewables Home">
+      <img src="assets/img/logo-cr.png" alt="Charania Renewables" />
+    </a>
+
+    <nav class="main-nav" aria-label="Primary">
+      <div class="nav-item has-dd">
+        <a href="#" class="nav-link" aria-haspopup="true">Storage</a>
+        <div class="dropdown">
+          <div class="dropdown__col">
+            <a href="pages/storage-aokly.html">Aokly × Charania Renewables (LV)</a>
+            <a href="pages/storage-mountrex.html">MountRex (LV)</a>
+            <a href="pages/storage-zatara.html">Zatara × Charania Renewables (HV)</a>
+            <a href="pages/storage-comparison.html">Comparison & Applications</a>
+          </div>
+        </div>
       </div>
-      <div class="topbar__right">
-        <a class="pill" href="mailto:info@charaniarenewables.com">info@charaniarenewables.com</a>
-        <a class="pill" href="https://wa.me/923268422718" target="_blank" rel="noopener">WhatsApp: +92-326-8422718</a>
+
+      <div class="nav-item has-dd">
+        <a href="#" class="nav-link" aria-haspopup="true">Generation</a>
+        <div class="dropdown">
+          <div class="dropdown__col">
+            <a href="pages/generation-vertix.html">Vertix</a>
+            <a href="pages/generation-solar.html">Solar Systems</a>
+          </div>
+        </div>
       </div>
+
+      <div class="nav-item has-dd">
+        <a href="#" class="nav-link" aria-haspopup="true">Structures</a>
+        <div class="dropdown">
+          <div class="dropdown__col">
+            <a href="pages/structures-lmaxx.html">Lmaxx Overview</a>
+            <a href="pages/structures-rooftop.html">Rooftop Mounting</a>
+            <a href="pages/structures-ground.html">Ground Mounting</a>
+            <a href="pages/structures-custom.html">Custom / Industrial</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item has-dd">
+        <a href="#" class="nav-link" aria-haspopup="true">Solutions</a>
+        <div class="dropdown">
+          <div class="dropdown__col">
+            <a href="pages/solutions-hybrid-engineering.html">Hybrid Engineering & Design</a>
+            <a href="pages/solutions-industrial.html">Industrial Energy Solutions</a>
+            <a href="pages/solutions-hybrid-systems.html">Hybrid Systems</a>
+            <a href="pages/solutions-peakshaving.html">Peak Shaving & Backup</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item has-dd">
+        <a href="#" class="nav-link" aria-haspopup="true">About</a>
+        <div class="dropdown">
+          <div class="dropdown__col">
+            <a href="pages/about-who.html">Who We Are</a>
+            <a href="pages/about-group.html">Charania Group / Legacy</a>
+            <a href="pages/about-partners.html">Partners</a>
+            <a href="pages/about-quality.html">Quality, Warranty & Safety</a>
+          </div>
+        </div>
+      </div>
+
+      <a class="nav-link" href="pages/contact.html">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-btn" type="button" aria-label="Search">
+        <span class="icon">⌕</span>
+      </button>
+      <button class="menu-btn" type="button" id="menuBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 
-  <!-- Header -->
-  <header class="header">
-    <div class="container">
-      <a class="brand" href="index.html" aria-label="Charania Renewables Home">
-        <img src="assets/img/logo-cr.png" alt="Charania Renewables" />
-      </a>
+  <!-- mobile panel -->
+  <div class="mobile-panel" id="mobilePanel" aria-hidden="true">
+    <div class="mobile-panel__inner">
+      <a href="index.html">Home</a>
 
-      <!-- Desktop nav -->
-      <nav class="nav" aria-label="Primary navigation">
-        <a href="index.html">Home</a>
+      <details>
+        <summary>Storage</summary>
+        <a href="pages/storage-aokly.html">Aokly × Charania Renewables (LV)</a>
+        <a href="pages/storage-mountrex.html">MountRex (LV)</a>
+        <a href="pages/storage-zatara.html">Zatara × Charania Renewables (HV)</a>
+        <a href="pages/storage-comparison.html">Comparison & Applications</a>
+      </details>
 
-        <div class="has-mega">
-          <button type="button">Storage</button>
-          <div class="mega" role="menu">
-            <div class="mega__grid">
-              <div class="mega__left">
-                <div class="mega__kicker">Storage</div>
-                <div class="mega__title">LV &amp; HV storage systems</div>
-                <p class="mega__desc">Residential LV through channel. HV BESS/ESS for commercial &amp; industrial deployments.</p>
-              </div>
-              <div class="mega__links">
-                <a class="mega__link" href="pages/storage-aokly.html"><b>Aokly × Charania Renewables</b><span>Residential LV • Overview, models, warranty</span></a>
-                <a class="mega__link" href="pages/storage-mountrex.html"><b>MountRex</b><span>Residential LV • Clean system card</span></a>
-                <a class="mega__link" href="pages/storage-zatara.html"><b>Zatara × Charania Renewables</b><span>HV BESS/ESS for C&amp;I • Delivery model</span></a>
-                <a class="mega__link" href="pages/storage-comparison.html"><b>Comparison &amp; Applications</b><span>LV vs HV • ESS vs BESS • Use-case mapping</span></a>
-              </div>
-            </div>
-          </div>
-        </div>
+      <details>
+        <summary>Generation</summary>
+        <a href="pages/generation-vertix.html">Vertix</a>
+        <a href="pages/generation-solar.html">Solar Systems</a>
+      </details>
 
-        <div class="has-mega">
-          <button type="button">Generation</button>
-          <div class="mega" role="menu">
-            <div class="mega__grid">
-              <div class="mega__left">
-                <div class="mega__kicker">Generation</div>
-                <div class="mega__title">Solar + wind integration</div>
-                <p class="mega__desc">Hybrid-ready architecture designed for resilience, performance, and operational stability.</p>
-              </div>
-              <div class="mega__links">
-                <a class="mega__link" href="pages/generation-vertix.html"><b>Vertix</b><span>Wind turbine • Applications • Hybrid integration</span></a>
-                <a class="mega__link" href="pages/generation-solar.html"><b>Solar Systems</b><span>Tier-1 partners • Certified inverter pairing</span></a>
-              </div>
-            </div>
-          </div>
-        </div>
+      <details>
+        <summary>Structures</summary>
+        <a href="pages/structures-lmaxx.html">Lmaxx Overview</a>
+        <a href="pages/structures-rooftop.html">Rooftop Mounting</a>
+        <a href="pages/structures-ground.html">Ground Mounting</a>
+        <a href="pages/structures-custom.html">Custom / Industrial</a>
+      </details>
 
-        <div class="has-mega">
-          <button type="button">Structures</button>
-          <div class="mega" role="menu">
-            <div class="mega__grid">
-              <div class="mega__left">
-                <div class="mega__kicker">Structures</div>
-                <div class="mega__title">Engineered mounting systems</div>
-                <p class="mega__desc">Rooftop, ground mount, and custom industrial fabrication — built for durability and repeatability.</p>
-              </div>
-              <div class="mega__links">
-                <a class="mega__link" href="pages/structures-lmaxx.html"><b>Lmaxx</b><span>Overview • Rooftop, ground, industrial</span></a>
-                <a class="mega__link" href="pages/structures-rooftop.html"><b>Rooftop Mounting</b><span>Profiles • Use cases • CTA</span></a>
-                <a class="mega__link" href="pages/structures-ground.html"><b>Ground Mounting</b><span>Systems • Use cases • CTA</span></a>
-                <a class="mega__link" href="pages/structures-custom.html"><b>Custom / Industrial</b><span>Designed solutions • Fabrication</span></a>
-              </div>
-            </div>
-          </div>
-        </div>
+      <details>
+        <summary>Solutions</summary>
+        <a href="pages/solutions-hybrid-engineering.html">Hybrid Engineering & Design</a>
+        <a href="pages/solutions-industrial.html">Industrial Energy Solutions</a>
+        <a href="pages/solutions-hybrid-systems.html">Hybrid Systems</a>
+        <a href="pages/solutions-peakshaving.html">Peak Shaving & Backup</a>
+      </details>
 
-        <div class="has-mega">
-          <button type="button">Solutions</button>
-          <div class="mega" role="menu">
-            <div class="mega__grid">
-              <div class="mega__left">
-                <div class="mega__kicker">Solutions</div>
-                <div class="mega__title">Hybrid engineering & delivery</div>
-                <p class="mega__desc">Design-first hybrid integration engineered around load profile, constraints, and ROI logic.</p>
-              </div>
-              <div class="mega__links">
-                <a class="mega__link" href="pages/solutions-hybrid-engineering.html"><b>Hybrid Engineering &amp; Design</b><span>Engineering-led delivery model</span></a>
-                <a class="mega__link" href="pages/solutions-industrial.html"><b>Industrial Energy Solutions</b><span>Uptime • Off-grid + hybrid • O&amp;M ready</span></a>
-                <a class="mega__link" href="pages/solutions-hybrid-systems.html"><b>Hybrid Systems</b><span>Solar day • Wind evening • Battery backup</span></a>
-                <a class="mega__link" href="pages/solutions-peakshaving.html"><b>Peak Shaving &amp; Backup</b><span>Demand management • ROI/IRR framing</span></a>
-              </div>
-            </div>
-          </div>
-        </div>
+      <details>
+        <summary>About</summary>
+        <a href="pages/about-who.html">Who We Are</a>
+        <a href="pages/about-group.html">Charania Group / Legacy</a>
+        <a href="pages/about-partners.html">Partners</a>
+        <a href="pages/about-quality.html">Quality, Warranty & Safety</a>
+      </details>
 
-        <div class="has-mega">
-          <button type="button">About</button>
-          <div class="mega" role="menu">
-            <div class="mega__grid">
-              <div class="mega__left">
-                <div class="mega__kicker">About</div>
-                <div class="mega__title">Credibility & standards</div>
-                <p class="mega__desc">Partner quality, warranty discipline, and safe engineering practices.</p>
-              </div>
-              <div class="mega__links">
-                <a class="mega__link" href="pages/about-who.html"><b>Who We Are</b><span>Mission • Operating approach</span></a>
-                <a class="mega__link" href="pages/about-group.html"><b>Charania Group / Legacy</b><span>Industrial credibility</span></a>
-                <a class="mega__link" href="pages/about-partners.html"><b>Partners</b><span>Aokly • Zatara • Sinopak • Tier-1</span></a>
-                <a class="mega__link" href="pages/about-quality.html"><b>Quality, Warranty &amp; Safety</b><span>Process & warranty philosophy</span></a>
-              </div>
-            </div>
-          </div>
-        </div>
+      <a href="pages/contact.html">Contact</a>
 
-        <a href="pages/contact.html">Contact</a>
-      </nav>
-
-      <div class="header__cta">
-        <a class="btn btn--ghost" href="pages/solutions-hybrid-engineering.html">Hybrid Engineering</a>
-        <a class="btn btn--primary" href="pages/contact.html">Request Assessment</a>
-      </div>
-
-      <button class="burger" type="button" aria-label="Open menu">Menu</button>
-    </div>
-
-    <!-- Mobile nav -->
-    <div class="mobile" data-open="false">
-      <div class="container">
-        <div class="mobile__inner">
-          <a href="index.html">Home</a>
-
-          <details>
-            <summary>Storage</summary>
-            <div class="mobile__submenu">
-              <a href="pages/storage-aokly.html">Aokly × Charania Renewables (LV)</a>
-              <a href="pages/storage-mountrex.html">MountRex (LV)</a>
-              <a href="pages/storage-zatara.html">Zatara × Charania Renewables (HV)</a>
-              <a href="pages/storage-comparison.html">Comparison & Applications</a>
-            </div>
-          </details>
-
-          <details>
-            <summary>Generation</summary>
-            <div class="mobile__submenu">
-              <a href="pages/generation-vertix.html">Vertix</a>
-              <a href="pages/generation-solar.html">Solar Systems</a>
-            </div>
-          </details>
-
-          <details>
-            <summary>Structures</summary>
-            <div class="mobile__submenu">
-              <a href="pages/structures-lmaxx.html">Lmaxx</a>
-              <a href="pages/structures-rooftop.html">Rooftop Mounting</a>
-              <a href="pages/structures-ground.html">Ground Mounting</a>
-              <a href="pages/structures-custom.html">Custom / Industrial</a>
-            </div>
-          </details>
-
-          <details>
-            <summary>Solutions</summary>
-            <div class="mobile__submenu">
-              <a href="pages/solutions-hybrid-engineering.html">Hybrid Engineering & Design</a>
-              <a href="pages/solutions-industrial.html">Industrial Energy Solutions</a>
-              <a href="pages/solutions-hybrid-systems.html">Hybrid Systems</a>
-              <a href="pages/solutions-peakshaving.html">Peak Shaving & Backup</a>
-            </div>
-          </details>
-
-          <details>
-            <summary>About</summary>
-            <div class="mobile__submenu">
-              <a href="pages/about-who.html">Who We Are</a>
-              <a href="pages/about-group.html">Charania Group / Legacy</a>
-              <a href="pages/about-partners.html">Partners</a>
-              <a href="pages/about-quality.html">Quality, Warranty & Safety</a>
-            </div>
-          </details>
-
-          <a href="pages/contact.html">Contact</a>
-          <a class="btn btn--primary" href="pages/contact.html">Request Assessment</a>
-          <a class="btn btn--ghost" href="https://wa.me/923268422718" target="_blank" rel="noopener">WhatsApp</a>
-        </div>
+      <div class="mobile-panel__cta">
+        <a class="btn btn--primary" href="pages/contact.html">Enquiry</a>
       </div>
     </div>
-  </header>
+  </div>
+</header>
 
   <!-- HERO (minimal, whitespace) -->
   <section class="hero--minimal">
