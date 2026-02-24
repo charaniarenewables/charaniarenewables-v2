@@ -48,31 +48,6 @@ img{max-width:100%; display:block}
   width:min(var(--container), calc(100% - 40px));
   margin-inline:auto;
 }
-
-/* Top announcement */
-.topbar{
-  background:var(--navy);
-  color:rgba(255,255,255,.88);
-  font-size:var(--small);
-}
-.topbar .container{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:10px 0;
-  gap:12px;
-}
-.topbar a{color:rgba(255,255,255,.92)}
-.topbar .topbar__right{display:flex; gap:14px; align-items:center; flex-wrap:wrap}
-.pill{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:6px 10px;
-  border:1px solid rgba(255,255,255,.16);
-  border-radius:999px;
-}
-
 /* Header */
 .header{
   position:sticky;
@@ -95,13 +70,23 @@ img{max-width:100%; display:block}
   gap:12px;
   min-width:220px;
 }
-.brand img{height:41px; width:auto}
+.brand img{ display:none; } /* hide all brand imgs by default */
+.brand-logo{ height: 48px; width:auto; display:block; }  /* our controlled logos */
 .brand .brand__sub{
   font-size:12px;
   color:var(--muted);
   margin-top:-2px;
 }
+.brand-logo--white{ display:block; }
+.brand-logo--color{ display:none; }
 
+/* Transparent header = white nav */
+.site-header .nav-link{ color: rgba(255,255,255,.92); }
+.site-header .nav-link:hover{ color: #fff; }
+.site-header .icon-btn{ color: rgba(255,255,255,.85); }
+.site-header .icon-btn:hover{ color:#fff; }
+.site-header .menu-btn{ background: transparent; border-color: rgba(255,255,255,.35); }
+.site-header .menu-btn span{ background: rgba(255,255,255,.88); }
 .nav{
   display:flex;
   align-items:center;
@@ -142,7 +127,7 @@ img{max-width:100%; display:block}
   justify-content:center;
   gap:10px;
   padding:12px 14px;
-  border: radius 10px;
+  border-radius:10px;
   border:1px solid transparent;
   font-weight:650;
   font-size:14px;
@@ -621,13 +606,14 @@ img{max-width:100%; display:block}
 /* ===== Pylontech-style header + cinematic hero ===== */
 
 .site-header{
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 999;
-  background: #ffffff;
-  /*backdrop-filter: blur(10px);*/
-  border-bottom: 1px solid rgba(12,42,82,.08);
-  transition: box-shadow .25s ease, border-color .25s ease, background .25s ease;
+  background: transparent;
+  /*border-bottom: 1px solid rgba(255,255,255,.18);*/
+  transition: background .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
 .site-header.is-scrolled{
   box-shadow: 0 10px 30px rgba(12,42,82,.08);
@@ -669,14 +655,12 @@ img{max-width:100%; display:block}
 .nav-item{ position: relative; }
 .has-dd .dropdown{
   position: absolute;
-  top: 54px;
+  top: 120%;
   left: 0;
-  transform: none;
-  min-width: 320px;
+  transform: translateY(0);
+  min-width: 200px;
   background: #fff;
-  border: 1px solid rgba(12,42,82,.10);
-  border-radius: 10px;
-  box-shadow: 0 18px 50px rgba(12,42,82,.12);
+
   padding: 14px;
   opacity: 0;
   visibility: hidden;
@@ -744,42 +728,119 @@ img{max-width:100%; display:block}
   background: rgba(11,18,32,.70);
   border-radius: 2px;
 }
+/* Hamburger -> X */
+.menu-btn span{
+  transition: transform .18s ease, opacity .18s ease;
+  transform-origin: center;
+}
 
+.menu-btn.is-open span:nth-child(1){
+  transform: translateY(7px) rotate(45deg);
+}
+.menu-btn.is-open span:nth-child(2){
+  opacity: 0;
+}
+.menu-btn.is-open span:nth-child(3){
+  transform: translateY(-7px) rotate(-45deg);
+}
 /* mobile panel */
+
 .mobile-panel{
   display:none;
+  position: fixed;
+  top: 68px;            /* match .site-header__inner height */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   border-top: 1px solid rgba(12,42,82,.10);
   background:#fff;
+  z-index: 998;
 }
 .mobile-panel.is-open{
   display:block;
 }
+body.menu-open{
+  overflow:hidden; /*This isnt working, do i need to place somewhere else?*/
+}
+/* ---- Mobile menu: Pylontech-style list ---- */
+
+/* reset the old "card" look */
 .mobile-panel__inner{
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: 16px 28px 22px;
-  display: grid;
-  gap: 12px;
+  padding: 0;                 /* important: no boxed padding */
+  display: block;
 }
-.mobile-panel a{
-  text-decoration:none;
-  color: rgba(11,18,32,.84);
-  font-weight: 650;
-  padding: 10px 6px;
-}
-.mobile-panel details{
-  border: 1px solid rgba(12,42,82,.10);
-  border-radius: 12px;
-  padding: 8px 10px;
-}
+
+/* Top-level rows: both <a> and <summary> */
+.mobile-panel__inner > a,
 .mobile-panel summary{
-  cursor:pointer;
-  font-weight: 700;
-  color: rgba(11,18,32,.86);
-  padding: 6px 2px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 18px 18px;
+  margin: 0;
+  font-weight: 500;           /* NOT bold by default */
+  font-size: 20px;
+  color: rgba(11,18,32,.82);
+  border-bottom: 1px solid rgba(12,42,82,.10);
 }
-.mobile-panel__cta{
-  margin-top: 6px;
+
+/* remove the default details box styling */
+.mobile-panel details{
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+}
+
+/* remove default marker */
+.mobile-panel summary{
+  list-style:none;
+}
+.mobile-panel summary::-webkit-details-marker{display:none}
+
+/* caret */
+.mobile-panel summary::after{
+  content:"›";
+  font-size: 22px;
+  opacity: .55;
+  transform: rotate(90deg);
+  transition: transform .2s ease;
+}
+.mobile-panel details[open] summary::after{
+  transform: rotate(-90deg);
+  opacity: .9;
+}
+
+/* Sub links (inside details) */
+.mobile-panel details a{
+  display:block;
+  padding: 16px 18px;
+  font-weight: 450;
+  font-size: 18px;
+  color: rgba(11,18,32,.80);
+  border-bottom: 1px solid rgba(12,42,82,.10);
+}
+
+/* OPEN state: whole block turns green + white separators */
+.mobile-panel details[open]{
+  background: var(--green);
+}
+.mobile-panel details[open] summary,
+.mobile-panel details[open] a{
+  color: #062013;
+  border-bottom: 1px solid rgba(255,255,255,.55);
+}
+
+/* optional: hover behavior for devices that support hover */
+@media (hover:hover){
+  .mobile-panel__inner > a:hover,
+  .mobile-panel summary:hover,
+  .mobile-panel details a:hover{
+    color: #062013;
+    font-weight: 650;
+  }
 }
 
 /* HERO */
@@ -876,4 +937,120 @@ img{max-width:100%; display:block}
 @media (max-width: 520px){
   .strip__grid{grid-template-columns: 1fr}
   .carousel__item{flex-basis: 260px}
+}
+/* === LOGO SWAP (FORCED) === */
+/* default (top of page): WHITE logo only */
+.brand img.brand-logo--color { display: none !important; }
+.brand img.brand-logo--white { display: block !important; }
+
+/* when scrolled: COLOR logo only */
+.site-header.is-scrolled img.brand-logo--color { display: block !important; }
+.site-header.is-scrolled img.brand-logo--white { display: none !important; }
+/* === NAV COLOR SWAP ON SCROLL === */
+.site-header.is-scrolled .nav-link{
+  color: rgba(11,18,32,.82) !important;
+}
+.site-header.is-scrolled .nav-link:hover{
+  color: var(--navy) !important;
+}
+
+.site-header.is-scrolled .icon-btn{
+  color: rgba(11,18,32,.7) !important;
+}
+
+.site-header.is-scrolled .menu-btn{
+  border-color: rgba(12,42,82,.14) !important;
+  background:#fff !important;
+}
+.site-header.is-scrolled .menu-btn span{
+  background: rgba(11,18,32,.7) !important;
+}
+/* === FULL WHITE HEADER ON SCROLL === */
+.site-header.is-scrolled{
+  background: #ffffff !important;
+  border-bottom: 1px solid rgba(12,42,82,.08) !important;
+  box-shadow: 0 6px 20px rgba(12,42,82,.08);
+}
+/* === FORCE LOGO SIZE === */
+.site-header .brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.site-header .brand-logo{
+  height:52px !important;   /* change 52 -> 48/56 if needed */
+  width:auto !important;
+  max-height:none !important;
+}
+
+.site-header__inner{
+  height:68px !important;   /* keeps navbar a bit tighter */
+  padding:0 22px !important; /* slightly less side padding */
+}
+/* === NAV HOVER BRAND EFFECT === */
+
+/* Main nav links */
+.site-header .nav-link:hover{
+  color: var(--green) !important;
+  font-weight: 700;
+}
+
+/* Dropdown links */
+.site-header .dropdown a:hover{
+  color: var(--green) !important;
+  font-weight: 700;
+}
+/* Mobile menu links: hover = bold only (no green) */
+
+@media (max-width: 980px){
+  .mobile-panel a:hover{
+    color: inherit;
+    font-weight: inherit;
+  }
+}
+/* === FORCE GREEN HOVER (MAIN NAV) === */
+.site-header .main-nav .nav-link:hover{
+  color: var(--green) !important;
+  font-weight: 700 !important;
+}
+/* === REMOVE DROPDOWN HOVER BACKGROUND === */
+.site-header .dropdown a{
+  border-radius: 0 !important;
+}
+
+.site-header .dropdown a:hover{
+  background: transparent !important;
+}
+/* OPEN (active) section full green */
+.mobile-panel details[open] > summary{
+  background: var(--green);
+  color:#062013;
+  border-bottom:1px solid rgba(255,255,255,.55);
+}
+
+/* Make the submenu area green too */
+.mobile-panel details[open] a{
+  background: var(--green);
+  color:#062013;
+  border-bottom:1px solid rgba(255,255,255,.55);
+}
+
+/* Hover inside open section: slightly different tone */
+.mobile-panel details[open] a:hover{
+  filter:saturate(1.05);
+}
+/* ===== MOBILE: Make Contact bold only (no green) ===== */
+@media (max-width: 1024px){
+
+  .mobile-panel__inner > a[href*="contact"]{
+    font-weight: 500 !important;
+    color: rgba(11,18,32,.82) !important;
+  }
+
+  .mobile-panel__inner > a[href*="contact"]:hover{
+    color: rgba(11,18,32,.82) !important;
+    font-weight: 700 !important;
+  }
+
 }

@@ -33,18 +33,66 @@ document.querySelectorAll(".nav a").forEach(link => {
   const mobilePanel = document.getElementById("mobilePanel");
 
   // sticky shadow on scroll
-  const onScroll = () => {
-    if (!header) return;
-    header.classList.toggle("is-scrolled", window.scrollY > 8);
-  };
-  window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
+const updateHeader = () => {
+  if (!header) return;
+  const scrolled = window.scrollY > 8;
+  const menuOpen = mobilePanel && mobilePanel.classList.contains("is-open");
+  header.classList.toggle("is-scrolled", scrolled || menuOpen);
+};
+
+window.addEventListener("scroll", updateHeader, { passive: true });
+updateHeader();
 
   // mobile menu
-  if (menuBtn && mobilePanel) {
-    menuBtn.addEventListener("click", () => {
-      mobilePanel.classList.toggle("is-open");
-      mobilePanel.setAttribute("aria-hidden", mobilePanel.classList.contains("is-open") ? "false" : "true");
+if (menuBtn && mobilePanel) {
+  menuBtn.addEventListener("click", () => {
+    const open = mobilePanel.classList.toggle("is-open");
+
+    // sync X state
+    menuBtn.classList.toggle("is-open", open);
+
+    // accessibility
+    mobilePanel.setAttribute("aria-hidden", open ? "false" : "true");
+
+    updateHeader();
+  });
+}
+// Close mobile menu when any link is clicked
+if (mobilePanel && menuBtn) {
+  mobilePanel.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      mobilePanel.classList.remove("is-open");
+      menuBtn.classList.remove("is-open");
+      mobilePanel.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("menu-open");
     });
-  }
+  });
+}
+
+  // hover makes header go solid (desktop feel like Pylontech)
+if (header) {
+  header.addEventListener("mouseenter", () => {
+    header.classList.add("is-scrolled");
+  });
+
+  header.addEventListener("mouseleave", () => {
+    const scrolled = window.scrollY > 8;
+    const menuOpen = mobilePanel && mobilePanel.classList.contains("is-open");
+    if (!scrolled && !menuOpen) header.classList.remove("is-scrolled");
+  });
+}
+  // Mobile accordion: only one <details> open at a time
+  
+if (mobilePanel) {
+    const groups = mobilePanel.querySelectorAll("details");
+    groups.forEach((d) => {
+      d.addEventListener("toggle", () => {
+        if (d.open) {
+          groups.forEach((other) => {
+            if (other !== d) other.removeAttribute("open");
+          });
+        }
+      });
+    });
+ }
 })();
