@@ -1,3 +1,10 @@
+if (document.body.classList.contains("is-inner")) {
+  // Ensure header is always visible on inner pages
+  const header = document.getElementById("siteHeader");
+  if (header) header.classList.remove("is-hidden");
+  return;
+}
+
 // Mobile menu toggle
 const burger = document.querySelector(".burger");
 const mobileMenu = document.querySelector(".mobile");
