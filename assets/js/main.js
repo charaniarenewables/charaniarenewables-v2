@@ -16,6 +16,9 @@
   if (menuBtn && mobilePanel) {
     menuBtn.addEventListener("click", () => {
       const open = mobilePanel.classList.toggle("is-open");
+    
+      // ADD THIS LINE for scroll lock
+      document.body.classList.toggle("menu-open", open);
 
       // sync X state
       menuBtn.classList.toggle("is-open", open);
