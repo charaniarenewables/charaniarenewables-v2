@@ -1052,5 +1052,18 @@ body.menu-open{
     color: rgba(11,18,32,.82) !important;
     font-weight: 700 !important;
   }
+}
+/* Inner pages: header must be static white and not auto-hide */
+.is-inner .site-header {
+  position: sticky;      /* or fixed if you prefer */
+  top: 0;
+  background: #fff;
+  color: #111;
+  opacity: 1;
+  transform: none;
+}
 
+.is-inner .site-header * {
+  opacity: 1;
+  transform: none;
 }
