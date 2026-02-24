@@ -1,0 +1,139 @@
+{
+  "home": {
+    "slug": "/",
+    "file": "index.html"
+  },
+  "storage": {
+    "slug": "/storage",
+    "brand": "MountRex",
+    "children": [
+      {
+        "title": "Aokly × Charania Renewables (LV)",
+        "slug": "/pages/storage-aokly",
+        "file": "pages/storage-aokly.html"
+      },
+      {
+        "title": "MountRex (LV)",
+        "slug": "/pages/storage-mountrex",
+        "file": "pages/storage-mountrex.html"
+      },
+      {
+        "title": "zetara × Charania Renewables (HV)",
+        "slug": "/pages/storage-zetara",
+        "file": "pages/storage-zetara.html"
+      },
+      {
+        "title": "MountRex Sodium",
+        "slug": "/storage/mountrex-sodium",
+        "file": "storage/mountrex-sodium.html",
+        "status": "coming-soon"
+      },
+      {
+        "title": "Comparison & Applications",
+        "slug": "/pages/storage-comparison",
+        "file": "pages/storage-comparison.html"
+      }
+    ]
+  },
+  "generation": {
+    "slug": "/generation",
+    "children": [
+      {
+        "title": "Vertix Wind Systems",
+        "slug": "/pages/generation-vertix",
+        "file": "pages/generation-vertix.html"
+      },
+      {
+        "title": "Solar Systems",
+        "slug": "/pages/generation-solar",
+        "file": "pages/generation-solar.html",
+        "sections": [
+          "Solar Overview",
+          "Solar + Hybrid Integration",
+          "Solar + BESS Combo"
+        ]
+      }
+    ]
+  },
+  "structures": {
+    "slug": "/structures",
+    "brand": "Lmaxx",
+    "children": [
+      {
+        "title": "Lmaxx Overview",
+        "slug": "/pages/structures-lmaxx",
+        "file": "pages/structures-lmaxx.html"
+      },
+      {
+        "title": "Rooftop Mounting",
+        "slug": "/pages/structures-rooftop",
+        "file": "pages/structures-rooftop.html"
+      },
+      {
+        "title": "Ground Mounting",
+        "slug": "/pages/structures-ground",
+        "file": "pages/structures-ground.html"
+      },
+      {
+        "title": "Custom / Industrial",
+        "slug": "/pages/structures-custom",
+        "file": "pages/structures-custom.html"
+      }
+    ]
+  },
+  "solutions": {
+    "slug": "/solutions",
+    "brand": "HDE",
+    "children": [
+      {
+        "title": "Hybrid Design & Engineering (HDE)",
+        "slug": "/pages/solutions-hybrid-engineering",
+        "file": "pages/solutions-hybrid-engineering.html"
+      },
+      {
+        "title": "Industrial Energy Solutions",
+        "slug": "/pages/solutions-industrial",
+        "file": "pages/solutions-industrial.html"
+      },
+      {
+        "title": "Hybrid Systems",
+        "slug": "/pages/solutions-hybrid-systems",
+        "file": "pages/solutions-hybrid-systems.html"
+      },
+      {
+        "title": "Peak Shaving & Backup",
+        "slug": "/pages/solutions-peakshaving",
+        "file": "pages/solutions-peakshaving.html"
+      }
+    ]
+  },
+  "about": {
+    "slug": "/about",
+    "children": [
+      {
+        "title": "Who We Are",
+        "slug": "/pages/about-who",
+        "file": "pages/about-who.html"
+      },
+      {
+        "title": "Charania Group / Legacy",
+        "slug": "/pages/about-group",
+        "file": "pages/about-group.html"
+      },
+      {
+        "title": "Partners",
+        "slug": "/pages/about-partners",
+        "file": "pages/about-partners.html"
+      },
+      {
+        "title": "Quality, Warranty & Safety",
+        "slug": "/pages/about-quality",
+        "file": "pages/about-quality.html"
+      }
+    ]
+  },
+  "contact": {
+    "slug": "/pages/contact",
+    "file": "pages/contact.html"
+  }
+}
