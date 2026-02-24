@@ -1053,17 +1053,27 @@ body.menu-open{
     font-weight: 700 !important;
   }
 }
-/* Inner pages: header must be static white and not auto-hide */
+/* Inner pages: header is always white and readable */
 .is-inner .site-header {
-  position: sticky;      /* or fixed if you prefer */
+  position: sticky;
   top: 0;
   background: #fff;
-  color: #111;
-  opacity: 1;
-  transform: none;
 }
 
-.is-inner .site-header * {
-  opacity: 1;
-  transform: none;
+/* Ensure nav text is visible on white */
+.is-inner .site-header .nav-link,
+.is-inner .site-header .dropdown a,
+.is-inner .site-header summary,
+.is-inner .site-header .icon-btn,
+.is-inner .site-header .icon {
+  color: #111;
 }
+
+/* If your CSS uses borders/lines that were tuned for dark header */
+.is-inner .site-header .menu-btn span {
+  background: #111;
+}
+
+/* Force correct logo variant on inner pages */
+.is-inner .brand-logo--color { display: inline-block; }
+.is-inner .brand-logo--white { display: none; }
