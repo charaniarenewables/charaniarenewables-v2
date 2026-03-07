@@ -3,238 +3,319 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Rooftop Mounting Systems | Lmaxx by Charania Renewables</title>
-  <meta name="description" content="Explore Lmaxx rooftop mounting solutions engineered for residential, commercial and industrial rooftops. Our modular structures support solar and wind installations, offering corrosion resistance, load flexibility and hybrid integration." />
-
-  <!-- Preconnects and fonts -->
+  <title>Rooftop Mounting Systems | Charania Renewables</title>
+  <meta name="description" content="Lmaxx rooftop mounting for flat roofs, IBR sheeting, tile roofs and concrete slabs. Engineered for Pakistan&rsquo;s wind conditions and your panel lay" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Site styles -->
   <link rel="stylesheet" href="/assets/css/styles.css" />
-</head>
+  <style>
+    /* Snap scroll */
+    html { scroll-snap-type: y proximity; overflow-y: scroll; height: 100%; }
+    body { height: auto; }
 
+    .snap-section {
+      scroll-snap-align: start;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 100px 0 60px;
+    }
+    .snap-hero {
+      padding: 0;
+      min-height: 100vh;
+    }
+    /* Footer doesn't snap */
+    .footer { scroll-snap-align: none !important; }
+
+    /* Dark section text colours */
+    .snap-dark { background: #0C2A52; }
+    .snap-dark h2, .snap-dark h3, .snap-dark p, .snap-dark li { color: rgba(255,255,255,.85); }
+    .snap-dark h2 { color: #fff; }
+    .snap-dark .kicker { color: #7FDB65; }
+    .snap-dark .card { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.12); }
+    .snap-dark .card h3 { color: #fff; }
+    .snap-dark .card p { color: rgba(255,255,255,.72); }
+    .snap-dark .card .kicker { color: #7FDB65; }
+
+    /* Light section */
+    .snap-gray { background: #F4F4F4; }
+
+    /* Image background sections */
+    .snap-img { background-size: cover; background-position: center; }
+    .snap-img::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(8,24,52,.80) 0%, rgba(12,42,82,.72) 100%);
+    }
+    .snap-img .container { position: relative; z-index: 1; }
+    .snap-img h2, .snap-img h3, .snap-img p, .snap-img li { color: rgba(255,255,255,.85); }
+    .snap-img h2 { color: #fff; }
+    .snap-img .kicker { color: #7FDB65; }
+    .snap-img .card { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.14); }
+    .snap-img .card h3 { color: #fff; }
+    .snap-img .card p { color: rgba(255,255,255,.72); }
+
+    /* Hero */
+    .snap-hero {
+      background-size: cover;
+      background-position: center;
+    }
+    .snap-hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(4,8,18,.82) 0%, rgba(4,8,18,.30) 55%, transparent 100%);
+    }
+    .snap-hero__inner {
+      position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
+      padding-bottom: 10vh;
+    }
+    .snap-hero__inner .container { }
+    .snap-hero__inner .kicker { color: #7FDB65; }
+    .snap-hero__inner h1 { color: #fff; font-size: 56px; line-height: 1.06; letter-spacing: -.025em; margin: 0 0 16px; }
+    .snap-hero__inner p { color: rgba(255,255,255,.82); font-size: 18px; line-height: 1.65; max-width: 58ch; margin: 0 0 28px; }
+
+    /* Scroll progress */
+    .scroll-progress { position: fixed; right: 20px; top: 50%; transform: translateY(-50%); z-index: 500; height: 160px; }
+    .scroll-progress__track { width: 2px; height: 100%; background: rgba(255,255,255,.2); border-radius: 2px; position: relative; overflow: hidden; }
+    .scroll-progress__fill { position: absolute; top: 0; left: 0; width: 100%; height: 0%; background: #7FDB65; border-radius: 2px; transition: height .1s linear; }
+    .scroll-progress.on-light .scroll-progress__track { background: rgba(12,42,82,.15); }
+
+    /* Animations */
+    .js-anim .reveal-up   { opacity: 0; transform: translateY(56px);  transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+    .js-anim .reveal-left { opacity: 0; transform: translateX(-64px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+    .js-anim .reveal-fade { opacity: 0; transition: opacity .6s ease; }
+    .reveal-delay-1 { transition-delay: .12s; }
+    .reveal-delay-2 { transition-delay: .24s; }
+    .reveal-delay-3 { transition-delay: .36s; }
+    .js-anim .snap-section.in-view .reveal-up   { opacity: 1; transform: translateY(0); }
+    .js-anim .snap-section.in-view .reveal-left { opacity: 1; transform: translateX(0); }
+    .js-anim .snap-section.in-view .reveal-fade { opacity: 1; }
+    .js-anim .snap-section:not(.in-view) .reveal-up   { opacity: 0; transform: translateY(56px); }
+    .js-anim .snap-section:not(.in-view) .reveal-left { opacity: 0; transform: translateX(-64px); }
+    .js-anim .snap-section:not(.in-view) .reveal-fade { opacity: 0; }
+
+    /* Inline image in light sections */
+    .sec-img { width: 100%; height: 380px; object-fit: cover; border-radius: 12px; }
+
+    /* Stat boxes */
+    .stat-box { text-align: left; }
+    .stat-box__num { font-size: 32px; font-weight: 800; color: var(--navy); line-height: 1; margin-bottom: 4px; }
+    .stat-box__label { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--green); font-weight: 700; margin-bottom: 6px; }
+    .stat-box__desc { font-size: 13px; color: var(--muted); }
+    .snap-dark .stat-box__num, .snap-img .stat-box__num { color: #fff; }
+    .snap-dark .stat-box__desc, .snap-img .stat-box__desc { color: rgba(255,255,255,.6); }
+
+    @media (max-width: 768px) {
+      html { scroll-snap-type: none; }
+      .snap-section { min-height: auto; padding: 80px 0 48px; }
+      .snap-hero { min-height: 100svh; padding: 0; }
+      .snap-hero__inner h1 { font-size: 34px; }
+      .snap-hero__inner p { font-size: 15px; }
+      .snap-hero__inner { padding-bottom: 10vh; }
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr !important; }
+      .scroll-progress { display: none; }
+      .sec-img { height: 240px; }
+    }
+  </style>
+</head>
 <body class="is-inner">
-  <!-- Header and navigation -->
+
   <header class="site-header" id="siteHeader">
     <div class="site-header__inner">
-      <a class="brand" href="/" aria-label="Charania Renewables Home">
+      <a class="brand" href="/index.html" aria-label="Charania Renewables Home">
         <img class="brand-logo brand-logo--color" src="/assets/img/logo-cr-color.png" alt="Charania Renewables" />
         <img class="brand-logo brand-logo--white" src="/assets/img/logo-cr-white.png" alt="Charania Renewables" />
       </a>
-
       <nav class="main-nav" aria-label="Primary">
         <div class="nav-item has-dd">
           <a href="#" class="nav-link" aria-haspopup="true">Storage</a>
-          <div class="dropdown">
-            <div class="dropdown__col">
-              <a href="/pages/storage-aokly.html">Aokly &times; Charania Renewables (LV)</a>
-              <a href="/pages/storage-mountrex.html">MountRex (LV)</a>
-              <a href="/pages/storage-zetara.html">Zetara &times; Charania Renewables (HV)</a>
-              <a href="/pages/storage-comparison.html">Comparison &amp; Applications</a>
-              <a href="/pages/storage-sodium.html">MountRex Sodium</a>
-            </div>
-          </div>
+          <div class="dropdown"><div class="dropdown__col">
+            <a href="/pages/storage-aokly.html">Aokly &times; Charania Renewables (LV)</a>
+            <a href="/pages/storage-mountrex.html">MountRex (LV)</a>
+            <a href="/pages/storage-zetara.html">Zetara &times; Charania Renewables (HV)</a>
+            <a href="/pages/storage-comparison.html">Comparison &amp; Applications</a>
+            <a href="/pages/storage-sodium.html">MountRex Sodium</a>
+          </div></div>
         </div>
-
         <div class="nav-item has-dd">
           <a href="#" class="nav-link" aria-haspopup="true">Generation</a>
-          <div class="dropdown">
-            <div class="dropdown__col">
-              <a href="/pages/generation-vertix.html">Vertix</a>
-              <a href="/pages/generation-solar.html">Solar Systems</a>
-            </div>
-          </div>
+          <div class="dropdown"><div class="dropdown__col">
+            <a href="/pages/generation-vertix.html">Vertix</a>
+            <a href="/pages/generation-solar.html">Solar Systems</a>
+          </div></div>
         </div>
-
         <div class="nav-item has-dd">
           <a href="#" class="nav-link" aria-haspopup="true">Structures</a>
-          <div class="dropdown">
-            <div class="dropdown__col">
-              <a href="/pages/structures-lmaxx.html">Lmaxx Overview</a>
-              <a href="/pages/structures-rooftop.html">Rooftop Mounting</a>
-              <a href="/pages/structures-ground.html">Ground Mounting</a>
-              <a href="/pages/structures-custom.html">Custom / Industrial</a>
-            </div>
-          </div>
+          <div class="dropdown"><div class="dropdown__col">
+            <a href="/pages/structures-lmaxx.html">Lmaxx Overview</a>
+            <a href="/pages/structures-rooftop.html">Rooftop Mounting</a>
+            <a href="/pages/structures-ground.html">Ground Mounting</a>
+            <a href="/pages/structures-custom.html">Custom / Industrial</a>
+          </div></div>
         </div>
-
         <div class="nav-item has-dd">
           <a href="#" class="nav-link" aria-haspopup="true">Solutions</a>
-          <div class="dropdown">
-            <div class="dropdown__col">
-              <a href="/pages/solutions-hybrid-engineering.html">Hybrid Engineering &amp; Design</a>
-              <a href="/pages/solutions-industrial.html">Industrial Energy Solutions</a>
-              <a href="/pages/solutions-hybrid-systems.html">Hybrid Systems</a>
-              <a href="/pages/solutions-peakshaving.html">Peak Shaving &amp; Backup</a>
-            </div>
-          </div>
+          <div class="dropdown"><div class="dropdown__col">
+            <a href="/pages/solutions-hybrid-engineering.html">Hybrid Engineering &amp; Design</a>
+            <a href="/pages/solutions-industrial.html">Industrial Energy Solutions</a>
+            <a href="/pages/solutions-hybrid-systems.html">Hybrid Systems</a>
+            <a href="/pages/solutions-peakshaving.html">Peak Shaving &amp; Backup</a>
+          </div></div>
         </div>
-
         <div class="nav-item has-dd">
           <a href="#" class="nav-link" aria-haspopup="true">About</a>
-          <div class="dropdown">
-            <div class="dropdown__col">
-              <a href="/pages/about-who.html">Who We Are</a>
-              <a href="/pages/about-partners.html">Partners</a>
-              <a href="/pages/about-quality.html">Quality, Warranty &amp; Safety</a>
-            </div>
-          </div>
+          <div class="dropdown"><div class="dropdown__col">
+            <a href="/pages/about-who.html">Who We Are</a>
+            <a href="/pages/about-partners.html">Partners</a>
+            <a href="/pages/about-quality.html">Quality, Warranty &amp; Safety</a>
+          </div></div>
         </div>
-
         <a class="nav-link" href="/pages/contact.html">Contact</a>
       </nav>
-
       <div class="header-actions">
-        <!-- Search button removed per updated requirements -->
         <button class="menu-btn" type="button" id="menuBtn" aria-label="Open menu">
           <span></span><span></span><span></span>
         </button>
       </div>
     </div>
-
-    <!-- mobile panel -->
     <div class="mobile-panel" id="mobilePanel" aria-hidden="true">
       <div class="mobile-panel__inner">
-        <details>
-          <summary>Storage</summary>
+        <details><summary>Storage</summary>
           <a href="/pages/storage-aokly.html">Aokly &times; Charania Renewables (LV)</a>
           <a href="/pages/storage-mountrex.html">MountRex (LV)</a>
           <a href="/pages/storage-zetara.html">Zetara &times; Charania Renewables (HV)</a>
           <a href="/pages/storage-comparison.html">Comparison &amp; Applications</a>
           <a href="/pages/storage-sodium.html">MountRex Sodium</a>
         </details>
-
-        <details>
-          <summary>Generation</summary>
+        <details><summary>Generation</summary>
           <a href="/pages/generation-vertix.html">Vertix</a>
           <a href="/pages/generation-solar.html">Solar Systems</a>
         </details>
-
-        <details>
-          <summary>Structures</summary>
+        <details><summary>Structures</summary>
           <a href="/pages/structures-lmaxx.html">Lmaxx Overview</a>
           <a href="/pages/structures-rooftop.html">Rooftop Mounting</a>
           <a href="/pages/structures-ground.html">Ground Mounting</a>
           <a href="/pages/structures-custom.html">Custom / Industrial</a>
         </details>
-
-        <details>
-          <summary>Solutions</summary>
+        <details><summary>Solutions</summary>
           <a href="/pages/solutions-hybrid-engineering.html">Hybrid Engineering &amp; Design</a>
           <a href="/pages/solutions-industrial.html">Industrial Energy Solutions</a>
           <a href="/pages/solutions-hybrid-systems.html">Hybrid Systems</a>
           <a href="/pages/solutions-peakshaving.html">Peak Shaving &amp; Backup</a>
         </details>
-
-        <details>
-          <summary>About</summary>
+        <details><summary>About</summary>
           <a href="/pages/about-who.html">Who We Are</a>
           <a href="/pages/about-partners.html">Partners</a>
           <a href="/pages/about-quality.html">Quality, Warranty &amp; Safety</a>
         </details>
-
         <a href="/pages/contact.html">Contact</a>
       </div>
     </div>
   </header>
 
-  <!-- Main content: Rooftop mounting -->
-  <section class="section">
-    <div class="container">
-      <!-- Hero section with image placeholder -->
-      <div class="grid-2" style="align-items:center; gap:40px;">
-        <div>
-          <div class="kicker">Lmaxx Structures</div>
-          <h1>Rooftop Mounting Systems</h1>
-          <p style="color:var(--muted); max-width:68ch;">
-            Lmaxx rooftop mounting systems are purpose‑built for residential, commercial and industrial buildings. Our modular platforms support solar arrays and Vertix turbines across a variety of roof types—flat, pitched and metal—ensuring secure installations without compromising the roof integrity.
-          </p>
-          <div style="margin-top:20px; display:flex; gap:12px; flex-wrap:wrap;">
-            <a class="btn btn--primary" href="/pages/contact.html">Request Structural Assessment</a>
-            <a class="btn btn--ghost" href="/pages/contact.html">Talk to Engineer</a>
-          </div>
-        </div>
-        <div class="media" style="min-height:300px; background-color:var(--light-grey); display:flex; align-items:center; justify-content:center; border-radius:8px;">
-          <!-- Hero image placeholder: Replace src with actual rooftop mounting image -->
-          <img src="/assets/img/hero-rooftop-placeholder.jpg" alt="Rooftop mounting" style="max-width:100%; height:auto; border-radius:8px;" />
-        </div>
-      </div>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true">
+    <div class="scroll-progress__track">
+      <div class="scroll-progress__fill" id="scrollFill"></div>
+    </div>
+  </div>
 
-      <!-- Engineering notes -->
-      <h2 style="margin-top:60px;">Engineering Notes</h2>
-      <div class="grid-3">
-        <div class="card">
-          <h3>Load Classes</h3>
-          <p>Each rooftop system is rated for specific distributed loads, accommodating high‑density solar modules and wind turbines without overstressing the roof structure.</p>
-        </div>
-        <div class="card">
-          <h3>Corrosion Treatment</h3>
-          <p>Components are powder‑coated or anodised to resist corrosion from humidity, salt spray and industrial pollutants, extending service life.</p>
-        </div>
-        <div class="card">
-          <h3>Roof Compatibility</h3>
-          <p>Adjustable mounting brackets and ballast options support flat concrete, pitched metal, trapezoidal sheet and membrane roofs with minimal penetrations.</p>
-        </div>
-        <div class="card">
-          <h3>Cable Management</h3>
-          <p>Integrated channels route DC cabling neatly, reducing installation time and protecting conductors from UV exposure and abrasion.</p>
-        </div>
-        <div class="card">
-          <h3>Fast Installation</h3>
-          <p>Pre‑assembled kits and intuitive clamp mechanisms accelerate on‑site assembly, minimising downtime and labour costs.</p>
-        </div>
-      </div>
-
-      <!-- Configurations -->
-      <h2 style="margin-top:60px;">Typical Configurations</h2>
-      <div class="grid-3">
-        <div class="card">
-          <h3>Residential &amp; Small Commercial</h3>
-          <p>Compact mounting frames for homes and small businesses. Designed for lightweight LV solar and battery systems, with channel‑supported installation through our partners.</p>
-        </div>
-        <div class="card">
-          <h3>Industrial &amp; Large Commercial</h3>
-          <p>Heavy‑duty structures for factories, warehouses and retail plazas, supporting high‑voltage arrays and wind turbines with generous clearances for maintenance.</p>
-        </div>
-        <div class="card">
-          <h3>Hybrid Rooftop Platforms</h3>
-          <p>Integrated platforms that combine PV modules, Vertix wind turbines and MountRex battery cabinets into a single rooftop system for continuous generation.</p>
-        </div>
-      </div>
-
-      <!-- Integration section -->
-      <h2 style="margin-top:60px;">Hybrid Integration</h2>
-      <div class="grid-2" style="align-items:center; gap:40px;">
-        <div class="media" style="min-height:200px; background-color:var(--light-grey); display:flex; align-items:center; justify-content:center; border-radius:8px;">
-          <!-- Placeholder for rooftop integration diagram -->
-          <img src="/assets/img/rooftop-integration-placeholder.svg" alt="Rooftop hybrid integration diagram" style="max-width:100%; height:auto; border-radius:8px;" />
-        </div>
-        <div>
-          <ul class="list" style="list-style-type:disc; padding-left:20px; color:var(--muted);">
-            <li>Flexible rail systems allow orientation adjustments for optimal sun and wind capture.</li>
-            <li>Integrated brackets mount Vertix turbines adjacent to PV arrays without excessive shading or vibrations.</li>
-            <li>Mounting platforms are designed to house MountRex LV batteries, inverters and BOS equipment for a fully self‑contained rooftop hybrid system.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- CTA section -->
-      <div class="section__head" style="margin-top:60px;">
-        <div>
-          <h2>Plan Your Rooftop Solution</h2>
-          <p>Our engineers can model your roof, load profile and generation goals to recommend an optimal mounting configuration. Reach out for a bespoke assessment.</p>
-        </div>
-        <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <a class="btn btn--primary" href="/pages/contact.html">Request Structural Assessment</a>
-          <a class="btn btn--ghost" href="/pages/contact.html">Talk to Engineer</a>
+  <!-- HERO -->
+  <section class="snap-section snap-hero" data-theme="dark" style="background-image:url('https://images.unsplash.com/photo-1611365892117-bce20f7b5fc9?w=1800&q=85');">
+    <div class="snap-hero__inner">
+      <div class="container">
+        <div class="kicker reveal-fade">Structures &mdash; Rooftop</div>
+        <h1 class="reveal-left">Rooftop Mounting Systems</h1>
+        <p class="reveal-left reveal-delay-1">Lmaxx rooftop mounting for flat roofs, IBR sheeting, tile roofs and concrete slabs. Engineered for Pakistan&rsquo;s wind conditions and your panel layout.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;" class="reveal-fade reveal-delay-2">
+          <a class="btn btn--ghost-dark" href="/pages/contact.html">Request Assessment</a>
+          <a class="btn btn--ghost-dark" href="https://wa.me/923268422718" target="_blank" rel="noopener">WhatsApp Us</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
+  <section class="snap-section " data-theme="light">
+    <div class="container">
+      <div class="reveal-fade" style="margin-bottom:32px;">
+        <div class="kicker">Solutions</div>
+        <h2>Rooftop System Types</h2>
+      </div>
+      <div class="grid-3" style="gap:20px;">
+        <div class="card reveal-up reveal-delay-0">
+          <div class="kicker">Flat Roof</div>
+          <h3>Ballasted &amp; Fixed</h3>
+          <p>Ballasted systems need no roof penetrations. Penetration-fixed systems for high-wind zones with engineered anchor calculations.</p>
+        </div>        <div class="card reveal-up reveal-delay-1">
+          <div class="kicker">IBR / Sheeting</div>
+          <h3>Corrugated Sheet Roofs</h3>
+          <p>Clamp-based systems that attach to IBR and corrugated steel sheeting ribs without drilling.</p>
+        </div>        <div class="card reveal-up reveal-delay-2">
+          <div class="kicker">Tile &amp; Concrete</div>
+          <h3>Traditional Roofs</h3>
+          <p>Hook-based systems for clay and concrete tiles. Anchor-fixed rails for concrete flat-slab roofs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="snap-section snap-img" data-theme="dark" style="background-image:url('https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=1600&q=80');">
+    <div class="container">
+      <div class="reveal-left">
+        <div class="kicker">Our Approach</div>
+        <h2>Engineering the Right Fix</h2>
+        <p style="line-height:1.75;color:rgba(255,255,255,.80);">The wrong rooftop mounting system causes leaks, structural damage and performance loss. Lmaxx systems are selected based on your roof type, panel layout, local wind speed zone and building age. Every Lmaxx rooftop system comes with a roof-type specific installation guide and loading calculations.</p>
+      </div>
+    </div>
+  </section>
+  <section class="snap-section snap-gray" data-theme="light">
+    <div class="container">
+      <div class="grid-4" style="gap:20px;">
+    <div class="card stat-box reveal-up reveal-delay-0">
+      <div class="stat-box__num">25 yr</div>
+      <div class="stat-box__label">Design Life</div>
+      <p class="stat-box__desc">Galvanised aluminium and steel components rated for 25-year service.</p>
+    </div>    <div class="card stat-box reveal-up reveal-delay-1">
+      <div class="stat-box__num">No Leak</div>
+      <div class="stat-box__label">Waterproof Design</div>
+      <p class="stat-box__desc">EPDM seals and flashing on all penetration points.</p>
+    </div>    <div class="card stat-box reveal-up reveal-delay-2">
+      <div class="stat-box__num">5 min</div>
+      <div class="stat-box__label">Panel Install Time</div>
+      <p class="stat-box__desc">Pre-assembled clamp systems reduce panel installation time on site.</p>
+    </div>    <div class="card stat-box reveal-up reveal-delay-3">
+      <div class="stat-box__num">Certified</div>
+      <div class="stat-box__label">Wind Rated</div>
+      <p class="stat-box__desc">Wind loading certification for all standard configurations.</p>
+    </div>
+      </div>
+    </div>
+  </section>
+  <section class="snap-section snap-gray" data-theme="light">
+    <div class="container">
+      <div class="reveal-left">
+        <h2>Rooftop Assessment Process</h2>
+        <p style="color:var(--muted);max-width:70ch;margin-bottom:20px;">Before specifying a mounting system we assess the roof.</p>
+        <ul style="padding-left:20px;color:var(--muted);line-height:1.9;"><li style='margin-bottom:10px;'>Roof material, age and structural condition inspection.</li><li style='margin-bottom:10px;'>Wind speed zone classification for the site location.</li><li style='margin-bottom:10px;'>Panel layout optimisation for shading avoidance and yield.</li><li style='margin-bottom:10px;'>Dead load calculation including panel weight, ballast and structure.</li><li style='margin-bottom:10px;'>Drainage and waterproofing review for penetration-fixed systems.</li></ul>
+      </div>
+    </div>
+  </section>
+  <section class="snap-section snap-dark" data-theme="dark">
+    <div class="container">
+      <div class="reveal-fade">
+        <div class="kicker">Get Started</div>
+        <h2 style="color:#fff;margin:12px 0 16px;">Request a Rooftop Mounting Spec</h2>
+        <p style="color:rgba(255,255,255,.78);max-width:58ch;margin:0 0 28px;">Share your roof type, area and panel count &mdash; we will prepare a Lmaxx specification and installation guide.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a class="btn btn--ghost-dark" href="/pages/contact.html">Request Assessment</a>
+          <a class="btn btn--ghost-dark" href="https://wa.me/923268422718" target="_blank" rel="noopener">WhatsApp Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <footer class="footer">
     <div class="container">
       <div class="footer__grid">
@@ -247,7 +328,6 @@
             <b>Email:</b> <a href="mailto:info@charaniarenewables.com">info@charaniarenewables.com</a>
           </p>
         </div>
-
         <div>
           <h4>Quick links</h4>
           <p class="small"><a href="/pages/solutions-hybrid-engineering.html">Hybrid Engineering &amp; Design</a></p>
@@ -256,7 +336,6 @@
           <p class="small"><a href="/pages/structures-lmaxx.html">Lmaxx Structures</a></p>
           <p class="small"><a href="/pages/contact.html">Contact</a></p>
         </div>
-
         <div>
           <h4>Official channels</h4>
           <p class="small"><a href="https://www.facebook.com/Charania.Renewables/" target="_blank" rel="noopener">Facebook</a></p>
@@ -264,32 +343,60 @@
           <p class="small"><a href="https://www.linkedin.com/company/charania-renewables/" target="_blank" rel="noopener">LinkedIn</a></p>
           <p class="small"><a href="https://tiktok.com/@charania.renewables/" target="_blank" rel="noopener">TikTok</a></p>
         </div>
-
         <div>
           <h4>Karachi</h4>
-          <p class="small">
-            Suite&nbsp;1803, 18th&nbsp;Floor Sumya Sky View,<br/>
-            17&nbsp;Dr&nbsp;Ziauddin&nbsp;Ahmed Road, Civil&nbsp;Lines,<br/>
-            Karachi,&nbsp;75530 Pakistan
-          </p>
+          <p class="small">Suite 1803, 18th Floor Sumya Sky View,<br/>17 Dr Ziauddin Ahmed Road, Civil Lines,<br/>Karachi, 75530 Pakistan</p>
           <p class="small" style="margin-top:10px;">
             <a class="btn btn--primary" href="/pages/contact.html" style="padding:10px 12px;">Request a meeting</a>
           </p>
         </div>
       </div>
-
       <div class="footer__bottom">
-        <div class="small">© <span id="year"></span> Charania Renewables. All rights reserved.</div>
-        <div class="small">Hybrid Engineering &amp; Design (HDE)</div>
+        <div class="small">&copy; <span id="year"></span> Charania Renewables. All rights reserved.</div>
+        <div class="small">Hybrid Engineering &amp; Design (HED)</div>
       </div>
     </div>
   </footer>
 
-  <script>
-    // Set dynamic year in the footer
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
-  <!-- Load site JavaScript for header behaviour and mobile menu -->
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   <script src="/assets/js/main.js"></script>
+  <script>
+  // Scroll progress
+  (function(){
+    var fill = document.getElementById('scrollFill');
+    var bar  = document.getElementById('scrollProgress');
+    if(!fill||!bar) return;
+    function upd(){
+      var d = document.documentElement.scrollHeight - window.innerHeight;
+      fill.style.height = (d>0 ? Math.min(window.scrollY/d*100,100) : 0)+'%';
+      var light = false;
+      document.querySelectorAll('.snap-section[data-theme="light"]').forEach(function(s){
+        var r = s.getBoundingClientRect();
+        if(r.top <= window.innerHeight/2 && r.bottom >= window.innerHeight/2) light = true;
+      });
+      bar.classList.toggle('on-light', light);
+    }
+    window.addEventListener('scroll', upd, {passive:true});
+    upd();
+  })();
+  // Section reveal
+  (function(){
+    var sections = document.querySelectorAll('.snap-section');
+    if(!sections.length) return;
+    document.body.classList.add('js-anim');
+    function checkVisible(){
+      sections.forEach(function(s){
+        var r = s.getBoundingClientRect();
+        if(r.top < window.innerHeight * 0.8 && r.bottom > window.innerHeight * 0.2){
+          s.classList.add('in-view');
+        } else {
+          s.classList.remove('in-view');
+        }
+      });
+    }
+    window.addEventListener('scroll', checkVisible, {passive:true});
+    checkVisible();
+  })();
+  </script>
 </body>
 </html>

@@ -1,100 +1,90 @@
-// NOTE: We only want "cinematic" header scroll/hover behavior on HOME.
-// Inner pages must have a solid, static header.
-// Mobile menu must work everywhere.
+// main.js — Charania Renewables V2
+// Scroll-reveal animations removed — content always visible.
+// Keeps: mobile menu, header behaviour, inner page hero slideshow.
 
 (function () {
-  const header = document.getElementById("siteHeader");
-  const menuBtn = document.getElementById("menuBtn");
-  const mobilePanel = document.getElementById("mobilePanel");
+  const header      = document.getElementById('siteHeader');
+  const menuBtn     = document.getElementById('menuBtn');
+  const mobilePanel = document.getElementById('mobilePanel');
 
-  // Detect inner pages reliably (body class OR URL path)
   const isInnerPage =
-    document.body.classList.contains("is-inner") ||
-    window.location.pathname.startsWith("/pages/");
+    document.body.classList.contains('is-inner') ||
+    window.location.pathname.startsWith('/pages/');
 
-  // --- Mobile menu (ALL pages) ---
+  // Mobile menu
   if (menuBtn && mobilePanel) {
-    menuBtn.addEventListener("click", () => {
-      const open = mobilePanel.classList.toggle("is-open");
-    
-      // ADD THIS LINE for scroll lock
-      document.body.classList.toggle("menu-open", open);
-
-      // sync X state
-      menuBtn.classList.toggle("is-open", open);
-
-      // accessibility
-      mobilePanel.setAttribute("aria-hidden", open ? "false" : "true");
-
-      // update header style after menu toggle
+    menuBtn.addEventListener('click', () => {
+      const open = mobilePanel.classList.toggle('is-open');
+      document.body.classList.toggle('menu-open', open);
+      menuBtn.classList.toggle('is-open', open);
+      mobilePanel.setAttribute('aria-hidden', open ? 'false' : 'true');
       updateHeader();
     });
   }
 
-  // Close mobile menu when any link is clicked (ALL pages)
   if (mobilePanel && menuBtn) {
-    mobilePanel.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        mobilePanel.classList.remove("is-open");
-        menuBtn.classList.remove("is-open");
-        mobilePanel.setAttribute("aria-hidden", "true");
-        document.body.classList.remove("menu-open");
+    mobilePanel.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        mobilePanel.classList.remove('is-open');
+        menuBtn.classList.remove('is-open');
+        mobilePanel.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('menu-open');
         updateHeader();
       });
     });
   }
 
-  // Mobile accordion: only one <details> open at a time (ALL pages)
   if (mobilePanel) {
-    const groups = mobilePanel.querySelectorAll("details");
+    const groups = mobilePanel.querySelectorAll('details');
     groups.forEach((d) => {
-      d.addEventListener("toggle", () => {
-        if (d.open) {
-          groups.forEach((other) => {
-            if (other !== d) other.removeAttribute("open");
-          });
-        }
+      d.addEventListener('toggle', () => {
+        if (d.open) groups.forEach((o) => { if (o !== d) o.removeAttribute('open'); });
       });
     });
   }
 
-  // --- Header behavior (HOME vs INNER) ---
+  // Header behaviour
   function updateHeader() {
     if (!header) return;
-
-    const menuOpen = mobilePanel && mobilePanel.classList.contains("is-open");
-
-    // INNER: always solid, never hover/scroll animated
+    const menuOpen = mobilePanel && mobilePanel.classList.contains('is-open');
     if (isInnerPage) {
-      header.classList.add("is-scrolled");
-      // prevent any "hide" class from affecting it (safe no-ops if classes don't exist)
-      header.classList.remove("is-hidden", "hidden", "hide");
+      header.classList.add('is-scrolled');
+      header.classList.remove('is-hidden', 'hidden', 'hide');
       return;
     }
-
-    // HOME: your original behavior
     const scrolled = window.scrollY > 8;
-    header.classList.toggle("is-scrolled", scrolled || menuOpen);
+    header.classList.toggle('is-scrolled', scrolled || menuOpen);
   }
 
-  // HOME scroll listener only
   if (!isInnerPage) {
-    window.addEventListener("scroll", updateHeader, { passive: true });
-
-    // HOME hover behavior only
+    window.addEventListener('scroll', updateHeader, { passive: true });
     if (header) {
-      header.addEventListener("mouseenter", () => {
-        header.classList.add("is-scrolled");
-      });
-
-      header.addEventListener("mouseleave", () => {
-        const scrolled = window.scrollY > 8;
-        const menuOpen = mobilePanel && mobilePanel.classList.contains("is-open");
-        if (!scrolled && !menuOpen) header.classList.remove("is-scrolled");
+      header.addEventListener('mouseenter', () => header.classList.add('is-scrolled'));
+      header.addEventListener('mouseleave', () => {
+        if (window.scrollY <= 8 && !(mobilePanel && mobilePanel.classList.contains('is-open'))) {
+          header.classList.remove('is-scrolled');
+        }
       });
     }
   }
 
-  // Run once on load (ALL pages)
   updateHeader();
+})();
+
+// Inner page hero slideshow
+(function () {
+  const hero = document.querySelector('.page-hero--slides');
+  if (!hero) return;
+  const slides = hero.querySelectorAll('.page-hero__slide');
+  if (slides.length < 2) {
+    if (slides.length === 1) slides[0].classList.add('is-active');
+    return;
+  }
+  let current = 0;
+  slides[current].classList.add('is-active');
+  setInterval(() => {
+    slides[current].classList.remove('is-active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('is-active');
+  }, 4500);
 })();

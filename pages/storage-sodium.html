@@ -3,289 +3,400 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MountRex Sodium | Charania Renewables</title>
-  <meta name="description" content="Discover MountRex Sodium, our upcoming sodium‑ion battery range designed for high temperature resilience and safety in Pakistan. Learn about the benefits of sodium chemistry, intended applications and register your interest." />
-
-  <!-- Preconnects and fonts -->
+  <title>MountRex Sodium-Ion Storage | Charania Renewables</title>
+  <meta name="description" content="Sodium-ion battery storage &mdash; the next generation of stationary energy storage. No lithium, no cobalt, lower cost at scale and excellent thermal " />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Site styles -->
   <link rel="stylesheet" href="/assets/css/styles.css" />
-</head>
+  <style>
+    /* Snap scroll */
+    html { scroll-snap-type: y proximity; overflow-y: scroll; height: 100%; }
+    body { height: auto; }
 
+    .snap-section {
+      scroll-snap-align: start;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 100px 0 60px;
+    }
+    .snap-hero {
+      padding: 0;
+      min-height: 100vh;
+    }
+    /* Footer doesn't snap */
+    .footer { scroll-snap-align: none !important; }
+
+    /* Dark section text colours */
+    .snap-dark { background: #0C2A52; }
+    .snap-dark h2, .snap-dark h3, .snap-dark p, .snap-dark li { color: rgba(255,255,255,.85); }
+    .snap-dark h2 { color: #fff; }
+    .snap-dark .kicker { color: #7FDB65; }
+    .snap-dark .card { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.12); }
+    .snap-dark .card h3 { color: #fff; }
+    .snap-dark .card p { color: rgba(255,255,255,.72); }
+    .snap-dark .card .kicker { color: #7FDB65; }
+
+    /* Light section */
+    .snap-gray { background: #F4F4F4; }
+
+    /* Image background sections */
+    .snap-img { background-size: cover; background-position: center; }
+    .snap-img::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(8,24,52,.80) 0%, rgba(12,42,82,.72) 100%);
+    }
+    .snap-img .container { position: relative; z-index: 1; }
+    .snap-img h2, .snap-img h3, .snap-img p, .snap-img li { color: rgba(255,255,255,.85); }
+    .snap-img h2 { color: #fff; }
+    .snap-img .kicker { color: #7FDB65; }
+    .snap-img .card { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.14); }
+    .snap-img .card h3 { color: #fff; }
+    .snap-img .card p { color: rgba(255,255,255,.72); }
+
+    /* Hero */
+    .snap-hero {
+      background-size: cover;
+      background-position: center;
+    }
+    .snap-hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(4,8,18,.82) 0%, rgba(4,8,18,.30) 55%, transparent 100%);
+    }
+    .snap-hero__inner {
+      position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
+      padding-bottom: 10vh;
+    }
+    .snap-hero__inner .container { }
+    .snap-hero__inner .kicker { color: #7FDB65; }
+    .snap-hero__inner h1 { color: #fff; font-size: 56px; line-height: 1.06; letter-spacing: -.025em; margin: 0 0 16px; }
+    .snap-hero__inner p { color: rgba(255,255,255,.82); font-size: 18px; line-height: 1.65; max-width: 58ch; margin: 0 0 28px; }
+
+    /* Scroll progress */
+    .scroll-progress { position: fixed; right: 20px; top: 50%; transform: translateY(-50%); z-index: 500; height: 160px; }
+    .scroll-progress__track { width: 2px; height: 100%; background: rgba(255,255,255,.2); border-radius: 2px; position: relative; overflow: hidden; }
+    .scroll-progress__fill { position: absolute; top: 0; left: 0; width: 100%; height: 0%; background: #7FDB65; border-radius: 2px; transition: height .1s linear; }
+    .scroll-progress.on-light .scroll-progress__track { background: rgba(12,42,82,.15); }
+
+    /* Animations */
+    .js-anim .reveal-up   { opacity: 0; transform: translateY(56px);  transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+    .js-anim .reveal-left { opacity: 0; transform: translateX(-64px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+    .js-anim .reveal-fade { opacity: 0; transition: opacity .6s ease; }
+    .reveal-delay-1 { transition-delay: .12s; }
+    .reveal-delay-2 { transition-delay: .24s; }
+    .reveal-delay-3 { transition-delay: .36s; }
+    .js-anim .snap-section.in-view .reveal-up   { opacity: 1; transform: translateY(0); }
+    .js-anim .snap-section.in-view .reveal-left { opacity: 1; transform: translateX(0); }
+    .js-anim .snap-section.in-view .reveal-fade { opacity: 1; }
+    .js-anim .snap-section:not(.in-view) .reveal-up   { opacity: 0; transform: translateY(56px); }
+    .js-anim .snap-section:not(.in-view) .reveal-left { opacity: 0; transform: translateX(-64px); }
+    .js-anim .snap-section:not(.in-view) .reveal-fade { opacity: 0; }
+
+    /* Inline image in light sections */
+    .sec-img { width: 100%; height: 380px; object-fit: cover; border-radius: 12px; }
+
+    /* Stat boxes */
+    .stat-box { text-align: left; }
+    .stat-box__num { font-size: 32px; font-weight: 800; color: var(--navy); line-height: 1; margin-bottom: 4px; }
+    .stat-box__label { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--green); font-weight: 700; margin-bottom: 6px; }
+    .stat-box__desc { font-size: 13px; color: var(--muted); }
+    .snap-dark .stat-box__num, .snap-img .stat-box__num { color: #fff; }
+    .snap-dark .stat-box__desc, .snap-img .stat-box__desc { color: rgba(255,255,255,.6); }
+
+    @media (max-width: 768px) {
+      html { scroll-snap-type: none; }
+      .snap-section { min-height: auto; padding: 80px 0 48px; }
+      .snap-hero { min-height: 100svh; padding: 0; }
+      .snap-hero__inner h1 { font-size: 34px; }
+      .snap-hero__inner p { font-size: 15px; }
+      .snap-hero__inner { padding-bottom: 10vh; }
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr !important; }
+      .scroll-progress { display: none; }
+      .sec-img { height: 240px; }
+    }
+  </style>
+</head>
 <body class="is-inner">
-  <!-- Header and navigation (copied from existing template) -->
+
   <header class="site-header" id="siteHeader">
     <div class="site-header__inner">
-      <a class="brand" href="/" aria-label="Charania Renewables Home">
+      <a class="brand" href="/index.html" aria-label="Charania Renewables Home">
         <img class="brand-logo brand-logo--color" src="/assets/img/logo-cr-color.png" alt="Charania Renewables" />
         <img class="brand-logo brand-logo--white" src="/assets/img/logo-cr-white.png" alt="Charania Renewables" />
       </a>
-
       <nav class="main-nav" aria-label="Primary">
         <div class="nav-item has-dd">
           <a href="#" class="nav-link" aria-haspopup="true">Storage</a>
-          <div class="dropdown">
-            <div class="dropdown__col">
-              <a href="/pages/storage-aokly.html">Aokly &times; Charania Renewables (LV)</a>
-              <a href="/pages/storage-mountrex.html">MountRex (LV)</a>
-              <a href="/pages/storage-zetara.html">Zetara &times; Charania Renewables (HV)</a>
-              <a href="/pages/storage-comparison.html">Comparison &amp; Applications</a>
-              <a href="/pages/storage-sodium.html">MountRex Sodium</a>
-            </div>
-          </div>
+          <div class="dropdown"><div class="dropdown__col">
+            <a href="/pages/storage-aokly.html">Aokly &times; Charania Renewables (LV)</a>
+            <a href="/pages/storage-mountrex.html">MountRex (LV)</a>
+            <a href="/pages/storage-zetara.html">Zetara &times; Charania Renewables (HV)</a>
+            <a href="/pages/storage-comparison.html">Comparison &amp; Applications</a>
+            <a href="/pages/storage-sodium.html">MountRex Sodium</a>
+          </div></div>
         </div>
-
         <div class="nav-item has-dd">
           <a href="#" class="nav-link" aria-haspopup="true">Generation</a>
-          <div class="dropdown">
-            <div class="dropdown__col">
-              <a href="/pages/generation-vertix.html">Vertix</a>
-              <a href="/pages/generation-solar.html">Solar Systems</a>
-            </div>
-          </div>
+          <div class="dropdown"><div class="dropdown__col">
+            <a href="/pages/generation-vertix.html">Vertix</a>
+            <a href="/pages/generation-solar.html">Solar Systems</a>
+          </div></div>
         </div>
-
         <div class="nav-item has-dd">
           <a href="#" class="nav-link" aria-haspopup="true">Structures</a>
-          <div class="dropdown">
-            <div class="dropdown__col">
-              <a href="/pages/structures-lmaxx.html">Lmaxx Overview</a>
-              <a href="/pages/structures-rooftop.html">Rooftop Mounting</a>
-              <a href="/pages/structures-ground.html">Ground Mounting</a>
-              <a href="/pages/structures-custom.html">Custom / Industrial</a>
-            </div>
-          </div>
+          <div class="dropdown"><div class="dropdown__col">
+            <a href="/pages/structures-lmaxx.html">Lmaxx Overview</a>
+            <a href="/pages/structures-rooftop.html">Rooftop Mounting</a>
+            <a href="/pages/structures-ground.html">Ground Mounting</a>
+            <a href="/pages/structures-custom.html">Custom / Industrial</a>
+          </div></div>
         </div>
-
         <div class="nav-item has-dd">
           <a href="#" class="nav-link" aria-haspopup="true">Solutions</a>
-          <div class="dropdown">
-            <div class="dropdown__col">
-              <a href="/pages/solutions-hybrid-engineering.html">Hybrid Engineering &amp; Design</a>
-              <a href="/pages/solutions-industrial.html">Industrial Energy Solutions</a>
-              <a href="/pages/solutions-hybrid-systems.html">Hybrid Systems</a>
-              <a href="/pages/solutions-peakshaving.html">Peak Shaving &amp; Backup</a>
-            </div>
-          </div>
+          <div class="dropdown"><div class="dropdown__col">
+            <a href="/pages/solutions-hybrid-engineering.html">Hybrid Engineering &amp; Design</a>
+            <a href="/pages/solutions-industrial.html">Industrial Energy Solutions</a>
+            <a href="/pages/solutions-hybrid-systems.html">Hybrid Systems</a>
+            <a href="/pages/solutions-peakshaving.html">Peak Shaving &amp; Backup</a>
+          </div></div>
         </div>
-
         <div class="nav-item has-dd">
           <a href="#" class="nav-link" aria-haspopup="true">About</a>
-          <div class="dropdown">
-            <div class="dropdown__col">
-              <a href="/pages/about-who.html">Who We Are</a>
-              <!-- Removed Charania Group / Legacy link as per updated navigation -->
-              <a href="/pages/about-partners.html">Partners</a>
-              <a href="/pages/about-quality.html">Quality, Warranty &amp; Safety</a>
-            </div>
-          </div>
+          <div class="dropdown"><div class="dropdown__col">
+            <a href="/pages/about-who.html">Who We Are</a>
+            <a href="/pages/about-partners.html">Partners</a>
+            <a href="/pages/about-quality.html">Quality, Warranty &amp; Safety</a>
+          </div></div>
         </div>
-
         <a class="nav-link" href="/pages/contact.html">Contact</a>
       </nav>
-
       <div class="header-actions">
-        <!-- Search button removed per updated requirements -->
         <button class="menu-btn" type="button" id="menuBtn" aria-label="Open menu">
           <span></span><span></span><span></span>
         </button>
       </div>
     </div>
-
-    <!-- mobile panel -->
     <div class="mobile-panel" id="mobilePanel" aria-hidden="true">
       <div class="mobile-panel__inner">
-        <details>
-          <summary>Storage</summary>
+        <details><summary>Storage</summary>
           <a href="/pages/storage-aokly.html">Aokly &times; Charania Renewables (LV)</a>
           <a href="/pages/storage-mountrex.html">MountRex (LV)</a>
           <a href="/pages/storage-zetara.html">Zetara &times; Charania Renewables (HV)</a>
           <a href="/pages/storage-comparison.html">Comparison &amp; Applications</a>
           <a href="/pages/storage-sodium.html">MountRex Sodium</a>
         </details>
-
-        <details>
-          <summary>Generation</summary>
+        <details><summary>Generation</summary>
           <a href="/pages/generation-vertix.html">Vertix</a>
           <a href="/pages/generation-solar.html">Solar Systems</a>
         </details>
-
-        <details>
-          <summary>Structures</summary>
+        <details><summary>Structures</summary>
           <a href="/pages/structures-lmaxx.html">Lmaxx Overview</a>
           <a href="/pages/structures-rooftop.html">Rooftop Mounting</a>
           <a href="/pages/structures-ground.html">Ground Mounting</a>
           <a href="/pages/structures-custom.html">Custom / Industrial</a>
         </details>
-
-        <details>
-          <summary>Solutions</summary>
+        <details><summary>Solutions</summary>
           <a href="/pages/solutions-hybrid-engineering.html">Hybrid Engineering &amp; Design</a>
           <a href="/pages/solutions-industrial.html">Industrial Energy Solutions</a>
           <a href="/pages/solutions-hybrid-systems.html">Hybrid Systems</a>
           <a href="/pages/solutions-peakshaving.html">Peak Shaving &amp; Backup</a>
         </details>
-
-        <details>
-          <summary>About</summary>
+        <details><summary>About</summary>
           <a href="/pages/about-who.html">Who We Are</a>
-          <!-- Removed Charania Group / Legacy link from mobile nav -->
           <a href="/pages/about-partners.html">Partners</a>
           <a href="/pages/about-quality.html">Quality, Warranty &amp; Safety</a>
         </details>
-
         <a href="/pages/contact.html">Contact</a>
       </div>
     </div>
   </header>
 
-  <!-- Main content: MountRex Sodium page -->
-  <section class="section">
-    <div class="container">
-      <!-- Hero section with image placeholder and coming soon badge -->
-      <div class="grid-2" style="align-items:center; gap:40px;">
-        <div>
-          <div class="kicker">Storage</div>
-          <h1>MountRex Sodium</h1>
-          <p style="color:var(--muted); max-width:68ch;">
-            Our next‑generation sodium‑ion battery platform offers exceptional temperature resilience and a strong safety profile for Pakistan’s climate. MountRex Sodium brings durable, sustainable energy storage to residential backup and select commercial applications.
-          </p>
-          <div style="margin-top:12px;">
-            <span class="badge" style="background:var(--green); color:#062013; margin-right:8px;">Coming Soon</span>
-          </div>
-          <div style="margin-top:20px; display:flex; gap:12px; flex-wrap:wrap;">
-            <a class="btn btn--primary" href="/pages/contact.html">Join Waitlist</a>
-            <a class="btn btn--ghost" href="/pages/contact.html">Talk to Engineer</a>
-          </div>
-        </div>
-        <div class="media" style="min-height:300px; background-color:var(--light-grey); display:flex; align-items:center; justify-content:center; border-radius:8px;">
-          <!-- Hero image placeholder: Replace src with actual sodium battery image -->
-          <img src="/assets/img/hero-mountrex-sodium-placeholder.jpg" alt="MountRex Sodium battery" style="max-width:100%; height:auto; border-radius:8px;" />
-        </div>
-      </div>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true">
+    <div class="scroll-progress__track">
+      <div class="scroll-progress__fill" id="scrollFill"></div>
+    </div>
+  </div>
 
-      <!-- Why Sodium section -->
-      <h2 style="margin-top:60px;">Why Sodium?</h2>
-      <div class="grid-3">
-        <div class="card">
-          <h3>Temperature Resilience</h3>
-          <p>Sodium‑ion chemistry maintains stable performance across wide temperature ranges, making it ideal for Pakistan’s hot climate and remote installations.</p>
-        </div>
-        <div class="card">
-          <h3>Safety &amp; Stability</h3>
-          <p>Non‑flammable electrolytes and robust cell design reduce thermal runaway risk, offering a safer alternative to traditional lithium chemistries.</p>
-        </div>
-        <div class="card">
-          <h3>Supply Durability</h3>
-          <p>Sodium’s abundant resources mitigate supply constraints and price volatility, enabling long‑term scalability and cost stability.</p>
-        </div>
-      </div>
-
-      <!-- Intended applications section -->
-      <h2 style="margin-top:60px;">Intended Applications</h2>
-      <div class="grid-3">
-        <div class="card">
-          <h3>Residential Backup</h3>
-          <p>Future small‑scale units designed for home backup, ensuring reliable power during outages with safe chemistry and easy installation.</p>
-        </div>
-        <div class="card">
-          <h3>Commercial &amp; Industrial</h3>
-          <p>Select sodium systems for light commercial and industrial scenarios where temperature resilience and safety are critical.</p>
-        </div>
-        <div class="card">
-          <h3>Hybrid Systems</h3>
-          <p>Integrate sodium batteries with solar or wind generation for cost‑effective hybrid solutions, balancing performance, safety and scalability.</p>
-        </div>
-      </div>
-
-      <!-- Planned models section -->
-      <h2 style="margin-top:60px;">Planned Models</h2>
-      <div class="grid-3">
-        <div class="card">
-          <h3>Sodium LV&nbsp;10</h3>
-          <p>10&nbsp;kWh module for residential backup applications; connects seamlessly with our LV inverters.</p>
-        </div>
-        <div class="card">
-          <h3>Sodium LV&nbsp;20</h3>
-          <p>20&nbsp;kWh stackable system designed for larger homes or small commercial setups requiring longer autonomy.</p>
-        </div>
-        <div class="card">
-          <h3>Sodium HV&nbsp;50</h3>
-          <p>50&nbsp;kWh rack for select commercial or industrial deployments where temperature resilience and scalability matter.</p>
-        </div>
-      </div>
-
-      <!-- Final call to action -->
-      <div class="cta-strip" style="margin-top:60px;">
-        <div class="container" style="text-align:center;">
-          <h2>Register Your Interest</h2>
-          <p style="max-width:72ch; margin:0 auto; color:var(--muted);">
-            MountRex Sodium is in development and will launch soon. Sign up to stay informed about availability, pricing and technical specifications.
-          </p>
-          <div style="margin-top:20px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-            <a class="btn btn--primary" href="/pages/contact.html">Join Waitlist</a>
-            <a class="btn btn--ghost" href="/pages/contact.html">Talk to Engineer</a>
-          </div>
+  <!-- HERO -->
+  <section class="snap-section snap-hero" data-theme="dark" style="background-image:url('https://images.unsplash.com/photo-1632234157201-5c8db2dc0ec2?w=1800&q=85');">
+    <div class="snap-hero__inner">
+      <div class="container">
+        <div class="kicker reveal-fade">Storage &mdash; Next Generation</div>
+        <h1 class="reveal-left">MountRex Sodium</h1>
+        <p class="reveal-left reveal-delay-1">Sodium-ion battery storage &mdash; the next generation of stationary energy storage. No lithium, no cobalt, lower cost at scale and excellent thermal stability.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;" class="reveal-fade reveal-delay-2">
+          <a class="btn btn--ghost-dark" href="/pages/contact.html">Request Assessment</a>
+          <a class="btn btn--ghost-dark" href="https://wa.me/923268422718" target="_blank" rel="noopener">WhatsApp Us</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer copied from template -->
-  <footer class="site-footer">
+  <section class="snap-section " data-theme="light">
     <div class="container">
-      <div class="grid-4" style="gap:40px;">
-        <div>
-          <a class="brand" href="/">
-            <img class="brand-logo brand-logo--color" src="/assets/img/logo-cr-color.png" alt="Charania Renewables" />
-          </a>
-          <p style="margin-top:10px; color:var(--muted); max-width:32ch;">Engineering the future of hybrid power. Delivering reliable energy built for your world.</p>
-          <div style="margin-top:16px; display:flex; gap:10px;">
-            <a href="https://www.linkedin.com/company/charania-renewables" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="/assets/img/icon-linkedin.svg" alt="LinkedIn"></a>
-            <a href="https://www.youtube.com/@CharaniaRenewables" target="_blank" rel="noopener" aria-label="YouTube"><img src="/assets/img/icon-youtube.svg" alt="YouTube"></a>
-            <a href="https://twitter.com/CharaniaEnergy" target="_blank" rel="noopener" aria-label="Twitter"><img src="/assets/img/icon-twitter.svg" alt="Twitter"></a>
-          </div>
-        </div>
-        <div>
-          <h4>Quick Links</h4>
-          <p class="small"><a href="/pages/storage-aokly.html">Aokly &times; Charania Renewables</a></p>
-          <p class="small"><a href="/pages/storage-mountrex.html">MountRex (LV)</a></p>
-          <p class="small"><a href="/pages/storage-zetara.html">Zetara &times; Charania Renewables (HV)</a></p>
-          <p class="small"><a href="/pages/structures-lmaxx.html">Lmaxx Structures</a></p>
-          <p class="small"><a href="/pages/generation-vertix.html">Vertix Wind</a></p>
-          <p class="small"><a href="/pages/generation-solar.html">Solar Systems</a></p>
-        </div>
-        <div>
-          <h4>Contact</h4>
-          <p class="small"><b>Phone:</b> +92 21-35635067</p>
-          <p class="small"><b>WhatsApp:</b> +92-326-8422718</p>
-          <p class="small"><b>Email:</b> <a href="mailto:info@charaniarenewables.com">info@charaniarenewables.com</a></p>
-          <p class="small" style="margin-top:10px;"><b>Office:</b> Suite 1803, 18th Floor, Sumya Sky View, 17 Dr Ziauddin Ahmed Road, Civil Lines, Karachi 75530</p>
-        </div>
-        <div>
-          <h4>Solutions</h4>
-          <p class="small"><a href="/pages/solutions-hybrid-engineering.html">Hybrid Engineering &amp; Design</a></p>
-          <p class="small"><a href="/pages/solutions-industrial.html">Industrial Energy</a></p>
-          <p class="small"><a href="/pages/solutions-hybrid-systems.html">Hybrid Systems</a></p>
-          <p class="small"><a href="/pages/solutions-peakshaving.html">Peak Shaving &amp; Backup</a></p>
+      <div class="grid-4" style="gap:20px;">
+    <div class="card stat-box reveal-up reveal-delay-0">
+      <div class="stat-box__num">Na-ion</div>
+      <div class="stat-box__label">Chemistry</div>
+      <p class="stat-box__desc">Sodium-ion cells &mdash; no lithium or cobalt in the cathode.</p>
+    </div>    <div class="card stat-box reveal-up reveal-delay-1">
+      <div class="stat-box__num">Wide Temp</div>
+      <div class="stat-box__label">Operating Range</div>
+      <p class="stat-box__desc">Excellent from &minus;20&deg;C to +60&deg;C &mdash; suited to Pakistan&rsquo;s climate.</p>
+    </div>    <div class="card stat-box reveal-up reveal-delay-2">
+      <div class="stat-box__num">Lower Cost</div>
+      <div class="stat-box__label">At Scale</div>
+      <p class="stat-box__desc">Projected to undercut LFP on cost per kWh as production scales.</p>
+    </div>    <div class="card stat-box reveal-up reveal-delay-3">
+      <div class="stat-box__num">Early Stage</div>
+      <div class="stat-box__label">Market Status</div>
+      <p class="stat-box__desc">Currently in controlled deployment &mdash; early-adopter programme open.</p>
+    </div>
+      </div>
+    </div>
+  </section>
+  <section class="snap-section snap-img" data-theme="dark" style="background-image:url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1600&q=80');">
+    <div class="container">
+      <div class="reveal-left">
+        <div class="kicker">Technology</div>
+        <h2>Why Sodium-Ion?</h2>
+        <p style="line-height:1.75;color:rgba(255,255,255,.80);">Sodium-ion uses abundant, widely available sodium instead of scarce lithium, removing supply chain risk and reducing long-term cost. Thermal stability is inherently better than NMC and comparable to LFP. Charania Renewables is positioning MountRex Sodium as a forward-looking option for early-adopter commercial and industrial clients.</p>
+      </div>
+    </div>
+  </section>
+  <section class="snap-section snap-gray" data-theme="light">
+    <div class="container">
+      <div class="reveal-fade" style="margin-bottom:32px;">
+        <div class="kicker">Technology Comparison</div>
+        <h2>Sodium-Ion vs LFP</h2>
+      </div>
+      <div class="grid-3" style="gap:20px;">
+        <div class="card reveal-up reveal-delay-0">
+          <div class="kicker">No Lithium</div>
+          <h3>Material Advantage</h3>
+          <p>Sodium is 1000&times; more abundant than lithium &mdash; no geographic concentration of supply.</p>
+        </div>        <div class="card reveal-up reveal-delay-1">
+          <div class="kicker">Thermal Stability</div>
+          <h3>Safety Profile</h3>
+          <p>Sodium-ion cells are inherently stable and require less thermal management than NMC.</p>
+        </div>        <div class="card reveal-up reveal-delay-2">
+          <div class="kicker">Cycle Life</div>
+          <h3>Durability</h3>
+          <p>Early commercial cells demonstrate 4000+ cycles at 80% DoD, competitive with LFP.</p>
         </div>
       </div>
-      <hr style="margin:40px 0; border-color:var(--light-grey);" />
-      <div class="small" style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px;">
-        <p>&copy; <span id="year"></span> Charania Renewables. All rights reserved.</p>
-        <p><a href="/assets/docs/terms.pdf" target="_blank" rel="noopener">Terms &amp; Conditions</a> | <a href="/assets/docs/privacy.pdf" target="_blank" rel="noopener">Privacy Policy</a></p>
+    </div>
+  </section>
+  <section class="snap-section snap-gray" data-theme="light">
+    <div class="container">
+      <div class="reveal-left">
+        <h2>Availability &amp; Early Access</h2>
+        <p style="color:var(--muted);max-width:70ch;margin-bottom:20px;">MountRex Sodium is currently in limited early-access deployment for commercial clients.</p>
+        <ul style="padding-left:20px;color:var(--muted);line-height:1.9;"><li style='margin-bottom:10px;'>Contact us to register interest in the MountRex Sodium early-access programme.</li><li style='margin-bottom:10px;'>Suitable for commercial and light industrial sites comfortable with emerging technology.</li><li style='margin-bottom:10px;'>Full engineering support, site assessment and commissioning included.</li><li style='margin-bottom:10px;'>Pricing and lead times provided on application &mdash; subject to availability.</li></ul>
+      </div>
+    </div>
+  </section>
+  <section class="snap-section snap-dark" data-theme="dark">
+    <div class="container">
+      <div class="reveal-fade">
+        <div class="kicker">Get Started</div>
+        <h2 style="color:#fff;margin:12px 0 16px;">Register Early Access Interest</h2>
+        <p style="color:rgba(255,255,255,.78);max-width:58ch;margin:0 0 28px;">MountRex Sodium is available for early-adopter commercial deployments. Get in touch to discuss your site and requirements.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a class="btn btn--ghost-dark" href="/pages/contact.html">Request Assessment</a>
+          <a class="btn btn--ghost-dark" href="https://wa.me/923268422718" target="_blank" rel="noopener">WhatsApp Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <h4>Charania Renewables</h4>
+          <p class="small">Hybrid energy integrator delivering engineered storage, generation, structures and hybrid system design.</p>
+          <p class="small" style="margin-top:10px;">
+            <b>Phone:</b> +92 21-35635067<br/>
+            <b>WhatsApp:</b> +92-326-8422718<br/>
+            <b>Email:</b> <a href="mailto:info@charaniarenewables.com">info@charaniarenewables.com</a>
+          </p>
+        </div>
+        <div>
+          <h4>Quick links</h4>
+          <p class="small"><a href="/pages/solutions-hybrid-engineering.html">Hybrid Engineering &amp; Design</a></p>
+          <p class="small"><a href="/pages/storage-comparison.html">Battery Comparison</a></p>
+          <p class="small"><a href="/pages/generation-solar.html">Solar Systems</a></p>
+          <p class="small"><a href="/pages/structures-lmaxx.html">Lmaxx Structures</a></p>
+          <p class="small"><a href="/pages/contact.html">Contact</a></p>
+        </div>
+        <div>
+          <h4>Official channels</h4>
+          <p class="small"><a href="https://www.facebook.com/Charania.Renewables/" target="_blank" rel="noopener">Facebook</a></p>
+          <p class="small"><a href="https://www.instagram.com/charaniarenewables/" target="_blank" rel="noopener">Instagram</a></p>
+          <p class="small"><a href="https://www.linkedin.com/company/charania-renewables/" target="_blank" rel="noopener">LinkedIn</a></p>
+          <p class="small"><a href="https://tiktok.com/@charania.renewables/" target="_blank" rel="noopener">TikTok</a></p>
+        </div>
+        <div>
+          <h4>Karachi</h4>
+          <p class="small">Suite 1803, 18th Floor Sumya Sky View,<br/>17 Dr Ziauddin Ahmed Road, Civil Lines,<br/>Karachi, 75530 Pakistan</p>
+          <p class="small" style="margin-top:10px;">
+            <a class="btn btn--primary" href="/pages/contact.html" style="padding:10px 12px;">Request a meeting</a>
+          </p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <div class="small">&copy; <span id="year"></span> Charania Renewables. All rights reserved.</div>
+        <div class="small">Hybrid Engineering &amp; Design (HED)</div>
       </div>
     </div>
   </footer>
 
-  <!-- Dynamic year script -->
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-  <!-- Include main.js for header and mobile menu behavior on inner pages -->
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   <script src="/assets/js/main.js"></script>
+  <script>
+  // Scroll progress
+  (function(){
+    var fill = document.getElementById('scrollFill');
+    var bar  = document.getElementById('scrollProgress');
+    if(!fill||!bar) return;
+    function upd(){
+      var d = document.documentElement.scrollHeight - window.innerHeight;
+      fill.style.height = (d>0 ? Math.min(window.scrollY/d*100,100) : 0)+'%';
+      var light = false;
+      document.querySelectorAll('.snap-section[data-theme="light"]').forEach(function(s){
+        var r = s.getBoundingClientRect();
+        if(r.top <= window.innerHeight/2 && r.bottom >= window.innerHeight/2) light = true;
+      });
+      bar.classList.toggle('on-light', light);
+    }
+    window.addEventListener('scroll', upd, {passive:true});
+    upd();
+  })();
+  // Section reveal
+  (function(){
+    var sections = document.querySelectorAll('.snap-section');
+    if(!sections.length) return;
+    document.body.classList.add('js-anim');
+    function checkVisible(){
+      sections.forEach(function(s){
+        var r = s.getBoundingClientRect();
+        if(r.top < window.innerHeight * 0.8 && r.bottom > window.innerHeight * 0.2){
+          s.classList.add('in-view');
+        } else {
+          s.classList.remove('in-view');
+        }
+      });
+    }
+    window.addEventListener('scroll', checkVisible, {passive:true});
+    checkVisible();
+  })();
+  </script>
 </body>
 </html>

@@ -5,343 +5,381 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Charania Renewables | Engineering the Future of Hybrid Power</title>
   <meta name="description" content="Charania Renewables is a hybrid energy integrator delivering engineered storage, generation, structures, and hybrid engineering for industrial and commercial energy resilience." />
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="/assets/css/styles.css" />
+  <style>
+    html { scroll-snap-type: y proximity; overflow-y: scroll; height: 100%; }
+    body { height: auto; max-width: none; box-shadow: none; margin: 0; }
+
+    .snap-section {
+      scroll-snap-align: start; scroll-snap-stop: normal;
+      min-height: 100vh; display: flex; flex-direction: column;
+      justify-content: center; position: relative; overflow: hidden;
+    }
+    .snap-hero { padding: 0; }
+    .footer { scroll-snap-align: none; margin: 0; padding-top: 48px;
+              background: #fff !important; color: var(--text) !important;
+              border-top: 1px solid var(--border); }
+    .footer h4 { color: var(--navy) !important; }
+    .footer a { color: var(--navy) !important; opacity: .75; }
+    .footer a:hover { opacity: 1; }
+    .footer .small { color: var(--muted) !important; }
+    .footer__bottom { border-color: var(--border) !important; }
+
+    .snap-architecture { color: #fff; }
+    .snap-architecture h2, .snap-architecture h3 { color: #fff; }
+    .snap-architecture p { color: rgba(255,255,255,.82); }
+    .snap-architecture .kicker { color: var(--green); }
+    .snap-architecture .card { background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.13); }
+    .snap-architecture .card h3 { color: #fff; }
+    .snap-architecture .card p { color: rgba(255,255,255,.72); }
+    .snap-architecture .card .card__link { color: var(--green); }
+    .snap-cta { color: #fff; }
+    .snap-cta h2 { color: #fff; }
+
+    /* Hero */
+    .hero-cine { position: relative; width: 100%; height: 100vh; overflow: hidden; }
+    .hero-cine__slide {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      opacity: 0; transform: scale(1.06);
+    }
+    .hero-cine__slide:first-child { opacity: 1; transform: scale(1.0); }
+    .hero-cine__overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to top, rgba(4,8,18,.82) 0%, rgba(4,8,18,.32) 55%, transparent 100%);
+    }
+    /* Content area sits at the bottom */
+    .hero-cine__content {
+      position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
+      padding: 0 0 10vh;
+    }
+    .hero-cine__inner { width: min(1180px, calc(100% - 40px)); margin: 0 auto; padding: 0; }
+    .hero-cine__inner h1 { color: #fff; font-size: 58px; line-height: 1.06; letter-spacing: -.025em; margin: 0 0 16px; }
+    .hero-cine__inner p { color: rgba(255,255,255,.82); font-size: 18px; line-height: 1.65; margin: 0 0 28px; max-width: 54ch; }
+    .hero-cine__actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* Panels: stack using CSS grid so height is always the tallest panel */
+    .hero-panels {
+      display: grid;
+      grid-template-areas: "panel";
+    }
+    .hero-panel {
+      grid-area: panel;
+      opacity: 0;
+      transition: opacity .75s ease;
+      pointer-events: none;
+    }
+    .hero-panel.is-active { opacity: 1; pointer-events: auto; }
+
+    /* Dots */
+    .hero-dots { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); z-index: 10; display: flex; gap: 10px; }
+    .hero-dot { width: 8px; height: 8px; border-radius: 50%; border: none; cursor: pointer; background: rgba(255,255,255,.35); padding: 0; transition: all .3s ease; }
+    .hero-dot.is-active { background: var(--green); width: 24px; border-radius: 4px; }
+
+    .scroll-hint { position: absolute; bottom: 28px; right: 60px; z-index: 10; display: flex; flex-direction: column; align-items: center; gap: 6px; animation: hint-fade 2.4s ease-in-out infinite; }
+    .scroll-hint span { display: block; width: 1px; height: 36px; background: linear-gradient(to bottom, transparent, rgba(255,255,255,.7)); }
+    .scroll-hint p { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.6); margin: 0; }
+    @keyframes hint-fade { 0%,100%{opacity:.4;transform:translateY(0)} 50%{opacity:.9;transform:translateY(5px)} }
+
+    .scroll-progress { position: fixed; right: 20px; top: 50%; transform: translateY(-50%); z-index: 500; height: 160px; }
+    .scroll-progress__track { width: 2px; height: 100%; background: rgba(255,255,255,.2); border-radius: 2px; position: relative; overflow: hidden; }
+    .scroll-progress__fill { position: absolute; top: 0; left: 0; width: 100%; height: 0%; background: var(--green); border-radius: 2px; transition: height .1s linear; }
+    .scroll-progress.on-light .scroll-progress__track { background: rgba(12,42,82,.15); }
+
+    /* Animations — content always visible by default.
+       JS adds .js-anim to body to activate hide-then-animate behaviour. */
+    .js-anim .reveal-up   { opacity: 0; transform: translateY(56px);  transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+    .js-anim .reveal-left { opacity: 0; transform: translateX(-64px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+    .js-anim .reveal-fade { opacity: 0; transition: opacity .6s ease; }
+    .reveal-delay-1 { transition-delay: .12s; }
+    .reveal-delay-2 { transition-delay: .24s; }
+    .reveal-delay-3 { transition-delay: .36s; }
+    .reveal-delay-4 { transition-delay: .48s; }
+    .js-anim .snap-section.in-view .reveal-up   { opacity: 1; transform: translateY(0); }
+    .js-anim .snap-section.in-view .reveal-left { opacity: 1; transform: translateX(0); }
+    .js-anim .snap-section.in-view .reveal-fade { opacity: 1; }
+    /* Reset on leave so it re-fires on scroll back */
+    .js-anim .snap-section:not(.in-view) .reveal-up   { opacity: 0; transform: translateY(56px); }
+    .js-anim .snap-section:not(.in-view) .reveal-left { opacity: 0; transform: translateX(-64px); }
+    .js-anim .snap-section:not(.in-view) .reveal-fade { opacity: 0; }
+
+    @media (max-width: 768px) {
+      html { scroll-snap-type: none; }
+      .snap-section { min-height: 100svh; padding: 72px 0 48px; }
+      .snap-hero { padding: 0; min-height: 100svh; }
+      .hero-cine { height: 100svh; }
+      .hero-cine__content { padding-bottom: 12vh; }
+      .hero-cine__inner { padding: 0; }
+      .hero-cine__inner h1 { font-size: 34px; }
+      .hero-cine__inner p { font-size: 15px; }
+      .snap-section > .container, .snap-section > div { padding-left: 20px !important; padding-right: 20px !important; }
+      .grid-4 { grid-template-columns: 1fr 1fr !important; gap: 12px !important; }
+      .split__grid { grid-template-columns: 1fr !important; }
+      .scroll-progress, .scroll-hint { display: none; }
+    }
+  </style>
 </head>
-
 <body>
+
   <header class="site-header" id="siteHeader">
-  <div class="site-header__inner">
-<a class="brand" href="/index.html" aria-label="Charania Renewables Home">
-  <img class="brand-logo brand-logo--color" src="/assets/img/logo-cr-color.png" alt="Charania Renewables" />
-  <img class="brand-logo brand-logo--white" src="/assets/img/logo-cr-white.png" alt="Charania Renewables" />
-</a>
-
-    <nav class="main-nav" aria-label="Primary">
-      <div class="nav-item has-dd">
-        <a href="#" class="nav-link" aria-haspopup="true">Storage</a>
-        <div class="dropdown">
-          <div class="dropdown__col">
-            <a href="/pages/storage-aokly.html">Aokly × Charania Renewables (LV)</a>
+    <div class="site-header__inner">
+      <a class="brand" href="/index.html" aria-label="Charania Renewables Home">
+        <img class="brand-logo brand-logo--color" src="/assets/img/logo-cr-color.png" alt="Charania Renewables" />
+        <img class="brand-logo brand-logo--white" src="/assets/img/logo-cr-white.png" alt="Charania Renewables" />
+      </a>
+      <nav class="main-nav" aria-label="Primary">
+        <div class="nav-item has-dd">
+          <a href="#" class="nav-link" aria-haspopup="true">Storage</a>
+          <div class="dropdown"><div class="dropdown__col">
+            <a href="/pages/storage-aokly.html">Aokly &times; Charania Renewables (LV)</a>
             <a href="/pages/storage-mountrex.html">MountRex (LV)</a>
-            <a href="/pages/storage-zetara.html">Zetara × Charania Renewables (HV)</a>
-            <a href="/pages/storage-comparison.html">Comparison & Applications</a>
+            <a href="/pages/storage-zetara.html">Zetara &times; Charania Renewables (HV)</a>
+            <a href="/pages/storage-comparison.html">Comparison &amp; Applications</a>
             <a href="/pages/storage-sodium.html">MountRex Sodium</a>
-          </div>
+          </div></div>
         </div>
-      </div>
-
-      <div class="nav-item has-dd">
-        <a href="#" class="nav-link" aria-haspopup="true">Generation</a>
-        <div class="dropdown">
-          <div class="dropdown__col">
+        <div class="nav-item has-dd">
+          <a href="#" class="nav-link" aria-haspopup="true">Generation</a>
+          <div class="dropdown"><div class="dropdown__col">
             <a href="/pages/generation-vertix.html">Vertix</a>
             <a href="/pages/generation-solar.html">Solar Systems</a>
-          </div>
+          </div></div>
         </div>
-      </div>
-
-      <div class="nav-item has-dd">
-        <a href="#" class="nav-link" aria-haspopup="true">Structures</a>
-        <div class="dropdown">
-          <div class="dropdown__col">
+        <div class="nav-item has-dd">
+          <a href="#" class="nav-link" aria-haspopup="true">Structures</a>
+          <div class="dropdown"><div class="dropdown__col">
             <a href="/pages/structures-lmaxx.html">Lmaxx Overview</a>
             <a href="/pages/structures-rooftop.html">Rooftop Mounting</a>
             <a href="/pages/structures-ground.html">Ground Mounting</a>
             <a href="/pages/structures-custom.html">Custom / Industrial</a>
-          </div>
+          </div></div>
         </div>
-      </div>
-
-      <div class="nav-item has-dd">
-        <a href="#" class="nav-link" aria-haspopup="true">Solutions</a>
-        <div class="dropdown">
-          <div class="dropdown__col">
-            <a href="/pages/solutions-hybrid-engineering.html">Hybrid Engineering & Design</a>
+        <div class="nav-item has-dd">
+          <a href="#" class="nav-link" aria-haspopup="true">Solutions</a>
+          <div class="dropdown"><div class="dropdown__col">
+            <a href="/pages/solutions-hybrid-engineering.html">Hybrid Engineering &amp; Design</a>
             <a href="/pages/solutions-industrial.html">Industrial Energy Solutions</a>
             <a href="/pages/solutions-hybrid-systems.html">Hybrid Systems</a>
-            <a href="/pages/solutions-peakshaving.html">Peak Shaving & Backup</a>
-          </div>
+            <a href="/pages/solutions-peakshaving.html">Peak Shaving &amp; Backup</a>
+          </div></div>
         </div>
-      </div>
-
-      <div class="nav-item has-dd">
-        <a href="#" class="nav-link" aria-haspopup="true">About</a>
-        <div class="dropdown">
-          <div class="dropdown__col">
+        <div class="nav-item has-dd">
+          <a href="#" class="nav-link" aria-haspopup="true">About</a>
+          <div class="dropdown"><div class="dropdown__col">
             <a href="/pages/about-who.html">Who We Are</a>
             <a href="/pages/about-partners.html">Partners</a>
-            <a href="/pages/about-quality.html">Quality, Warranty & Safety</a>
-          </div>
+            <a href="/pages/about-quality.html">Quality, Warranty &amp; Safety</a>
+          </div></div>
         </div>
-      </div>
-
-      <a class="nav-link" href="/pages/contact.html">Contact</a>
-    </nav>
-
-    <div class="header-actions">
+        <a class="nav-link" href="/pages/contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
         <button class="menu-btn" type="button" id="menuBtn" aria-label="Open menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </div>
-
-  <!-- mobile panel -->
-  <div class="mobile-panel" id="mobilePanel" aria-hidden="true">
-    <div class="mobile-panel__inner">
-     
-      <details>
-        <summary>Storage</summary>
-        <a href="/pages/storage-aokly.html">Aokly × Charania Renewables (LV)</a>
-        <a href="/pages/storage-mountrex.html">MountRex (LV)</a>
-        <a href="/pages/storage-zetara.html">Zetara × Charania Renewables (HV)</a>
-        <a href="/pages/storage-comparison.html">Comparison & Applications</a>
-        <a href="/pages/storage-sodium.html">MountRex Sodium</a>
-      </details>
-
-      <details>
-        <summary>Generation</summary>
-        <a href="/pages/generation-vertix.html">Vertix</a>
-        <a href="/pages/generation-solar.html">Solar Systems</a>
-      </details>
-
-      <details>
-        <summary>Structures</summary>
-        <a href="/pages/structures-lmaxx.html">Lmaxx Overview</a>
-        <a href="/pages/structures-rooftop.html">Rooftop Mounting</a>
-        <a href="/pages/structures-ground.html">Ground Mounting</a>
-        <a href="/pages/structures-custom.html">Custom / Industrial</a>
-      </details>
-
-      <details>
-        <summary>Solutions</summary>
-        <a href="/pages/solutions-hybrid-engineering.html">Hybrid Engineering & Design</a>
-        <a href="/pages/solutions-industrial.html">Industrial Energy Solutions</a>
-        <a href="/pages/solutions-hybrid-systems.html">Hybrid Systems</a>
-        <a href="/pages/solutions-peakshaving.html">Peak Shaving & Backup</a>
-      </details>
-
-      <details>
-        <summary>About</summary>
-        <a href="/pages/about-who.html">Who We Are</a>
-        <a href="/pages/about-partners.html">Partners</a>
-        <a href="/pages/about-quality.html">Quality, Warranty & Safety</a>
-      </details>
-
-      <a href="/pages/contact.html">Contact</a>
-
-       </div>
-  </div>
-</header>
-<section class="hero-cine">
-  <div class="hero-cine__media" aria-label="Hero media">
-    <!-- Replace with video later if you want -->
-    <div class="hero-cine__slide" style="background-image:url('/assets/img/hero-1.jpg');"></div>
-    <!-- optional: second slide later -->
-    <!-- <div class="hero-cine__slide" style="background-image:url('/assets/img/hero-2.jpg');"></div> -->
-  </div>
-
-  <div class="hero-cine__overlay"></div>
-
-  <div class="hero-cine__content">
-    <div class="hero-cine__inner">
-      <h1>Engineering the Future of Hybrid Power</h1>
-      <p>Integrated storage, generation, structures and hybrid engineering for industrial &amp; commercial energy resilience.</p>
-      <div class="hero-cine__actions">
-        <a class="btn btn--primary" href="/pages/contact.html">Enquiry</a>
-        <a class="btn btn--ghost" href="/pages/solutions-hybrid-engineering.html">Explore Solutions</a>
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
+    <div class="mobile-panel" id="mobilePanel" aria-hidden="true">
+      <div class="mobile-panel__inner">
+        <details><summary>Storage</summary>
+          <a href="/pages/storage-aokly.html">Aokly &times; Charania Renewables (LV)</a>
+          <a href="/pages/storage-mountrex.html">MountRex (LV)</a>
+          <a href="/pages/storage-zetara.html">Zetara &times; Charania Renewables (HV)</a>
+          <a href="/pages/storage-comparison.html">Comparison &amp; Applications</a>
+          <a href="/pages/storage-sodium.html">MountRex Sodium</a>
+        </details>
+        <details><summary>Generation</summary>
+          <a href="/pages/generation-vertix.html">Vertix</a>
+          <a href="/pages/generation-solar.html">Solar Systems</a>
+        </details>
+        <details><summary>Structures</summary>
+          <a href="/pages/structures-lmaxx.html">Lmaxx Overview</a>
+          <a href="/pages/structures-rooftop.html">Rooftop Mounting</a>
+          <a href="/pages/structures-ground.html">Ground Mounting</a>
+          <a href="/pages/structures-custom.html">Custom / Industrial</a>
+        </details>
+        <details><summary>Solutions</summary>
+          <a href="/pages/solutions-hybrid-engineering.html">Hybrid Engineering &amp; Design</a>
+          <a href="/pages/solutions-industrial.html">Industrial Energy Solutions</a>
+          <a href="/pages/solutions-hybrid-systems.html">Hybrid Systems</a>
+          <a href="/pages/solutions-peakshaving.html">Peak Shaving &amp; Backup</a>
+        </details>
+        <details><summary>About</summary>
+          <a href="/pages/about-who.html">Who We Are</a>
+          <a href="/pages/about-partners.html">Partners</a>
+          <a href="/pages/about-quality.html">Quality, Warranty &amp; Safety</a>
+        </details>
+        <a href="/pages/contact.html">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true">
+    <div class="scroll-progress__track">
+      <div class="scroll-progress__fill" id="scrollFill"></div>
+    </div>
   </div>
 
-  <div class="hero-cine__dots" aria-hidden="true">
-    <span class="dot is-active"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-  </div>
-</section>
-
-  <!-- HERO (minimal, whitespace) -->
-  <section class="hero--minimal">
-    <div class="container">
-      <div class="hero__grid--minimal">
-        <div>
-          <div class="kicker">Charania Renewables</div>
-          <h1 style="margin-top:10px;">Engineering the Future of Hybrid Power</h1>
-          <p class="hero__lead">
-            A hybrid energy integrator combining storage, generation, structures, and engineering design —
-            built for industrial and commercial energy resilience.
-          </p>
-
-          <div class="hero__ctaRow">
-            <a class="btn btn--primary" href="/pages/contact.html">Request Assessment</a>
-            <a class="btn btn--ghost" href="/pages/solutions-hybrid-engineering.html">Explore Hybrid Engineering</a>
-          </div>
-
-          <div style="margin-top:18px; color:var(--muted); font-size:13px;">
-            Residential solutions are <b>channel-supported</b>. Industrial &amp; C&amp;I are <b>engineering-led</b>.
-          </div>
-        </div>
-
-        <!-- Placeholder for video/hero image/diagram -->
-        <div class="media" aria-label="Hero media placeholder">
-          <div class="media__inner">
-            <div>
-              <div class="media__title">Hero Media Placeholder</div>
-              <div class="media__meta">Use for: 30–45s video • hybrid architecture diagram • hero image</div>
+  <!-- S1: HERO -->
+  <section class="snap-section snap-hero" data-section="0" data-theme="dark">
+    <div class="hero-cine">
+      <div class="hero-cine__slide" style="background-image:url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1800&q=85');"></div>
+      <div class="hero-cine__slide" style="background-image:url('https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=1800&q=85');"></div>
+      <div class="hero-cine__slide" style="background-image:url('https://images.unsplash.com/photo-1497435334941-8c899a9bd069?w=1800&q=85');"></div>
+      <div class="hero-cine__overlay"></div>
+      <div class="hero-cine__content">
+        <div class="hero-cine__inner">
+          <div class="hero-panels">
+            <div class="hero-panel is-active">
+              <div class="kicker" style="color:var(--green);margin-bottom:12px;">Charania Renewables</div>
+              <h1>Engineering the Future<br>of Hybrid Power</h1>
+              <p>Integrated storage, generation, structures and hybrid engineering for industrial &amp; commercial energy resilience.</p>
+              <div class="hero-cine__actions">
+                <a class="btn btn--ghost-dark" href="/pages/contact.html">Request Assessment</a>
+                <a class="btn btn--ghost-dark" href="/pages/solutions-hybrid-engineering.html">Explore Solutions</a>
+              </div>
             </div>
-            <div class="media__meta">Recommended: 16:9 (or wide 21:9), high contrast, industrial context</div>
+            <div class="hero-panel">
+              <div class="kicker" style="color:var(--green);margin-bottom:12px;">Solar Generation</div>
+              <h1>Tier&#8209;1 Solar,<br>Engineered to Perform</h1>
+              <p>We integrate high-efficiency PV arrays into hybrid architectures designed around your load profile and site conditions.</p>
+              <div class="hero-cine__actions">
+                <a class="btn btn--ghost-dark" href="/pages/generation-solar.html">Explore Solar</a>
+                <a class="btn btn--ghost-dark" href="/pages/contact.html">Request Assessment</a>
+              </div>
+            </div>
+            <div class="hero-panel">
+              <div class="kicker" style="color:var(--green);margin-bottom:12px;">Energy Storage</div>
+              <h1>Industrial BESS<br>Built for Pakistan</h1>
+              <p>From residential LV to containerised HV systems &mdash; modular, scalable battery storage engineered for peak shaving and backup.</p>
+              <div class="hero-cine__actions">
+                <a class="btn btn--ghost-dark" href="/pages/storage-comparison.html">Explore Storage</a>
+                <a class="btn btn--ghost-dark" href="/pages/contact.html">Request Assessment</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+      <div class="hero-dots" aria-hidden="true">
+        <button class="hero-dot is-active" data-idx="0"></button>
+        <button class="hero-dot" data-idx="1"></button>
+        <button class="hero-dot" data-idx="2"></button>
+      </div>
+    </div>
+    <div class="scroll-hint" aria-hidden="true"><p>Scroll</p><span></span></div>
+  </section>
 
-      <div class="strip">
-        <div class="strip__grid">
-          <div class="badge"><b>Integrator</b><br/>Storage + wind + solar + structures</div>
-          <div class="badge"><b>Engineering-first</b><br/>Load-led design & feasibility</div>
-          <div class="badge"><b>Partner quality</b><br/>Tier-1 aligned approach</div>
-          <div class="badge"><b>Karachi HQ</b><br/>Civil Lines • +92 21-35635067</div>
+  <!-- S2: ARCHITECTURE -->
+  <section class="snap-section snap-architecture" data-section="1" data-theme="dark"
+    style="background-image:linear-gradient(135deg,rgba(8,28,56,.78) 0%,rgba(12,42,82,.72) 100%),url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1600&q=80');background-size:cover;background-position:center;">
+    <div class="container">
+      <div class="reveal-left" style="max-width:560px;margin-bottom:40px;">
+        <div class="kicker">Engineering Logic</div>
+        <h2 style="font-size:42px;margin:12px 0 16px;color:#fff;">Integrated Hybrid<br>Architecture</h2>
+        <p style="font-size:17px;line-height:1.7;">Designed as one system &mdash; not a collection of parts. We start with your load profile, uptime requirements and site constraints, then map storage, generation, and structures into a unified architecture.</p>
+      </div>
+      <div class="grid-2 reveal-fade reveal-delay-2" style="gap:20px;max-width:960px;">
+        <div class="card">
+          <div class="kicker" style="color:var(--green);">Process</div>
+          <h3>Load &rarr; Constraints &rarr; Design &rarr; Delivery</h3>
+          <p>Every hybrid system begins with real operating data. We model your consumption, constraints and economics before recommending a single component.</p>
+          <a class="card__link" href="/pages/solutions-hybrid-engineering.html">Hybrid Engineering &amp; Design &rarr;</a>
+        </div>
+        <div class="card">
+          <div class="kicker" style="color:var(--green);">Architecture</div>
+          <h3>Solar + Wind + BESS + Controls</h3>
+          <p>Four integrated layers: generation captures energy, storage smooths delivery, structures anchor everything, and controls optimise in real time.</p>
+          <a class="card__link" href="/pages/solutions-hybrid-systems.html">View Hybrid Systems &rarr;</a>
         </div>
       </div>
     </div>
   </section>
 
-  <hr class="hr"/>
-
-  <!-- Engineering positioning (minimal text + diagram placeholder) -->
-  <section class="section">
+  <!-- S3: PILLARS -->
+  <section class="snap-section snap-pillars" data-section="2" data-theme="light"
+    style="background-image:linear-gradient(rgba(244,244,244,.82),rgba(244,244,244,.82)),url('https://images.unsplash.com/photo-1497435334941-8c899a9bd069?w=1600&q=80');background-size:cover;background-position:center;">
     <div class="container">
-      <div class="section__head">
-        <div>
-          <h2>Integrated Hybrid Architecture</h2>
-          <p>Designed as one system — not a collection of parts.</p>
-        </div>
-        <a class="btn btn--ghost" href="/pages/solutions-hybrid-systems.html">View Hybrid Systems</a>
+      <div class="section__head reveal-fade" style="margin-bottom:36px;">
+        <div class="kicker">What We Deliver</div>
+        <h2 style="margin-top:8px;">Four Vertical Pillars</h2>
+        <p>Clean navigation. Clear roles. Engineering-led integration.</p>
       </div>
-
-      <div class="grid-2">
-        <div class="card card--flat">
-          <div class="kicker">Engineering logic</div>
-          <h3 style="margin:10px 0 8px;">Load → Constraints → Design → Delivery</h3>
-          <p style="margin:0; color:var(--muted); font-size:14px;">
-            We start with operating profile, uptime needs, and site constraints. Then we map storage, generation,
-            and structures into a hybrid architecture aligned to performance and economics.
-          </p>
-        </div>
-
-        <div class="media" style="min-height:220px;">
-          <div class="media__inner">
-            <div>
-              <div class="media__title">Architecture Diagram Placeholder</div>
-              <div class="media__meta">Use for: solar + wind + battery + controls diagram</div>
-            </div>
-            <div class="media__meta">SVG/PNG drop-in later</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4 vertical pillars (flat cards) -->
-  <section class="section section--gray">
-    <div class="container">
-      <div class="section__head">
-        <div>
-          <h2>Four Vertical Pillars</h2>
-          <p>Clean navigation. Clear roles. Engineering-led integration.</p>
-        </div>
-      </div>
-
       <div class="grid-4">
-        <div class="card card--flat">
+        <div class="card card--flat reveal-up">
+          <div class="kicker" style="color:var(--green);margin-bottom:8px;">01</div>
           <h3>Storage</h3>
-          <p>LV residential (channel) and HV BESS/ESS for C&amp;I deployments.</p>
-          <a class="card__link" href="/pages/storage-comparison.html">Explore storage →</a>
+          <p>LV residential systems through channel partners and HV BESS for C&amp;I deployments &mdash; MountRex, Aokly and Zetara.</p>
+          <a class="card__link" href="/pages/storage-comparison.html">Explore storage &rarr;</a>
         </div>
-        <div class="card card--flat">
+        <div class="card card--flat reveal-up reveal-delay-1">
+          <div class="kicker" style="color:var(--green);margin-bottom:8px;">02</div>
           <h3>Generation</h3>
-          <p>Solar partnerships and wind integration into hybrid systems.</p>
-          <a class="card__link" href="/pages/generation-solar.html">Explore generation →</a>
+          <p>Tier-1 solar integration and Vertix vertical-axis wind turbines engineered into hybrid energy architectures.</p>
+          <a class="card__link" href="/pages/generation-solar.html">Explore generation &rarr;</a>
         </div>
-        <div class="card card--flat">
+        <div class="card card--flat reveal-up reveal-delay-2">
+          <div class="kicker" style="color:var(--green);margin-bottom:8px;">03</div>
           <h3>Structures</h3>
-          <p>Rooftop, ground mount, and custom industrial fabrication.</p>
-          <a class="card__link" href="/pages/structures-lmaxx.html">Explore structures →</a>
+          <p>Rooftop, ground-mount and custom industrial fabrication through Lmaxx &mdash; built for Pakistan's conditions.</p>
+          <a class="card__link" href="/pages/structures-lmaxx.html">Explore structures &rarr;</a>
         </div>
-        <div class="card card--flat">
-          <h3>Hybrid Engineering &amp; Design</h3>
-          <p>Feasibility, architecture, and delivery model design.</p>
-          <a class="card__link" href="/pages/solutions-hybrid-engineering.html">Explore HED →</a>
+        <div class="card card--flat reveal-up reveal-delay-3">
+          <div class="kicker" style="color:var(--green);margin-bottom:8px;">04</div>
+          <h3>HDE</h3>
+          <p>Hybrid Design &amp; Engineering &mdash; feasibility, system architecture, SLD diagrams and financial modelling.</p>
+          <a class="card__link" href="/pages/solutions-hybrid-engineering.html">Explore HDE &rarr;</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Industrial vs Residential split (minimal) -->
-  <section class="section">
+  <!-- S4: AUDIENCE -->
+  <section class="snap-section snap-audience" data-section="3" data-theme="light"
+    style="background-image:linear-gradient(rgba(255,255,255,.84),rgba(255,255,255,.84)),url('https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=1600&q=80');background-size:cover;background-position:center;">
     <div class="container">
-      <div class="split">
+      <div class="section__head reveal-left" style="margin-bottom:36px;">
+        <div class="kicker">Who We Serve</div>
+        <h2 style="margin-top:8px;">Built for Industry.<br>Supported for Homes.</h2>
+      </div>
+      <div class="split reveal-fade reveal-delay-2">
         <div class="split__grid">
           <div class="split__pane">
             <div class="kicker">Industrial &amp; Commercial</div>
             <h3>Energy resilience for real operating loads</h3>
-            <p>Hybrid uptime positioning, peak shaving, and engineered backup — built around site constraints and economics.</p>
-            <a class="btn btn--primary" href="/pages/solutions-industrial.html">Industrial solutions</a>
+            <p>Hybrid uptime positioning, peak shaving and engineered backup &mdash; built around your site constraints, tariff structure and economics. We lead with engineering.</p>
+            <a class="btn btn--primary" href="/pages/solutions-industrial.html">Industrial Solutions</a>
           </div>
           <div class="split__pane split__pane--alt">
             <div class="kicker">Residential</div>
             <h3>Channel-supported LV systems</h3>
-            <p>Residential is delivered through channel partners with clean system cards and warranty focus.</p>
-            <a class="btn btn--ghost" href="/pages/storage-aokly.html">Residential storage</a>
+            <p>Delivered through our partner network. Clean system cards, structured warranty support and installation guidance &mdash; reliable storage for homes and small businesses.</p>
+            <a class="btn btn--ghost" href="/pages/storage-aokly.html">Residential Storage</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Carousel placeholders (videos/images/case studies) -->
-  <section class="section section--gray">
+  <!-- S5: CTA -->
+  <section class="snap-section snap-cta" data-section="4" data-theme="dark"
+    style="background-image:linear-gradient(rgba(6,18,42,.72),rgba(10,35,70,.72)),url('https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1600&q=80');background-size:cover;background-position:center;">
     <div class="container">
-      <div class="section__head">
-        <div>
-          <h2>Media &amp; Case Content</h2>
-          <p>Drop in videos, image carousels, project photos, and partner highlights.</p>
-        </div>
-      </div>
-
-      <div class="carousel">
-        <div class="carousel__row" aria-label="Carousel placeholder row">
-          <div class="carousel__item" title="Video tile placeholder"></div>
-          <div class="carousel__item" title="Project photo placeholder"></div>
-          <div class="carousel__item" title="Partner tile placeholder"></div>
-          <div class="carousel__item" title="Diagram tile placeholder"></div>
-        </div>
-        <div class="carousel__hint">Placeholder carousel — we can replace tiles with real media and add controls later.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA strip -->
-  <section class="section">
-    <div class="container">
-      <div class="cta-strip">
-        <div>
-          <h3>Request a feasibility assessment</h3>
-          <p>Share load, operating hours, and constraints — we’ll map the right hybrid architecture.</p>
-        </div>
-        <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <a class="btn btn--primary" href="/pages/contact.html">Book Consultation</a>
-          <a class="btn btn--ghost" href="https://wa.me/923268422718" target="_blank" rel="noopener">WhatsApp</a>
+      <div class="reveal-fade">
+        <div class="kicker" style="color:var(--green);margin-bottom:16px;">Get Started</div>
+        <h2 style="color:#fff;font-size:48px;margin:0 0 16px;line-height:1.1;">Ready to build your<br>hybrid energy system?</h2>
+        <p style="color:rgba(255,255,255,.80);font-size:18px;max-width:56ch;margin:0 0 32px;">Share your load profile, operating hours and constraints &mdash; our engineers will map the right architecture for your site.</p>
+        <div class="reveal-up reveal-delay-3" style="display:flex;gap:14px;flex-wrap:wrap;">
+          <a class="btn btn--ghost-dark" href="/pages/contact.html" style="padding:14px 28px;font-size:15px;">Book Consultation</a>
+          <a class="btn btn--ghost-dark" href="https://wa.me/923268422718" target="_blank" rel="noopener" style="padding:14px 28px;font-size:15px;">WhatsApp Us</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
       <div class="footer__grid">
@@ -351,10 +389,9 @@
           <p class="small" style="margin-top:10px;">
             <b>Phone:</b> +92 21-35635067<br/>
             <b>WhatsApp:</b> +92-326-8422718<br/>
-            <b>Email:</b> <a href="mailto:info@charaniarenewables.com">info@charaniarenewables.com</a>
+            <b>Email:</b> <a href="/cdn-cgi/l/email-protection#94fdfaf2fbd4f7fcf5e6f5fafdf5e6f1faf1e3f5f6f8f1e7baf7fbf9"><span class="__cf_email__" data-cfemail="b8d1d6ded7f8dbd0d9cad9d6d1d9caddd6ddcfd9dad4ddcb96dbd7d5">[email&#160;protected]</span></a>
           </p>
         </div>
-
         <div>
           <h4>Quick links</h4>
           <p class="small"><a href="/pages/solutions-hybrid-engineering.html">Hybrid Engineering &amp; Design</a></p>
@@ -363,7 +400,6 @@
           <p class="small"><a href="/pages/structures-lmaxx.html">Lmaxx Structures</a></p>
           <p class="small"><a href="/pages/contact.html">Contact</a></p>
         </div>
-
         <div>
           <h4>Official channels</h4>
           <p class="small"><a href="https://www.facebook.com/Charania.Renewables/" target="_blank" rel="noopener">Facebook</a></p>
@@ -371,30 +407,107 @@
           <p class="small"><a href="https://www.linkedin.com/company/charania-renewables/" target="_blank" rel="noopener">LinkedIn</a></p>
           <p class="small"><a href="https://tiktok.com/@charania.renewables/" target="_blank" rel="noopener">TikTok</a></p>
         </div>
-
         <div>
           <h4>Karachi</h4>
-          <p class="small">
-            Suite 1803, 18th Floor Sumya Sky View,<br/>
-            17 Dr Ziauddin Ahmed Road, Civil Lines,<br/>
-            Karachi, 75530 Pakistan
-          </p>
+          <p class="small">Suite 1803, 18th Floor Sumya Sky View,<br/>17 Dr Ziauddin Ahmed Road, Civil Lines,<br/>Karachi, 75530 Pakistan</p>
           <p class="small" style="margin-top:10px;">
             <a class="btn btn--primary" href="/pages/contact.html" style="padding:10px 12px;">Request a meeting</a>
           </p>
         </div>
       </div>
-
       <div class="footer__bottom">
-        <div class="small">© <span id="year"></span> Charania Renewables. All rights reserved.</div>
+        <div class="small">&copy; <span id="year"></span> Charania Renewables. All rights reserved.</div>
         <div class="small">Hybrid Engineering &amp; Design (HED)</div>
       </div>
     </div>
   </footer>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   <script src="/assets/js/main.js"></script>
+  <script>
+  // Scroll progress
+  (function(){
+    var fill = document.getElementById('scrollFill');
+    var bar  = document.getElementById('scrollProgress');
+    if(!fill||!bar) return;
+    function upd(){
+      var d = document.documentElement.scrollHeight - window.innerHeight;
+      fill.style.height = (d>0 ? Math.min(window.scrollY/d*100,100) : 0)+'%';
+      var light = false;
+      document.querySelectorAll('.snap-section[data-theme="light"]').forEach(function(s){
+        var r = s.getBoundingClientRect();
+        if(r.top <= window.innerHeight/2 && r.bottom >= window.innerHeight/2) light = true;
+      });
+      bar.classList.toggle('on-light', light);
+    }
+    window.addEventListener('scroll', upd, {passive:true});
+    upd();
+  })();
+
+  // Hero slideshow
+  (function(){
+    var slides  = document.querySelectorAll('.hero-cine__slide');
+    var panels  = document.querySelectorAll('.hero-panel');
+    var dots    = document.querySelectorAll('.hero-dot');
+    if(!slides.length) return;
+    var current = 0;
+    var timer;
+
+    function goTo(idx){
+      slides.forEach(function(s,i){
+        s.style.opacity   = i===idx ? '1' : '0';
+        s.style.transform = i===idx ? 'scale(1.0)' : 'scale(1.06)';
+      });
+      panels.forEach(function(p,i){ p.classList.toggle('is-active', i===idx); });
+      dots.forEach(function(d,i){ d.classList.toggle('is-active', i===idx); });
+      current = idx;
+    }
+
+    // Step 1: disable transitions, snap all slides to initial positions
+    slides.forEach(function(s,i){
+      s.style.transition = 'none';
+      s.style.opacity    = i===0 ? '1' : '0';
+      s.style.transform  = i===0 ? 'scale(1.0)' : 'scale(1.06)';
+    });
+
+    // Step 2: after browser paints, enable transitions and start autoplay
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        slides.forEach(function(s){
+          s.style.transition = 'opacity .9s ease, transform 7s ease';
+        });
+        timer = setInterval(function(){ goTo((current+1) % slides.length); }, 5500);
+      });
+    });
+
+    dots.forEach(function(d){
+      d.addEventListener('click', function(){
+        clearInterval(timer);
+        goTo(parseInt(d.dataset.idx));
+        timer = setInterval(function(){ goTo((current+1) % slides.length); }, 5500);
+      });
+    });
+  })();
+
+  // Section reveal
+  (function(){
+    var sections = document.querySelectorAll('.snap-section');
+    if(!sections.length) return;
+    document.body.classList.add('js-anim');
+
+    function checkVisible(){
+      sections.forEach(function(s){
+        var r = s.getBoundingClientRect();
+        if(r.top < window.innerHeight * 0.8 && r.bottom > window.innerHeight * 0.2){
+          s.classList.add('in-view');
+        } else {
+          s.classList.remove('in-view');
+        }
+      });
+    }
+    window.addEventListener('scroll', checkVisible, {passive:true});
+    checkVisible();
+  })();
+  </script>
 </body>
 </html>

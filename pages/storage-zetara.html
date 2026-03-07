@@ -3,206 +3,314 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>High-Voltage BESS Storage | Charania Renewables</title>
-  <meta name="description" content="High-voltage battery energy storage systems for commercial and industrial applications. Learn about our Zetara HV BESS offerings, architecture fit, system options and typical configurations." />
-
+  <title>Zetara HV BESS | Charania Renewables</title>
+  <meta name="description" content="High-voltage battery energy storage for commercial and industrial sites. Containerised, scalable, and engineered for grid-edge and behind-the-meter ap" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="/assets/css/styles.css" />
-</head>
+  <style>
+    /* Snap scroll */
+    html { scroll-snap-type: y proximity; overflow-y: scroll; height: 100%; }
+    body { height: auto; }
 
+    .snap-section {
+      scroll-snap-align: start;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 100px 0 60px;
+    }
+    .snap-hero {
+      padding: 0;
+      min-height: 100vh;
+    }
+    /* Footer doesn't snap */
+    .footer { scroll-snap-align: none !important; }
+
+    /* Dark section text colours */
+    .snap-dark { background: #0C2A52; }
+    .snap-dark h2, .snap-dark h3, .snap-dark p, .snap-dark li { color: rgba(255,255,255,.85); }
+    .snap-dark h2 { color: #fff; }
+    .snap-dark .kicker { color: #7FDB65; }
+    .snap-dark .card { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.12); }
+    .snap-dark .card h3 { color: #fff; }
+    .snap-dark .card p { color: rgba(255,255,255,.72); }
+    .snap-dark .card .kicker { color: #7FDB65; }
+
+    /* Light section */
+    .snap-gray { background: #F4F4F4; }
+
+    /* Image background sections */
+    .snap-img { background-size: cover; background-position: center; }
+    .snap-img::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(8,24,52,.80) 0%, rgba(12,42,82,.72) 100%);
+    }
+    .snap-img .container { position: relative; z-index: 1; }
+    .snap-img h2, .snap-img h3, .snap-img p, .snap-img li { color: rgba(255,255,255,.85); }
+    .snap-img h2 { color: #fff; }
+    .snap-img .kicker { color: #7FDB65; }
+    .snap-img .card { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.14); }
+    .snap-img .card h3 { color: #fff; }
+    .snap-img .card p { color: rgba(255,255,255,.72); }
+
+    /* Hero */
+    .snap-hero {
+      background-size: cover;
+      background-position: center;
+    }
+    .snap-hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(4,8,18,.82) 0%, rgba(4,8,18,.30) 55%, transparent 100%);
+    }
+    .snap-hero__inner {
+      position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
+      padding-bottom: 10vh;
+    }
+    .snap-hero__inner .container { }
+    .snap-hero__inner .kicker { color: #7FDB65; }
+    .snap-hero__inner h1 { color: #fff; font-size: 56px; line-height: 1.06; letter-spacing: -.025em; margin: 0 0 16px; }
+    .snap-hero__inner p { color: rgba(255,255,255,.82); font-size: 18px; line-height: 1.65; max-width: 58ch; margin: 0 0 28px; }
+
+    /* Scroll progress */
+    .scroll-progress { position: fixed; right: 20px; top: 50%; transform: translateY(-50%); z-index: 500; height: 160px; }
+    .scroll-progress__track { width: 2px; height: 100%; background: rgba(255,255,255,.2); border-radius: 2px; position: relative; overflow: hidden; }
+    .scroll-progress__fill { position: absolute; top: 0; left: 0; width: 100%; height: 0%; background: #7FDB65; border-radius: 2px; transition: height .1s linear; }
+    .scroll-progress.on-light .scroll-progress__track { background: rgba(12,42,82,.15); }
+
+    /* Animations */
+    .js-anim .reveal-up   { opacity: 0; transform: translateY(56px);  transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+    .js-anim .reveal-left { opacity: 0; transform: translateX(-64px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+    .js-anim .reveal-fade { opacity: 0; transition: opacity .6s ease; }
+    .reveal-delay-1 { transition-delay: .12s; }
+    .reveal-delay-2 { transition-delay: .24s; }
+    .reveal-delay-3 { transition-delay: .36s; }
+    .js-anim .snap-section.in-view .reveal-up   { opacity: 1; transform: translateY(0); }
+    .js-anim .snap-section.in-view .reveal-left { opacity: 1; transform: translateX(0); }
+    .js-anim .snap-section.in-view .reveal-fade { opacity: 1; }
+    .js-anim .snap-section:not(.in-view) .reveal-up   { opacity: 0; transform: translateY(56px); }
+    .js-anim .snap-section:not(.in-view) .reveal-left { opacity: 0; transform: translateX(-64px); }
+    .js-anim .snap-section:not(.in-view) .reveal-fade { opacity: 0; }
+
+    /* Inline image in light sections */
+    .sec-img { width: 100%; height: 380px; object-fit: cover; border-radius: 12px; }
+
+    /* Stat boxes */
+    .stat-box { text-align: left; }
+    .stat-box__num { font-size: 32px; font-weight: 800; color: var(--navy); line-height: 1; margin-bottom: 4px; }
+    .stat-box__label { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--green); font-weight: 700; margin-bottom: 6px; }
+    .stat-box__desc { font-size: 13px; color: var(--muted); }
+    .snap-dark .stat-box__num, .snap-img .stat-box__num { color: #fff; }
+    .snap-dark .stat-box__desc, .snap-img .stat-box__desc { color: rgba(255,255,255,.6); }
+
+    @media (max-width: 768px) {
+      html { scroll-snap-type: none; }
+      .snap-section { min-height: auto; padding: 80px 0 48px; }
+      .snap-hero { min-height: 100svh; padding: 0; }
+      .snap-hero__inner h1 { font-size: 34px; }
+      .snap-hero__inner p { font-size: 15px; }
+      .snap-hero__inner { padding-bottom: 10vh; }
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr !important; }
+      .scroll-progress { display: none; }
+      .sec-img { height: 240px; }
+    }
+  </style>
+</head>
 <body class="is-inner">
+
   <header class="site-header" id="siteHeader">
     <div class="site-header__inner">
-      <a class="brand" href="/" aria-label="Charania Renewables Home">
+      <a class="brand" href="/index.html" aria-label="Charania Renewables Home">
         <img class="brand-logo brand-logo--color" src="/assets/img/logo-cr-color.png" alt="Charania Renewables" />
         <img class="brand-logo brand-logo--white" src="/assets/img/logo-cr-white.png" alt="Charania Renewables" />
       </a>
-
       <nav class="main-nav" aria-label="Primary">
         <div class="nav-item has-dd">
           <a href="#" class="nav-link" aria-haspopup="true">Storage</a>
-          <div class="dropdown">
-            <div class="dropdown__col">
-              <a href="/pages/storage-aokly.html">Aokly &times; Charania Renewables (LV)</a>
-              <a href="/pages/storage-mountrex.html">MountRex (LV)</a>
-              <a href="/pages/storage-zetara.html">Zetara &times; Charania Renewables (HV)</a>
-              <a href="/pages/storage-comparison.html">Comparison & Applications</a>
-              <a href="/pages/storage-sodium.html">MountRex Sodium</a>
-            </div>
-          </div>
+          <div class="dropdown"><div class="dropdown__col">
+            <a href="/pages/storage-aokly.html">Aokly &times; Charania Renewables (LV)</a>
+            <a href="/pages/storage-mountrex.html">MountRex (LV)</a>
+            <a href="/pages/storage-zetara.html">Zetara &times; Charania Renewables (HV)</a>
+            <a href="/pages/storage-comparison.html">Comparison &amp; Applications</a>
+            <a href="/pages/storage-sodium.html">MountRex Sodium</a>
+          </div></div>
         </div>
-
         <div class="nav-item has-dd">
           <a href="#" class="nav-link" aria-haspopup="true">Generation</a>
-          <div class="dropdown">
-            <div class="dropdown__col">
-              <a href="/pages/generation-vertix.html">Vertix</a>
-              <a href="/pages/generation-solar.html">Solar Systems</a>
-            </div>
-          </div>
+          <div class="dropdown"><div class="dropdown__col">
+            <a href="/pages/generation-vertix.html">Vertix</a>
+            <a href="/pages/generation-solar.html">Solar Systems</a>
+          </div></div>
         </div>
-
         <div class="nav-item has-dd">
           <a href="#" class="nav-link" aria-haspopup="true">Structures</a>
-          <div class="dropdown">
-            <div class="dropdown__col">
-              <a href="/pages/structures-lmaxx.html">Lmaxx Overview</a>
-              <a href="/pages/structures-rooftop.html">Rooftop Mounting</a>
-              <a href="/pages/structures-ground.html">Ground Mounting</a>
-              <a href="/pages/structures-custom.html">Custom / Industrial</a>
-            </div>
-          </div>
+          <div class="dropdown"><div class="dropdown__col">
+            <a href="/pages/structures-lmaxx.html">Lmaxx Overview</a>
+            <a href="/pages/structures-rooftop.html">Rooftop Mounting</a>
+            <a href="/pages/structures-ground.html">Ground Mounting</a>
+            <a href="/pages/structures-custom.html">Custom / Industrial</a>
+          </div></div>
         </div>
-
         <div class="nav-item has-dd">
           <a href="#" class="nav-link" aria-haspopup="true">Solutions</a>
-          <div class="dropdown">
-            <div class="dropdown__col">
-              <a href="/pages/solutions-hybrid-engineering.html">Hybrid Engineering & Design</a>
-              <a href="/pages/solutions-industrial.html">Industrial Energy Solutions</a>
-              <a href="/pages/solutions-hybrid-systems.html">Hybrid Systems</a>
-              <a href="/pages/solutions-peakshaving.html">Peak Shaving & Backup</a>
-            </div>
-          </div>
+          <div class="dropdown"><div class="dropdown__col">
+            <a href="/pages/solutions-hybrid-engineering.html">Hybrid Engineering &amp; Design</a>
+            <a href="/pages/solutions-industrial.html">Industrial Energy Solutions</a>
+            <a href="/pages/solutions-hybrid-systems.html">Hybrid Systems</a>
+            <a href="/pages/solutions-peakshaving.html">Peak Shaving &amp; Backup</a>
+          </div></div>
         </div>
-
         <div class="nav-item has-dd">
           <a href="#" class="nav-link" aria-haspopup="true">About</a>
-          <div class="dropdown">
-            <div class="dropdown__col">
-              <a href="/pages/about-who.html">Who We Are</a>
-              <a href="/pages/about-partners.html">Partners</a>
-              <a href="/pages/about-quality.html">Quality, Warranty & Safety</a>
-            </div>
-          </div>
+          <div class="dropdown"><div class="dropdown__col">
+            <a href="/pages/about-who.html">Who We Are</a>
+            <a href="/pages/about-partners.html">Partners</a>
+            <a href="/pages/about-quality.html">Quality, Warranty &amp; Safety</a>
+          </div></div>
         </div>
-
         <a class="nav-link" href="/pages/contact.html">Contact</a>
       </nav>
-
       <div class="header-actions">
-        <!-- Search button removed per updated requirements -->
         <button class="menu-btn" type="button" id="menuBtn" aria-label="Open menu">
           <span></span><span></span><span></span>
         </button>
       </div>
     </div>
-
     <div class="mobile-panel" id="mobilePanel" aria-hidden="true">
       <div class="mobile-panel__inner">
-        <details>
-          <summary>Storage</summary>
+        <details><summary>Storage</summary>
           <a href="/pages/storage-aokly.html">Aokly &times; Charania Renewables (LV)</a>
           <a href="/pages/storage-mountrex.html">MountRex (LV)</a>
           <a href="/pages/storage-zetara.html">Zetara &times; Charania Renewables (HV)</a>
-          <a href="/pages/storage-comparison.html">Comparison & Applications</a>
+          <a href="/pages/storage-comparison.html">Comparison &amp; Applications</a>
           <a href="/pages/storage-sodium.html">MountRex Sodium</a>
         </details>
-
-        <details>
-          <summary>Generation</summary>
+        <details><summary>Generation</summary>
           <a href="/pages/generation-vertix.html">Vertix</a>
           <a href="/pages/generation-solar.html">Solar Systems</a>
         </details>
-
-        <details>
-          <summary>Structures</summary>
+        <details><summary>Structures</summary>
           <a href="/pages/structures-lmaxx.html">Lmaxx Overview</a>
           <a href="/pages/structures-rooftop.html">Rooftop Mounting</a>
           <a href="/pages/structures-ground.html">Ground Mounting</a>
           <a href="/pages/structures-custom.html">Custom / Industrial</a>
         </details>
-
-        <details>
-          <summary>Solutions</summary>
-          <a href="/pages/solutions-hybrid-engineering.html">Hybrid Engineering & Design</a>
+        <details><summary>Solutions</summary>
+          <a href="/pages/solutions-hybrid-engineering.html">Hybrid Engineering &amp; Design</a>
           <a href="/pages/solutions-industrial.html">Industrial Energy Solutions</a>
           <a href="/pages/solutions-hybrid-systems.html">Hybrid Systems</a>
-          <a href="/pages/solutions-peakshaving.html">Peak Shaving & Backup</a>
+          <a href="/pages/solutions-peakshaving.html">Peak Shaving &amp; Backup</a>
         </details>
-
-        <details>
-          <summary>About</summary>
+        <details><summary>About</summary>
           <a href="/pages/about-who.html">Who We Are</a>
           <a href="/pages/about-partners.html">Partners</a>
-          <a href="/pages/about-quality.html">Quality, Warranty & Safety</a>
+          <a href="/pages/about-quality.html">Quality, Warranty &amp; Safety</a>
         </details>
-
         <a href="/pages/contact.html">Contact</a>
       </div>
     </div>
   </header>
 
-  <section class="section">
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true">
+    <div class="scroll-progress__track">
+      <div class="scroll-progress__fill" id="scrollFill"></div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="snap-section snap-hero" data-theme="dark" style="background-image:url('https://images.unsplash.com/photo-1497435334941-8c899a9bd069?w=1800&q=85');">
+    <div class="snap-hero__inner">
+      <div class="container">
+        <div class="kicker reveal-fade">Storage &mdash; High Voltage BESS</div>
+        <h1 class="reveal-left">Zetara &times; Charania Renewables</h1>
+        <p class="reveal-left reveal-delay-1">High-voltage battery energy storage for commercial and industrial sites. Containerised, scalable, and engineered for grid-edge and behind-the-meter applications.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;" class="reveal-fade reveal-delay-2">
+          <a class="btn btn--ghost-dark" href="/pages/contact.html">Request Assessment</a>
+          <a class="btn btn--ghost-dark" href="https://wa.me/923268422718" target="_blank" rel="noopener">WhatsApp Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="snap-section " data-theme="light">
     <div class="container">
-      <div class="section__head">
-        <div>
-          <div class="kicker">High-Voltage BESS</div>
-          <h1>C&amp;I / BESS Storage</h1>
-          <p style="color:var(--muted); max-width:70ch;">
-            Industrial battery energy storage systems for commercial and industrial applications—delivering peak shaving, redundancy and grid stabilisation while integrating with solar and wind generation.
-          </p>
-        </div>
-        <a class="btn btn--primary" href="/pages/contact.html">Request Assessment</a>
+      <div class="grid-4" style="gap:20px;">
+    <div class="card stat-box reveal-up reveal-delay-0">
+      <div class="stat-box__num">HV</div>
+      <div class="stat-box__label">High Voltage</div>
+      <p class="stat-box__desc">480V&ndash;1500V DC bus architecture for commercial and industrial systems.</p>
+    </div>    <div class="card stat-box reveal-up reveal-delay-1">
+      <div class="stat-box__num">100&ndash;2000 kWh</div>
+      <div class="stat-box__label">Scalable Capacity</div>
+      <p class="stat-box__desc">Modular rack and container configurations sized to your load.</p>
+    </div>    <div class="card stat-box reveal-up reveal-delay-2">
+      <div class="stat-box__num">C&amp;I</div>
+      <div class="stat-box__label">Target Market</div>
+      <p class="stat-box__desc">Factories, warehouses, hospitals and large commercial buildings.</p>
+    </div>    <div class="card stat-box reveal-up reveal-delay-3">
+      <div class="stat-box__num">Grid-Edge</div>
+      <div class="stat-box__label">Application</div>
+      <p class="stat-box__desc">Peak shaving, demand reduction, backup power and grid support.</p>
+    </div>
       </div>
-
-      <div class="grid-2">
-        <div class="card">
-          <h3>Architecture Fit</h3>
-          <p>Our high-voltage BESS integrates with hybrid architectures to provide peak shaving, redundancy and grid stabilisation for industrial facilities.</p>
-          <p>The systems are modular, scalable and engineered for seamless coupling with solar, wind and diesel generation.</p>
-        </div>
-        <div class="card">
-          <h3>System Options</h3>
-          <p>Choose from rack-mounted modules to containerised solutions that can be tailored to your load profile and expansion plans.</p>
-          <p>Our engineering team will recommend the optimal configuration for your site.</p>
-        </div>
+    </div>
+  </section>
+  <section class="snap-section snap-img" data-theme="dark" style="background-image:url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1600&q=80');">
+    <div class="container">
+      <div class="reveal-left">
+        <div class="kicker">Product Overview</div>
+        <h2>Containerised BESS for Industrial Sites</h2>
+        <p style="line-height:1.75;color:rgba(255,255,255,.80);">Zetara HV systems are delivered as complete containerised units &mdash; pre-wired, pre-tested and ready for rapid deployment. Each system includes integrated thermal management, fire suppression, and a site-specific energy management system (EMS) configured around your load profile and tariff structure.</p>
       </div>
-
-      <h2 style="margin-top:40px;">Typical Configurations</h2>
-      <div class="grid-3">
-        <div class="card">
-          <h3>Rack 50</h3>
-          <p>50 kWh / 512 V</p>
-          <p>Modular rack system for small industries and commercial buildings.</p>
-          <a class="card__link" href="#">View Specifications →</a>
-        </div>
-        <div class="card">
-          <h3>Rack 100</h3>
-          <p>100 kWh / 512 V</p>
-          <p>Parallel racks enabling higher capacity for medium industrial loads.</p>
-          <a class="card__link" href="#">View Specifications →</a>
-        </div>
-        <div class="card">
-          <h3>Container 500</h3>
-          <p>500 kWh / 512 V</p>
-          <p>Containerised BESS for peak shaving and backup at large industrial sites.</p>
-          <a class="card__link" href="#">View Specifications →</a>
-        </div>
+    </div>
+  </section>
+  <section class="snap-section snap-gray" data-theme="light">
+    <div class="container">
+      <div class="reveal-fade" style="margin-bottom:32px;">
+        <div class="kicker">Technical Highlights</div>
+        <h2>Zetara System Features</h2>
       </div>
-
-      <div class="grid-2" style="margin-top:40px;">
-        <div class="card">
-          <h3>Integration Note</h3>
-          <p>All HV systems tie into our hybrid architecture, integrating with solar arrays, wind turbines and inverters to deliver reliable energy independence.</p>
-        </div>
-        <div class="card">
-          <h3>Ready for Assessment</h3>
-          <p>Let us evaluate your load profile and develop a BESS solution tailored to your operational and financial objectives.</p>
+      <div class="grid-3" style="gap:20px;">
+        <div class="card reveal-up reveal-delay-0">
+          <div class="kicker">Containerised</div>
+          <h3>Plug-and-play Deployment</h3>
+          <p>Factory-assembled and tested units reduce site installation time and commissioning risk significantly.</p>
+        </div>        <div class="card reveal-up reveal-delay-1">
+          <div class="kicker">EMS Included</div>
+          <h3>Energy Management</h3>
+          <p>Site-specific EMS pre-configured for peak shaving, backup priority and grid compliance.</p>
+        </div>        <div class="card reveal-up reveal-delay-2">
+          <div class="kicker">Modular</div>
+          <h3>Scalable Architecture</h3>
+          <p>Link multiple container units to scale capacity as your facility grows or load increases.</p>
         </div>
       </div>
-
-      <div class="section__head" style="margin-top:40px;">
-        <div>
-          <h2>Request Industrial Assessment</h2>
-          <p>Our engineers can model your energy consumption and recommend a high-voltage BESS solution for peak shaving and redundancy.</p>
-        </div>
-        <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <a class="btn btn--primary" href="mailto:info@charaniarenewables.com">Request Assessment</a>
-          <a class="btn btn--ghost" href="https://wa.me/923268422718" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </section>
+  <section class="snap-section snap-gray" data-theme="light">
+    <div class="container">
+      <div class="reveal-left">
+        <h2>Engineering &amp; Commissioning Process</h2>
+        <p style="color:var(--muted);max-width:70ch;margin-bottom:20px;">Zetara HV systems are engineered from load study through to handover.</p>
+        <ul style="padding-left:20px;color:var(--muted);line-height:1.9;"><li style='margin-bottom:10px;'>Load study and tariff analysis to quantify peak shaving savings.</li><li style='margin-bottom:10px;'>System sizing including discharge duration, round-trip efficiency and degradation modelling.</li><li style='margin-bottom:10px;'>Single-line diagram (SLD) and protection coordination.</li><li style='margin-bottom:10px;'>Factory acceptance testing (FAT) before shipment.</li><li style='margin-bottom:10px;'>On-site commissioning, grid connection and operator training.</li></ul>
+      </div>
+    </div>
+  </section>
+  <section class="snap-section snap-dark" data-theme="dark">
+    <div class="container">
+      <div class="reveal-fade">
+        <div class="kicker">Get Started</div>
+        <h2 style="color:#fff;margin:12px 0 16px;">Request a Zetara Feasibility Study</h2>
+        <p style="color:rgba(255,255,255,.78);max-width:58ch;margin:0 0 28px;">Share your site load data and tariff structure &mdash; our engineers will model the economics and design a Zetara system for your facility.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a class="btn btn--ghost-dark" href="/pages/contact.html">Request Assessment</a>
+          <a class="btn btn--ghost-dark" href="https://wa.me/923268422718" target="_blank" rel="noopener">WhatsApp Us</a>
         </div>
       </div>
     </div>
@@ -213,14 +321,13 @@
       <div class="footer__grid">
         <div>
           <h4>Charania Renewables</h4>
-          <p class="small">Hybrid energy integrator delivering engineered storage, generation, structures, and hybrid system design.</p>
+          <p class="small">Hybrid energy integrator delivering engineered storage, generation, structures and hybrid system design.</p>
           <p class="small" style="margin-top:10px;">
             <b>Phone:</b> +92 21-35635067<br/>
             <b>WhatsApp:</b> +92-326-8422718<br/>
             <b>Email:</b> <a href="mailto:info@charaniarenewables.com">info@charaniarenewables.com</a>
           </p>
         </div>
-
         <div>
           <h4>Quick links</h4>
           <p class="small"><a href="/pages/solutions-hybrid-engineering.html">Hybrid Engineering &amp; Design</a></p>
@@ -229,7 +336,6 @@
           <p class="small"><a href="/pages/structures-lmaxx.html">Lmaxx Structures</a></p>
           <p class="small"><a href="/pages/contact.html">Contact</a></p>
         </div>
-
         <div>
           <h4>Official channels</h4>
           <p class="small"><a href="https://www.facebook.com/Charania.Renewables/" target="_blank" rel="noopener">Facebook</a></p>
@@ -237,28 +343,60 @@
           <p class="small"><a href="https://www.linkedin.com/company/charania-renewables/" target="_blank" rel="noopener">LinkedIn</a></p>
           <p class="small"><a href="https://tiktok.com/@charania.renewables/" target="_blank" rel="noopener">TikTok</a></p>
         </div>
-
         <div>
           <h4>Karachi</h4>
-          <p class="small">
-            Suite 1803, 18th Floor Sumya Sky View,<br/>
-            17 Dr Ziauddin Ahmed Road, Civil Lines,<br/>
-            Karachi, 75530 Pakistan
-          </p>
+          <p class="small">Suite 1803, 18th Floor Sumya Sky View,<br/>17 Dr Ziauddin Ahmed Road, Civil Lines,<br/>Karachi, 75530 Pakistan</p>
           <p class="small" style="margin-top:10px;">
             <a class="btn btn--primary" href="/pages/contact.html" style="padding:10px 12px;">Request a meeting</a>
           </p>
         </div>
       </div>
-
       <div class="footer__bottom">
-        <div class="small">© <span id="year"></span> Charania Renewables. All rights reserved.</div>
+        <div class="small">&copy; <span id="year"></span> Charania Renewables. All rights reserved.</div>
         <div class="small">Hybrid Engineering &amp; Design (HED)</div>
       </div>
     </div>
   </footer>
 
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   <script src="/assets/js/main.js"></script>
+  <script>
+  // Scroll progress
+  (function(){
+    var fill = document.getElementById('scrollFill');
+    var bar  = document.getElementById('scrollProgress');
+    if(!fill||!bar) return;
+    function upd(){
+      var d = document.documentElement.scrollHeight - window.innerHeight;
+      fill.style.height = (d>0 ? Math.min(window.scrollY/d*100,100) : 0)+'%';
+      var light = false;
+      document.querySelectorAll('.snap-section[data-theme="light"]').forEach(function(s){
+        var r = s.getBoundingClientRect();
+        if(r.top <= window.innerHeight/2 && r.bottom >= window.innerHeight/2) light = true;
+      });
+      bar.classList.toggle('on-light', light);
+    }
+    window.addEventListener('scroll', upd, {passive:true});
+    upd();
+  })();
+  // Section reveal
+  (function(){
+    var sections = document.querySelectorAll('.snap-section');
+    if(!sections.length) return;
+    document.body.classList.add('js-anim');
+    function checkVisible(){
+      sections.forEach(function(s){
+        var r = s.getBoundingClientRect();
+        if(r.top < window.innerHeight * 0.8 && r.bottom > window.innerHeight * 0.2){
+          s.classList.add('in-view');
+        } else {
+          s.classList.remove('in-view');
+        }
+      });
+    }
+    window.addEventListener('scroll', checkVisible, {passive:true});
+    checkVisible();
+  })();
+  </script>
 </body>
 </html>
