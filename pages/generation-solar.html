@@ -364,7 +364,6 @@
   document.getElementById('year').textContent = new Date().getFullYear();
 
   (function(){
-
     var sections = document.querySelectorAll('.snap-section');
     if(!sections.length) return;
 
@@ -373,14 +372,12 @@
       if(!s.classList.contains('snap-hero')) s.classList.add('curtain');
     });
 
-    // Opt in to CSS animations
     document.body.classList.add('js-anim');
 
-    // Hero fires immediately — no scroll needed
+    // Hero visible immediately
     var hero = document.querySelector('.snap-hero');
     if(hero) hero.classList.add('in-view');
 
-    // Which section occupies most of the viewport right now?
     function getActiveSection(){
       var best = null;
       var bestVisible = -1;
@@ -390,43 +387,48 @@
         var visible = Math.max(0, Math.min(r.bottom, vh) - Math.max(r.top, 0));
         if(visible > bestVisible){ bestVisible = visible; best = s; }
       });
-      // Only return a winner if it owns at least 40% of the viewport
-      return (bestVisible / vh >= 0.4) ? best : null;
+      return (bestVisible / vh >= 0.35) ? best : null;
     }
 
-    var lastActive = hero;
-
-    function tick(){
-      var active = getActiveSection();
-      if(!active || active === lastActive) return;
-
-      // Remove in-view from previous section
-      if(lastActive) lastActive.classList.remove('in-view');
-
-      // Double rAF — lets browser paint the hidden state before re-adding in-view
-      // This prevents the "no transition" flash
+    function activateSection(s){
+      if(!s) return;
+      sections.forEach(function(sec){ sec.classList.remove('in-view'); });
+      // rAF double-pump so browser commits hidden state before showing
       requestAnimationFrame(function(){
         requestAnimationFrame(function(){
-          active.classList.add('in-view');
-          lastActive = active;
+          s.classList.add('in-view');
         });
       });
     }
 
-    window.addEventListener('scroll', tick, {passive: true});
+    // scrollend fires after snap settles — most reliable trigger
+    // Falls back to scroll with a debounce for older browsers
+    var supportsScrollEnd = 'onscrollend' in window;
+    if(supportsScrollEnd){
+      window.addEventListener('scrollend', function(){
+        activateSection(getActiveSection());
+      }, {passive: true});
+    } else {
+      // Debounced scroll fallback — waits 120ms after scroll stops
+      var scrollTimer;
+      window.addEventListener('scroll', function(){
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(function(){
+          activateSection(getActiveSection());
+        }, 120);
+      }, {passive: true});
+    }
 
-    // Scroll progress bar
+    // Also fire on scroll for progress bar (real-time)
     var fill = document.getElementById('scrollFill');
     var bar  = document.getElementById('scrollProgress');
     if(fill && bar){
-      function updateProgress(){
+      window.addEventListener('scroll', function(){
         var d = document.documentElement.scrollHeight - window.innerHeight;
         fill.style.height = (d > 0 ? Math.min(window.scrollY / d * 100, 100) : 0) + '%';
         var active = getActiveSection();
         bar.classList.toggle('on-light', !!(active && active.dataset.theme === 'light'));
-      }
-      window.addEventListener('scroll', updateProgress, {passive: true});
-      updateProgress();
+      }, {passive: true});
     }
 
   })();
