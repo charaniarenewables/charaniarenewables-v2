@@ -101,116 +101,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/styles.css" />
   <style>
-    /* Snap scroll */
-    html { scroll-snap-type: y proximity; overflow-y: scroll; height: 100%; }
-    body { height: auto; }
-
-    .snap-section {
-      scroll-snap-align: start;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-      padding: 100px 0 60px;
-    }
-    .snap-hero {
-      padding: 0;
-      min-height: 100vh;
-    }
-    /* Footer doesn't snap */
-    .footer { scroll-snap-align: none !important; }
-
-    /* Dark section text colours */
-    .snap-dark { background: #0C2A52; }
-    .snap-dark h2, .snap-dark h3, .snap-dark p, .snap-dark li { color: rgba(255,255,255,.85); }
-    .snap-dark h2 { color: #fff; }
-    .snap-dark .kicker { color: #7FDB65; }
-    .snap-dark .card { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.12); }
-    .snap-dark .card h3 { color: #fff; }
-    .snap-dark .card p { color: rgba(255,255,255,.72); }
-    .snap-dark .card .kicker { color: #7FDB65; }
-
-    /* Light section */
-    .snap-gray { background: #F4F4F4; }
-
-    /* Image background sections */
-    .snap-img { background-size: cover; background-position: center; }
-    .snap-img::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(8,24,52,.80) 0%, rgba(12,42,82,.72) 100%);
-    }
-    .snap-img .container { position: relative; z-index: 1; }
-    .snap-img h2, .snap-img h3, .snap-img p, .snap-img li { color: rgba(255,255,255,.85); }
-    .snap-img h2 { color: #fff; }
-    .snap-img .kicker { color: #7FDB65; }
-    .snap-img .card { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.14); }
-    .snap-img .card h3 { color: #fff; }
-    .snap-img .card p { color: rgba(255,255,255,.72); }
-
-    /* Hero */
-    .snap-hero {
-      background-size: cover;
-      background-position: center;
-    }
-    .snap-hero::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(4,8,18,.82) 0%, rgba(4,8,18,.30) 55%, transparent 100%);
-    }
-    .snap-hero__inner {
-      position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
-      padding-bottom: 10vh;
-    }
-    .snap-hero__inner .container { }
-    .snap-hero__inner .kicker { color: #7FDB65; }
-    .snap-hero__inner h1 { color: #fff; font-size: 56px; line-height: 1.06; letter-spacing: -.025em; margin: 0 0 16px; }
-    .snap-hero__inner p { color: rgba(255,255,255,.82); font-size: 18px; line-height: 1.65; max-width: 58ch; margin: 0 0 28px; }
-
-    /* Scroll progress */
-    .scroll-progress { position: fixed; right: 20px; top: 50%; transform: translateY(-50%); z-index: 500; height: 160px; }
-    .scroll-progress__track { width: 2px; height: 100%; background: rgba(255,255,255,.2); border-radius: 2px; position: relative; overflow: hidden; }
-    .scroll-progress__fill { position: absolute; top: 0; left: 0; width: 100%; height: 0%; background: #7FDB65; border-radius: 2px; transition: height .1s linear; }
-    .scroll-progress.on-light .scroll-progress__track { background: rgba(12,42,82,.15); }
-
-    /* Animations */
-    .js-anim .reveal-up   { opacity: 0; transform: translateY(56px);  transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
-    .js-anim .reveal-left { opacity: 0; transform: translateX(-64px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
-    .js-anim .reveal-fade { opacity: 0; transition: opacity .6s ease; }
-    .reveal-delay-1 { transition-delay: .12s; }
-    .reveal-delay-2 { transition-delay: .24s; }
-    .reveal-delay-3 { transition-delay: .36s; }
-    .js-anim .snap-section.in-view .reveal-up   { opacity: 1; transform: translateY(0); }
-    .js-anim .snap-section.in-view .reveal-left { opacity: 1; transform: translateX(0); }
-    .js-anim .snap-section.in-view .reveal-fade { opacity: 1; }
-    .js-anim .snap-section:not(.in-view) .reveal-up   { opacity: 0; transform: translateY(56px); }
-    .js-anim .snap-section:not(.in-view) .reveal-left { opacity: 0; transform: translateX(-64px); }
-    .js-anim .snap-section:not(.in-view) .reveal-fade { opacity: 0; }
-
-    /* Inline image in light sections */
-    .sec-img { width: 100%; height: 380px; object-fit: cover; border-radius: 12px; }
-
-    /* Stat boxes */
-    .stat-box { text-align: left; }
-    .stat-box__num { font-size: 32px; font-weight: 800; color: var(--navy); line-height: 1; margin-bottom: 4px; }
-    .stat-box__label { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--green); font-weight: 700; margin-bottom: 6px; }
-    .stat-box__desc { font-size: 13px; color: var(--muted); }
-    .snap-dark .stat-box__num, .snap-img .stat-box__num { color: #fff; }
-    .snap-dark .stat-box__desc, .snap-img .stat-box__desc { color: rgba(255,255,255,.6); }
-
-    @media (max-width: 768px) {
-      html { scroll-snap-type: none; }
-      .snap-section { min-height: auto; padding: 80px 0 48px; }
-      .snap-hero { min-height: 100svh; padding: 0; }
-      .snap-hero__inner h1 { font-size: 34px; }
-      .snap-hero__inner p { font-size: 15px; }
-      .snap-hero__inner { padding-bottom: 10vh; }
-      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr !important; }
-      .scroll-progress { display: none; }
-      .sec-img { height: 240px; }
-    }
+    /* Hero image — page specific */
+    .snap-hero { background-image: url('/assets/img/hero-generation-solar.jpg'); }
   </style>
 </head>
 <body class="is-inner">
@@ -315,11 +207,12 @@
   </div>
 
   <!-- HERO -->
-  <section class="snap-section snap-hero" data-theme="dark" style="background-image:url('https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=1800&q=85');">
+  <section class="snap-section snap-hero" data-theme="dark" style="background-image:url('/assets/img/hero-generation-solar.jpg');">
+    <div class="hero-gradient"></div>
     <div class="snap-hero__inner">
       <div class="container">
         <div class="kicker reveal-fade">Generation &mdash; Solar</div>
-        <h1 class="reveal-left">Solar Systems</h1>
+        <h1 class="reveal-punch">Solar Systems</h1>
         <p class="reveal-left reveal-delay-1">Tier&#8209;1 photovoltaic modules integrated into engineered hybrid energy systems. Designed around your load profile and site conditions.</p>
         <div style="display:flex;gap:12px;flex-wrap:wrap;" class="reveal-fade reveal-delay-2">
           <a class="btn btn--ghost-dark" href="/pages/contact.html">Request Assessment</a>
@@ -329,22 +222,23 @@
     </div>
   </section>
 
-  <section class="snap-section " data-theme="light">
+  <section class="snap-section snap-img" data-theme="dark" style="background-image:url('/assets/img/section-generation-stats.jpg'); border-top:4px solid #7FDB65;">
+    <div class="img-overlay"></div>
     <div class="container">
       <div class="grid-4" style="gap:20px;">
-    <div class="card stat-box reveal-up reveal-delay-0">
+    <div class="card stat-box reveal-punch reveal-delay-0">
       <div class="stat-box__num">Tier&#8209;1</div>
       <div class="stat-box__label">PV Modules</div>
       <p class="stat-box__desc">Bancable performance warranties from globally recognised manufacturers.</p>
-    </div>    <div class="card stat-box reveal-up reveal-delay-1">
+    </div>    <div class="card stat-box reveal-punch reveal-delay-1">
       <div class="stat-box__num">1&ndash;5 MW</div>
       <div class="stat-box__label">Project Scale</div>
       <p class="stat-box__desc">Residential rooftops through utility-scale ground-mount arrays.</p>
-    </div>    <div class="card stat-box reveal-up reveal-delay-2">
+    </div>    <div class="card stat-box reveal-punch reveal-delay-2">
       <div class="stat-box__num">25 yr</div>
       <div class="stat-box__label">Module Warranty</div>
       <p class="stat-box__desc">Standard performance warranty from Tier-1 manufacturers.</p>
-    </div>    <div class="card stat-box reveal-up reveal-delay-3">
+    </div>    <div class="card stat-box reveal-punch reveal-delay-3">
       <div class="stat-box__num">Hybrid</div>
       <div class="stat-box__label">Architecture</div>
       <p class="stat-box__desc">Solar designed to pair with BESS, wind and grid connections.</p>
@@ -352,10 +246,10 @@
       </div>
     </div>
   </section>
-  <section class="snap-section " data-theme="light">
+  <section class="snap-section" data-theme="light" style="background:#fff;">
     <div class="container">
       <div class="grid-2" style="align-items:center;gap:48px;">
-        <div><img src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?w=900&q=80" alt="Solar &amp; Hybrid Integration" class="sec-img reveal-fade" loading="lazy" /></div>
+        <div><img src="/assets/img/section-generation-ourapproach.jpg" alt="Solar &amp; Hybrid Integration" class="sec-img reveal-right" loading="lazy" /></div>
               <div class="reveal-left">
         <div class="kicker">Our Approach</div>
         <h2>Solar &amp; Hybrid Integration</h2>
@@ -364,9 +258,11 @@
       </div>
     </div>
   </section>
-  <section class="snap-section snap-gray" data-theme="light">
+  <section class="snap-section snap-img" data-theme="dark" style="background-image:url('/assets/img/section-generation-configuration.jpg');">
+    <div class="img-overlay"></div>
     <div class="container">
       <div class="reveal-fade" style="margin-bottom:32px;">
+        <span class="kicker-line"></span>
         <div class="kicker">Configurations</div>
         <h2>Solar System Types</h2>
       </div>
@@ -387,18 +283,28 @@
       </div>
     </div>
   </section>
-  <section class="snap-section snap-gray" data-theme="light">
-    <div class="container">
-      <div class="reveal-left">
-        <h2>Our Solar Engineering Process</h2>
-        <p style="color:var(--muted);max-width:70ch;margin-bottom:20px;">Every solar project starts with data &mdash; not a catalogue.</p>
-        <ul style="padding-left:20px;color:var(--muted);line-height:1.9;"><li style='margin-bottom:10px;'>Site assessment: shading, orientation, roof or ground loading and grid connection.</li><li style='margin-bottom:10px;'>Irradiance modelling using local weather data and satellite imagery.</li><li style='margin-bottom:10px;'>Load profile analysis to size the array and storage correctly.</li><li style='margin-bottom:10px;'>Single-line diagram, structural calculations and protection design.</li><li style='margin-bottom:10px;'>Procurement, installation, commissioning and handover documentation.</li></ul>
-      </div>
-    </div>
-  </section>
-  <section class="snap-section snap-dark" data-theme="dark">
+  <section class="snap-section" data-theme="light" style="background:#fff;">
     <div class="container">
       <div class="reveal-fade">
+        <span class="kicker-line"></span>
+        <div class="kicker" style="color:var(--muted);">Our Process</div>
+      </div>
+      <h2 class="reveal-left" style="margin:10px 0 12px;">Our Solar Engineering Process</h2>
+      <p class="reveal-fade reveal-delay-1" style="color:var(--muted);max-width:70ch;margin-bottom:28px;">Every solar project starts with data &mdash; not a catalogue.</p>
+      <ul style="padding-left:0;list-style:none;">
+        <li class="reveal-up reveal-delay-1" style="display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid rgba(12,42,82,.08);color:#0b1220;"><span style="color:#7FDB65;font-weight:800;font-size:18px;line-height:1;margin-top:2px;">01</span><span>Site assessment: shading, orientation, roof or ground loading and grid connection.</span></li>
+        <li class="reveal-up reveal-delay-2" style="display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid rgba(12,42,82,.08);color:#0b1220;"><span style="color:#7FDB65;font-weight:800;font-size:18px;line-height:1;margin-top:2px;">02</span><span>Irradiance modelling using local weather data and satellite imagery.</span></li>
+        <li class="reveal-up reveal-delay-3" style="display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid rgba(12,42,82,.08);color:#0b1220;"><span style="color:#7FDB65;font-weight:800;font-size:18px;line-height:1;margin-top:2px;">03</span><span>Load profile analysis to size the array and storage correctly.</span></li>
+        <li class="reveal-up reveal-delay-4" style="display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid rgba(12,42,82,.08);color:#0b1220;"><span style="color:#7FDB65;font-weight:800;font-size:18px;line-height:1;margin-top:2px;">04</span><span>Single-line diagram, structural calculations and protection design.</span></li>
+        <li class="reveal-up" style="display:flex;gap:14px;align-items:flex-start;padding:14px 0;color:#0b1220;transition-delay:.60s!important;"><span style="color:#7FDB65;font-weight:800;font-size:18px;line-height:1;margin-top:2px;">05</span><span>Procurement, installation, commissioning and handover documentation.</span></li>
+      </ul>
+    </div>
+  </section>
+  <section class="snap-section snap-img snap-dark" data-theme="dark" style="background-image:url('/assets/img/section-generation-cta.jpg');">
+    <div class="img-overlay"></div>
+    <div class="container">
+      <div class="reveal-fade">
+        <span class="kicker-line"></span>
         <div class="kicker">Get Started</div>
         <h2 style="color:#fff;margin:12px 0 16px;">Ready to Explore Solar?</h2>
         <p style="color:rgba(255,255,255,.78);max-width:58ch;margin:0 0 28px;">Contact our engineering team for a feasibility assessment or tailored solar plus storage solution for your site.</p>
@@ -455,30 +361,87 @@
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   <script src="/assets/js/main.js"></script>
   <script>
-  // Scroll progress
+  document.getElementById('year').textContent = new Date().getFullYear();
+
   (function(){
+
+    // ── Scroll progress bar ──────────────────────────────────
     var fill = document.getElementById('scrollFill');
     var bar  = document.getElementById('scrollProgress');
-    if(!fill||!bar) return;
-    function upd(){
-      var d = document.documentElement.scrollHeight - window.innerHeight;
-      fill.style.height = (d>0 ? Math.min(window.scrollY/d*100,100) : 0)+'%';
-      var light = false;
-      document.querySelectorAll('.snap-section[data-theme="light"]').forEach(function(s){
-        var r = s.getBoundingClientRect();
-        if(r.top <= window.innerHeight/2 && r.bottom >= window.innerHeight/2) light = true;
-      });
-      bar.classList.toggle('on-light', light);
-    }
-    window.addEventListener('scroll', upd, {passive:true});
-    upd();
-  })();
-  // Section reveal
-  (function(){
+
+    // ── Section animation engine ─────────────────────────────
     var sections = document.querySelectorAll('.snap-section');
     if(!sections.length) return;
+
+    // Add curtain to all non-hero sections
+    sections.forEach(function(s){
+      if(!s.classList.contains('snap-hero')) s.classList.add('curtain');
+    });
+
+    // Opt in to CSS animations
     document.body.classList.add('js-anim');
-    function checkVisible(){
+
+    // Track which section is currently "active" (most visible)
+    var activeSection = null;
+
+    function getActiveSection(){
+      var best = null;
+      var bestScore = -1;
+      var vh = window.innerHeight;
       sections.forEach(function(s){
         var r = s.getBoundingClientRect();
-        if(r.top < window.innerHeight * 0.8 && r.bottom > window.innerHe
+        // How much of the viewport does this section occupy?
+        var visible = Math.max(0, Math.min(r.bottom, vh) - Math.max(r.top, 0));
+        var score = visible / vh;
+        if(score > bestScore){
+          bestScore = score;
+          best = s;
+        }
+      });
+      return bestScore > 0.35 ? best : null;
+    }
+
+    function tick(){
+      var current = getActiveSection();
+
+      // Animate in the active section
+      if(current && current !== activeSection){
+        // Remove in-view from all sections first (clean state)
+        sections.forEach(function(s){ s.classList.remove('in-view'); });
+        // Small RAF delay so CSS transition fires cleanly after remove
+        requestAnimationFrame(function(){
+          requestAnimationFrame(function(){
+            current.classList.add('in-view');
+          });
+        });
+        activeSection = current;
+      }
+
+      // Scroll progress bar
+      if(fill && bar){
+        var d = document.documentElement.scrollHeight - window.innerHeight;
+        fill.style.height = (d > 0 ? Math.min(window.scrollY / d * 100, 100) : 0) + '%';
+        var isLight = current && current.dataset.theme === 'light';
+        bar.classList.toggle('on-light', !!isLight);
+      }
+    }
+
+    // Fire on scroll — passive for performance
+    window.addEventListener('scroll', tick, {passive: true});
+
+    // Fire hero section immediately on load (no scroll needed)
+    var hero = document.querySelector('.snap-hero');
+    if(hero){
+      requestAnimationFrame(function(){
+        hero.classList.add('in-view');
+        activeSection = hero;
+      });
+    }
+
+    // Run once after a short delay to catch initial state
+    setTimeout(tick, 150);
+
+  })();
+  </script>
+</body>
+</html>
