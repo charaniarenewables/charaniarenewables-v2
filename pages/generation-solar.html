@@ -365,11 +365,6 @@
 
   (function(){
 
-    // ── Scroll progress bar ──────────────────────────────────
-    var fill = document.getElementById('scrollFill');
-    var bar  = document.getElementById('scrollProgress');
-
-    // ── Section animation engine ─────────────────────────────
     var sections = document.querySelectorAll('.snap-section');
     if(!sections.length) return;
 
@@ -381,65 +376,58 @@
     // Opt in to CSS animations
     document.body.classList.add('js-anim');
 
-    // Track which section is currently "active" (most visible)
-    var activeSection = null;
+    // Hero fires immediately — no scroll needed
+    var hero = document.querySelector('.snap-hero');
+    if(hero) hero.classList.add('in-view');
 
+    // Which section occupies most of the viewport right now?
     function getActiveSection(){
       var best = null;
-      var bestScore = -1;
+      var bestVisible = -1;
       var vh = window.innerHeight;
       sections.forEach(function(s){
         var r = s.getBoundingClientRect();
-        // How much of the viewport does this section occupy?
         var visible = Math.max(0, Math.min(r.bottom, vh) - Math.max(r.top, 0));
-        var score = visible / vh;
-        if(score > bestScore){
-          bestScore = score;
-          best = s;
-        }
+        if(visible > bestVisible){ bestVisible = visible; best = s; }
       });
-      return bestScore > 0.35 ? best : null;
+      // Only return a winner if it owns at least 40% of the viewport
+      return (bestVisible / vh >= 0.4) ? best : null;
     }
+
+    var lastActive = hero;
 
     function tick(){
-      var current = getActiveSection();
+      var active = getActiveSection();
+      if(!active || active === lastActive) return;
 
-      // Animate in the active section
-      if(current && current !== activeSection){
-        // Remove in-view from all sections first (clean state)
-        sections.forEach(function(s){ s.classList.remove('in-view'); });
-        // Small RAF delay so CSS transition fires cleanly after remove
-        requestAnimationFrame(function(){
-          requestAnimationFrame(function(){
-            current.classList.add('in-view');
-          });
-        });
-        activeSection = current;
-      }
+      // Remove in-view from previous section
+      if(lastActive) lastActive.classList.remove('in-view');
 
-      // Scroll progress bar
-      if(fill && bar){
-        var d = document.documentElement.scrollHeight - window.innerHeight;
-        fill.style.height = (d > 0 ? Math.min(window.scrollY / d * 100, 100) : 0) + '%';
-        var isLight = current && current.dataset.theme === 'light';
-        bar.classList.toggle('on-light', !!isLight);
-      }
-    }
-
-    // Fire on scroll — passive for performance
-    window.addEventListener('scroll', tick, {passive: true});
-
-    // Fire hero section immediately on load (no scroll needed)
-    var hero = document.querySelector('.snap-hero');
-    if(hero){
+      // Double rAF — lets browser paint the hidden state before re-adding in-view
+      // This prevents the "no transition" flash
       requestAnimationFrame(function(){
-        hero.classList.add('in-view');
-        activeSection = hero;
+        requestAnimationFrame(function(){
+          active.classList.add('in-view');
+          lastActive = active;
+        });
       });
     }
 
-    // Run once after a short delay to catch initial state
-    setTimeout(tick, 150);
+    window.addEventListener('scroll', tick, {passive: true});
+
+    // Scroll progress bar
+    var fill = document.getElementById('scrollFill');
+    var bar  = document.getElementById('scrollProgress');
+    if(fill && bar){
+      function updateProgress(){
+        var d = document.documentElement.scrollHeight - window.innerHeight;
+        fill.style.height = (d > 0 ? Math.min(window.scrollY / d * 100, 100) : 0) + '%';
+        var active = getActiveSection();
+        bar.classList.toggle('on-light', !!(active && active.dataset.theme === 'light'));
+      }
+      window.addEventListener('scroll', updateProgress, {passive: true});
+      updateProgress();
+    }
 
   })();
   </script>
