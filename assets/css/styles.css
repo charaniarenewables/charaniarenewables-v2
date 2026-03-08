@@ -818,7 +818,7 @@ body.is-inner .site-header.is-scrolled .menu-btn span{ background:rgba(11,18,32,
    SNAP SCROLL SYSTEM — inner pages
    ============================================================ */
 
-html { scroll-snap-type: y proximity; overflow-y: scroll; }
+html { scroll-snap-type: y mandatory; overflow-y: scroll; }
 
 .snap-section {
   scroll-snap-align: start;
