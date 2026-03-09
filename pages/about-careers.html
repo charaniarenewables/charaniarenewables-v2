@@ -267,7 +267,7 @@
       <div class="reveal-fade">
         <div class="kicker">Get Started</div>
         <h2 style="color:#fff;margin:12px 0 16px;">Apply or Express Interest</h2>
-        <p style="color:rgba(255,255,255,.78);max-width:58ch;margin:0 0 28px;">Send your CV and a brief note on the role you are interested in to <a href="/cdn-cgi/l/email-protection#60090e060f2003080112010e090112050e051701020c05134e030f0d" style="color:inherit;"><span class="__cf_email__" data-cfemail="d7beb9b1b897b4bfb6a5b6b9beb6a5b2b9b2a0b6b5bbb2a4f9b4b8ba">[email&#160;protected]</span></a>. We review all applications personally.</p>
+        <p style="color:rgba(255,255,255,.78);max-width:58ch;margin:0 0 28px;">Send your CV and a brief note on the role you are interested in to <span id="site-email" style="color:inherit;"></span>. We review all applications personally.</p>
         <div style="display:flex;gap:12px;flex-wrap:wrap;">
           <a class="btn btn--ghost-dark" href="/pages/contact.html">Request Assessment</a>
           <a class="btn btn--ghost-dark" href="https://wa.me/923268422718" target="_blank" rel="noopener">WhatsApp Us</a>
@@ -285,7 +285,7 @@
           <p class="small" style="margin-top:10px;">
             <b>Phone:</b> +92 21-35635067<br/>
             <b>WhatsApp:</b> +92-326-8422718<br/>
-            <b>Email:</b> <a href="/cdn-cgi/l/email-protection#325b5c545d72515a5340535c5b5340575c574553505e57411c515d5f" style="color:inherit;"><span class="__cf_email__" data-cfemail="11787f777e5172797063707f787063747f746670737d74623f727e7c">[email&#160;protected]</span></a>
+            <b>Email:</b> 
           </p>
         </div>
         <div>
@@ -318,7 +318,7 @@
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  
   <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -376,6 +376,12 @@
       }, 80);
     }, {passive: true});
 
+  })();
+  </script>
+  <script>
+  (function(){
+    var e = document.getElementById('site-email');
+    if(e){ var a = document.createElement('a'); a.href=['mai','lto:info@','charaniarenewables.com'].join(''); a.textContent='info@charaniarenewables.com'; a.style.color='inherit'; e.appendChild(a); }
   })();
   </script>
 </body>

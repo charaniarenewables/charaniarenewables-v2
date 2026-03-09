@@ -306,7 +306,7 @@
           <p class="small" style="margin-top:10px;">
             <b>Phone:</b> +92 21-35635067<br/>
             <b>WhatsApp:</b> +92-326-8422718<br/>
-            <b>Email:</b> <a href="/cdn-cgi/l/email-protection#bbd2d5ddd4fbd8d3dac9dad5d2dac9ded5deccdad9d7dec895d8d4d6" style="color:inherit;"><span class="__cf_email__" data-cfemail="264f48404966454e475447484f47544348435147444a43550845494b">[email&#160;protected]</span></a>
+            <b>Email:</b> <span id="site-email" style="color:inherit;"></span>
           </p>
         </div>
         <div>
@@ -339,7 +339,7 @@
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  
   <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -397,6 +397,12 @@
       }, 80);
     }, {passive: true});
 
+  })();
+  </script>
+  <script>
+  (function(){
+    var e = document.getElementById('site-email');
+    if(e){ var a = document.createElement('a'); a.href=['mai','lto:info@','charaniarenewables.com'].join(''); a.textContent='info@charaniarenewables.com'; a.style.color='inherit'; e.appendChild(a); }
   })();
   </script>
 </body>
