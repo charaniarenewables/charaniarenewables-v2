@@ -652,9 +652,9 @@ body.is-inner .brand-logo--white{ display:none; }
 body.is-inner .brand-logo--color{ display:block; }
 /* Dark nav text on inner pages (white header) */
 body.is-inner .site-header .nav-link{ color: rgba(11,18,32,.80); }
-body.is-inner .site-header .nav-link:hover{ color: var(--navy); }
+body.is-inner .site-header .nav-link:hover{ color: var(--green); }
 body.is-inner .site-header.is-scrolled .nav-link{ color: rgba(11,18,32,.80); }
-body.is-inner .site-header.is-scrolled .nav-link:hover{ color: var(--navy); }
+body.is-inner .site-header.is-scrolled .nav-link:hover{ color: var(--green); }
 /* Burger: dark lines on white bg */
 body.is-inner .site-header .menu-btn{ background:#fff; border-color:rgba(12,42,82,.14); }
 body.is-inner .site-header .menu-btn span{ background:rgba(11,18,32,.75); }
