@@ -114,7 +114,7 @@
               background: #fff !important; color: var(--text) !important;
               border-top: 1px solid var(--border); }
     .footer h4 { color: var(--navy) !important; }
-    .footer a { color: var(--navy) !important; opacity: .75; }
+    .footer a { color: var(--navy) !important; }
     .footer a:hover { opacity: 1; }
     .footer .small { color: var(--muted) !important; }
     .footer__bottom { border-color: var(--border) !important; }
@@ -317,9 +317,9 @@
   <!-- S1: HERO -->
   <section class="snap-section snap-hero" data-section="0" data-theme="dark">
     <div class="hero-cine">
-      <div class="hero-cine__slide" style="background-image:url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1800&q=85');"></div>
-      <div class="hero-cine__slide" style="background-image:url('https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=1800&q=85');"></div>
-      <div class="hero-cine__slide" style="background-image:url('https://images.unsplash.com/photo-1497435334941-8c899a9bd069?w=1800&q=85');"></div>
+      <div class="hero-cine__slide" style="background-image:url('/assets/img/hero-homepage-1.jpg');"></div>
+      <div class="hero-cine__slide" style="background-image:url('/assets/img/hero-homepage-2.jpg');"></div>
+      <div class="hero-cine__slide" style="background-image:url('/assets/img/hero-homepage-3.jpg');"></div>
       <div class="hero-cine__overlay"></div>
       <div class="hero-cine__content">
         <div class="hero-cine__inner">
@@ -365,7 +365,7 @@
 
   <!-- S2: ARCHITECTURE -->
   <section class="snap-section snap-architecture" data-section="1" data-theme="dark"
-    style="background-image:linear-gradient(135deg,rgba(8,28,56,.78) 0%,rgba(12,42,82,.72) 100%),url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1600&q=80');background-size:cover;background-position:center;">
+    style="background-image:linear-gradient(135deg,rgba(8,28,56,.78) 0%,rgba(12,42,82,.72) 100%),url('/assets/img/bg-architecture.jpg');background-size:cover;background-position:center;">
     <div class="container">
       <div class="reveal-left" style="max-width:560px;margin-bottom:40px;">
         <div class="kicker">Engineering Logic</div>
@@ -391,7 +391,7 @@
 
   <!-- S3: PILLARS -->
   <section class="snap-section snap-pillars" data-section="2" data-theme="light"
-    style="background-image:linear-gradient(rgba(244,244,244,.82),rgba(244,244,244,.82)),url('https://images.unsplash.com/photo-1497435334941-8c899a9bd069?w=1600&q=80');background-size:cover;background-position:center;">
+    style="background-image:linear-gradient(rgba(244,244,244,.82),rgba(244,244,244,.82)),url('/assets/img/hero-homepage-3.jpg');background-size:cover;background-position:center;">
     <div class="container">
       <div class="section__head reveal-fade" style="margin-bottom:36px;">
         <div class="kicker">What We Deliver</div>
@@ -429,7 +429,7 @@
 
   <!-- S4: AUDIENCE -->
   <section class="snap-section snap-audience" data-section="3" data-theme="light"
-    style="background-image:linear-gradient(rgba(255,255,255,.84),rgba(255,255,255,.84)),url('https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=1600&q=80');background-size:cover;background-position:center;">
+    style="background-image:linear-gradient(rgba(255,255,255,.84),rgba(255,255,255,.84)),url('/assets/img/bg-audience.jpg');background-size:cover;background-position:center;">
     <div class="container">
       <div class="section__head reveal-left" style="margin-bottom:36px;">
         <div class="kicker">Who We Serve</div>
@@ -456,7 +456,7 @@
 
   <!-- S5: CTA -->
   <section class="snap-section snap-cta" data-section="4" data-theme="dark"
-    style="background-image:linear-gradient(rgba(6,18,42,.72),rgba(10,35,70,.72)),url('https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1600&q=80');background-size:cover;background-position:center;">
+    style="background-image:linear-gradient(rgba(6,18,42,.72),rgba(10,35,70,.72)),url('/assets/img/bg-cta-default.jpg');background-size:cover;background-position:center;">
     <div class="container">
       <div class="reveal-fade">
         <div class="kicker" style="color:var(--green);margin-bottom:16px;">Get Started</div>
@@ -480,7 +480,7 @@
           <p class="small" style="margin-top:10px;">
             <b>Phone:</b> +92 21-35635067<br/>
             <b>WhatsApp:</b> +92-326-8422718<br/>
-            <b>Email:</b> <a href="/cdn-cgi/l/email-protection#94fdfaf2fbd4f7fcf5e6f5fafdf5e6f1faf1e3f5f6f8f1e7baf7fbf9"><span class="__cf_email__" data-cfemail="b8d1d6ded7f8dbd0d9cad9d6d1d9caddd6ddcfd9dad4ddcb96dbd7d5">[email&#160;protected]</span></a>
+            <b>Email:</b> <a href="mailto:info@charaniarenewables.com" style="color:inherit;">info@charaniarenewables.com</a>
           </p>
         </div>
         <div>
@@ -580,24 +580,52 @@
     });
   })();
 
-  // Section reveal
+  // Section reveal — scrollend based (Pylontech-style)
   (function(){
     var sections = document.querySelectorAll('.snap-section');
     if(!sections.length) return;
+
+    // Add curtain to non-hero sections
+    sections.forEach(function(s){
+      if(!s.classList.contains('snap-hero')) s.classList.add('curtain');
+    });
+
     document.body.classList.add('js-anim');
 
-    function checkVisible(){
+    // Hero fires immediately
+    var hero = document.querySelector('.snap-hero');
+    if(hero) hero.classList.add('in-view');
+
+    function getActiveSection(){
+      var best = null, bestVisible = -1, vh = window.innerHeight;
       sections.forEach(function(s){
         var r = s.getBoundingClientRect();
-        if(r.top < window.innerHeight * 0.8 && r.bottom > window.innerHeight * 0.2){
-          s.classList.add('in-view');
-        } else {
-          s.classList.remove('in-view');
-        }
+        var visible = Math.max(0, Math.min(r.bottom, vh) - Math.max(r.top, 0));
+        if(visible > bestVisible){ bestVisible = visible; best = s; }
+      });
+      return (bestVisible / vh >= 0.35) ? best : null;
+    }
+
+    function activateSection(s){
+      if(!s) return;
+      sections.forEach(function(sec){ sec.classList.remove('in-view'); });
+      requestAnimationFrame(function(){
+        requestAnimationFrame(function(){ s.classList.add('in-view'); });
       });
     }
-    window.addEventListener('scroll', checkVisible, {passive:true});
-    checkVisible();
+
+    var supportsScrollEnd = 'onscrollend' in window;
+    if(supportsScrollEnd){
+      window.addEventListener('scrollend', function(){
+        activateSection(getActiveSection());
+      }, {passive: true});
+    } else {
+      var t;
+      window.addEventListener('scroll', function(){
+        clearTimeout(t);
+        t = setTimeout(function(){ activateSection(getActiveSection()); }, 120);
+      }, {passive: true});
+    }
   })();
   </script>
 </body>

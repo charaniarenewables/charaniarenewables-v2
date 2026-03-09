@@ -626,7 +626,9 @@ img{max-width:100%; display:block}
   color:var(--navy);
   font-size:14px;
 }
-.footer a{ color:var(--navy); opacity:.75; }
+.footer a{ color:var(--navy); }
+.footer a:not(.btn){ opacity:.75; }
+.footer a:not(.btn):hover{ opacity:1; }
 .footer a:hover{ opacity:1; }
 .footer .small{ font-size:12px; color:var(--muted); }
 .footer__bottom{
@@ -818,10 +820,11 @@ body.is-inner .site-header.is-scrolled .menu-btn span{ background:rgba(11,18,32,
    SNAP SCROLL SYSTEM — inner pages
    ============================================================ */
 
-html { scroll-snap-type: y mandatory; overflow-y: scroll; }
+html { scroll-snap-type: y proximity; overflow-y: scroll; }
 
 .snap-section {
   scroll-snap-align: start;
+  scroll-snap-stop: normal;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -830,7 +833,7 @@ html { scroll-snap-type: y mandatory; overflow-y: scroll; }
   padding: 100px 0 60px;
 }
 .snap-hero { padding: 0; min-height: 100vh; }
-.footer    { scroll-snap-align: none !important; }
+.footer    { scroll-snap-align: none !important; scroll-snap-stop: normal !important; }
 
 /* ── Section themes ── */
 .snap-dark { background: #0C2A52; }
