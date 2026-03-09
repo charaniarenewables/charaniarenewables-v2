@@ -892,13 +892,15 @@ html { scroll-snap-type: y proximity; overflow-y: scroll; }
   0%   { transform: scale(1.00) translate(0,    0);     }
   100% { transform: scale(1.07) translate(-1%, -0.5%);  }
 }
-/* Hero gradient — also ::before layered, z-index above bg */
+/* Hero gradient — strong vignette handles bright/pale images */
 .snap-hero .hero-gradient {
   position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(to top,
-    rgba(4,8,18,.85) 0%,
-    rgba(4,8,18,.32) 55%,
-    rgba(4,8,18,.10) 100%);
+  background:
+    linear-gradient(to top,
+      rgba(4,8,18,.92) 0%,
+      rgba(4,8,18,.55) 40%,
+      rgba(4,8,18,.28) 70%,
+      rgba(4,8,18,.50) 100%);
   pointer-events: none;
 }
 .snap-hero__inner {
