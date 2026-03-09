@@ -325,7 +325,7 @@
           <p class="small" style="margin-top:10px;">
             <b>Phone:</b> +92 21-35635067<br/>
             <b>WhatsApp:</b> +92-326-8422718<br/>
-            <b>Email:</b> <a href="mailto:info@charaniarenewables.com" style="color:inherit;">info@charaniarenewables.com</a>
+            <b>Email:</b> <a href="/cdn-cgi/l/email-protection#1d74737b725d7e757c6f7c73747c6f7873786a7c7f71786e337e7270" style="color:inherit;"><span class="__cf_email__" data-cfemail="1871767e77587b70796a797671796a7d767d6f797a747d6b367b7775">[email&#160;protected]</span></a>
           </p>
         </div>
         <div>
@@ -358,7 +358,7 @@
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   <script src="/assets/js/main.js"></script>
   <script>
   document.getElementById('year').textContent = new Date().getFullYear();
@@ -409,27 +409,22 @@
         activateSection(getActiveSection());
       }, {passive: true});
     } else {
-      // Debounced scroll fallback — waits 120ms after scroll stops
-      var scrollTimer;
+      var st;
       window.addEventListener('scroll', function(){
-        clearTimeout(scrollTimer);
-        scrollTimer = setTimeout(function(){
-          activateSection(getActiveSection());
-        }, 120);
+        clearTimeout(st);
+        st = setTimeout(function(){ activateSection(getActiveSection()); }, 120);
       }, {passive: true});
     }
 
-    // Also fire on scroll for progress bar (real-time)
-    var fill = document.getElementById('scrollFill');
-    var bar  = document.getElementById('scrollProgress');
-    if(fill && bar){
-      window.addEventListener('scroll', function(){
-        var d = document.documentElement.scrollHeight - window.innerHeight;
-        fill.style.height = (d > 0 ? Math.min(window.scrollY / d * 100, 100) : 0) + '%';
-        var active = getActiveSection();
-        bar.classList.toggle('on-light', !!(active && active.dataset.theme === 'light'));
-      }, {passive: true});
-    }
+    // Scroll fallback for fast scrolls
+    var rt;
+    window.addEventListener('scroll', function(){
+      clearTimeout(rt);
+      rt = setTimeout(function(){
+        var a = getActiveSection();
+        if(a && !a.classList.contains('in-view')) activateSection(a);
+      }, 80);
+    }, {passive: true});
 
   })();
   </script>

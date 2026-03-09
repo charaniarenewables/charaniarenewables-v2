@@ -312,7 +312,7 @@
           <p class="small" style="margin-top:10px;">
             <b>Phone:</b> +92 21-35635067<br/>
             <b>WhatsApp:</b> +92-326-8422718<br/>
-            <b>Email:</b> <a href="mailto:info@charaniarenewables.com" style="color:inherit;">info@charaniarenewables.com</a>
+            <b>Email:</b> <a href="/cdn-cgi/l/email-protection#acc5c2cac3eccfc4cddecdc2c5cddec9c2c9dbcdcec0c9df82cfc3c1" style="color:inherit;"><span class="__cf_email__" data-cfemail="8fe6e1e9e0cfece7eefdeee1e6eefdeae1eaf8eeede3eafca1ece0e2">[email&#160;protected]</span></a>
           </p>
         </div>
         <div>
@@ -345,7 +345,7 @@
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
   <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -386,23 +386,23 @@
         activateSection(getActiveSection());
       }, {passive: true});
     } else {
-      var t;
+      var st;
       window.addEventListener('scroll', function(){
-        clearTimeout(t);
-        t = setTimeout(function(){ activateSection(getActiveSection()); }, 120);
+        clearTimeout(st);
+        st = setTimeout(function(){ activateSection(getActiveSection()); }, 120);
       }, {passive: true});
     }
 
-    var fill = document.getElementById('scrollFill');
-    var bar  = document.getElementById('scrollProgress');
-    if(fill && bar){
-      window.addEventListener('scroll', function(){
-        var d = document.documentElement.scrollHeight - window.innerHeight;
-        fill.style.height = (d > 0 ? Math.min(window.scrollY/d*100,100) : 0)+'%';
+    // Scroll fallback for fast scrolls
+    var rt;
+    window.addEventListener('scroll', function(){
+      clearTimeout(rt);
+      rt = setTimeout(function(){
         var a = getActiveSection();
-        bar.classList.toggle('on-light', !!(a && a.dataset.theme==='light'));
-      }, {passive: true});
-    }
+        if(a && !a.classList.contains('in-view')) activateSection(a);
+      }, 80);
+    }, {passive: true});
+
   })();
   </script>
 </body>
