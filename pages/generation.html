@@ -88,6 +88,7 @@
     <div class="mobile-panel" id="mobilePanel" aria-hidden="true">
       <div class="mobile-panel__inner">
         <details><summary>Storage</summary>
+          <a href="/pages/storage.html">Storage Overview</a>
           <a href="/pages/storage-mountrex.html">MountRex (LV)</a>
           <a href="/pages/storage-aokly.html">Aokly &times; Charania Renewables (LV)</a>
           <a href="/pages/storage-zetara.html">Zetara &times; Charania Renewables (HV)</a>
@@ -95,15 +96,18 @@
           <a href="/pages/storage-sodium.html">MountRex Sodium</a>
         </details>
         <details><summary>Generation</summary>
+          <a href="/pages/generation.html">Generation Overview</a>
           <a href="/pages/generation-vertix.html">Vertix</a>
           <a href="/pages/generation-solar.html">Solar Systems</a>
         </details>
         <details><summary>Structures</summary>
+          <a href="/pages/structures-base.html">Lmaxx Overview</a>
           <a href="/pages/structures-base.html">Lmaxx Base</a>
           <a href="/pages/structures-elevate.html">Lmaxx Elevate</a>
           <a href="/pages/structures-span.html">Lmaxx Span</a>
         </details>
         <details><summary>Solutions</summary>
+          <a href="/pages/solutions.html">Solutions Overview</a>
           <a href="/pages/solutions-hybrid-engineering.html">HED &mdash; Hybrid Engineering &amp; Design</a>
           <a href="/pages/solutions-industrial.html">Industrial Energy Solutions</a>
         </details>
@@ -273,10 +277,10 @@
           <p class="small" style="margin-top:10px;"><b>Phone:</b> +92 21-35635067<br/><b>WhatsApp:</b> +92-326-8422718<br/><b>Email:</b> <span id="site-email" style="color:inherit;"></span></p>
         </div>
         <div>
-          <h4>Quick links</h4>
+                              <h4>Quick links</h4>
           <p class="small"><a href="/pages/solutions-hybrid-engineering.html">Hybrid Engineering &amp; Design</a></p>
           <p class="small"><a href="/pages/storage-comparison.html">Battery Comparison</a></p>
-          <p class="small"><a href="/pages/generation-solar.html">Solar Systems</a></p>
+          <p class="small"><a href="/pages/generation-vertix.html">Vertix Wind</a></p>
           <p class="small"><a href="/pages/structures-base.html">Lmaxx Structures</a></p>
           <p class="small"><a href="/pages/contact.html">Contact</a></p>
         </div>
@@ -305,6 +309,6 @@
   document.getElementById('year').textContent=new Date().getFullYear();
   (function(){var sections=document.querySelectorAll('.snap-section');if(!sections.length)return;sections.forEach(function(s){if(!s.classList.contains('snap-hero'))s.classList.add('curtain');});document.body.classList.add('js-anim');var hero=document.querySelector('.snap-hero');if(hero)hero.classList.add('in-view');function getActiveSection(){var best=null,bestVisible=-1,vh=window.innerHeight;sections.forEach(function(s){var r=s.getBoundingClientRect(),visible=Math.max(0,Math.min(r.bottom,vh)-Math.max(r.top,0));if(visible>bestVisible){bestVisible=visible;best=s;}});return(bestVisible/vh>=0.35)?best:null;}function activateSection(s){if(!s)return;sections.forEach(function(sec){sec.classList.remove('in-view');});requestAnimationFrame(function(){requestAnimationFrame(function(){s.classList.add('in-view');});});}var supportsScrollEnd='onscrollend' in window;if(supportsScrollEnd){window.addEventListener('scrollend',function(){activateSection(getActiveSection());},{passive:true});}else{var st;window.addEventListener('scroll',function(){clearTimeout(st);st=setTimeout(function(){activateSection(getActiveSection());},120);},{passive:true});}var rt;window.addEventListener('scroll',function(){clearTimeout(rt);rt=setTimeout(function(){var a=getActiveSection();if(a&&!a.classList.contains('in-view'))activateSection(a);},80);},{passive:true});})();
   </script>
-  <script>(function(){var e=document.getElementById('site-email');if(e){var a=document.createElement('a');a.href=['mai','lto:info@','charaniarenewables.com'].join('');a.textContent='info@charaniarenewables.com';a.style.color='inherit';e.appendChild(a);}})();</script>
+  <script>(function(){var e=document.getElementById('site-email');if(e){var a=document.createElement('a');a.href=['mai','lto:mail@','charaniarenewables.com'].join('');a.textContent='mail@charaniarenewables.com';a.style.color='inherit';e.appendChild(a);}})();</script>
 </body>
 </html>
