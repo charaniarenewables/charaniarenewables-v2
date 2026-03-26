@@ -920,15 +920,13 @@ html { scroll-snap-type: y proximity; overflow-y: scroll; }
 
 /* ── Cards hover ── */
 .card {
-  transition:
-    transform  .22s cubic-bezier(.34,1.4,.64,1),
-    box-shadow .22s ease,
-    border-left-color .22s ease !important;
+  transition: border-left-color .15s ease, border-left-width .15s ease, box-shadow .15s ease !important;
   border-left: 3px solid transparent;
 }
 .card:hover {
-  transform: translateY(-8px) !important;
   border-left-color: #7FDB65 !important;
+  border-left-width: 5px !important;
+  box-shadow: 0 8px 28px rgba(12,42,82,.12) !important;
 }
 .snap-img .card:hover,
 .snap-dark .card:hover {
