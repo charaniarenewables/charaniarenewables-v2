@@ -135,12 +135,16 @@
 
 // ─── Email obfuscation ───────────────────────────────────────────────────────
 (function () {
-  var e = document.getElementById('site-email');
-  if (e) {
-    var a = document.createElement('a');
-    a.href = ['mai', 'lto:mail@', 'charaniarenewables.com'].join('');
-    a.textContent = 'mail@charaniarenewables.com';
-    a.style.color = 'inherit';
-    e.appendChild(a);
-  }
+  var addr = ['mai', 'lto:mail@', 'charaniarenewables.com'].join('');
+  var text = 'mail@charaniarenewables.com';
+  ['site-email', 'site-email-footer'].forEach(function (id) {
+    var e = document.getElementById(id);
+    if (e) {
+      var a = document.createElement('a');
+      a.href = addr;
+      a.textContent = text;
+      a.style.color = 'inherit';
+      e.appendChild(a);
+    }
+  });
 })();
