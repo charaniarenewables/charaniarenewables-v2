@@ -71,20 +71,76 @@
   updateHeader();
 })();
 
-// Inner page hero slideshow
+
+
+// ─── Scroll progress bar ─────────────────────────────────────────────────────
 (function () {
-  const hero = document.querySelector('.page-hero--slides');
-  if (!hero) return;
-  const slides = hero.querySelectorAll('.page-hero__slide');
-  if (slides.length < 2) {
-    if (slides.length === 1) slides[0].classList.add('is-active');
+  var fill = document.getElementById('scrollFill');
+  var bar  = document.getElementById('scrollProgress');
+  if (!fill || !bar) return;
+
+  function update() {
+    var d = document.documentElement.scrollHeight - window.innerHeight;
+    fill.style.height = (d > 0 ? Math.min(window.scrollY / d * 100, 100) : 0) + '%';
+    // Light/dark colour swap
+    var light = false;
+    document.querySelectorAll('.snap-section[data-theme="light"]').forEach(function (s) {
+      var r = s.getBoundingClientRect();
+      if (r.top <= window.innerHeight / 2 && r.bottom >= window.innerHeight / 2) light = true;
+    });
+    bar.classList.toggle('on-light', light);
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+
+// ─── Scroll reveal animations (IntersectionObserver) ────────────────────────
+(function () {
+  // Opt in — elements visible by default without JS
+  document.body.classList.add('js-anim');
+
+  // Hero elements fire immediately
+  document.querySelectorAll('.snap-hero [class*="reveal-"]').forEach(function (el) {
+    el.classList.add('is-revealed');
+  });
+
+  if (!('IntersectionObserver' in window)) {
+    // Fallback — just show everything
+    document.querySelectorAll('[class*="reveal-"]').forEach(function (el) {
+      el.classList.add('is-revealed');
+    });
     return;
   }
-  let current = 0;
-  slides[current].classList.add('is-active');
-  setInterval(() => {
-    slides[current].classList.remove('is-active');
-    current = (current + 1) % slides.length;
-    slides[current].classList.add('is-active');
-  }, 4500);
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-revealed');
+        observer.unobserve(entry.target); // fire once only
+      }
+    });
+  }, {
+    threshold: 0.12,   // element 12% visible before firing
+    rootMargin: '0px 0px -40px 0px'  // slight bottom offset — feels natural
+  });
+
+  document.querySelectorAll('[class*="reveal-"]').forEach(function (el) {
+    // Skip hero elements — already revealed above
+    if (!el.closest('.snap-hero')) {
+      observer.observe(el);
+    }
+  });
+})();
+
+// ─── Email obfuscation ───────────────────────────────────────────────────────
+(function () {
+  var e = document.getElementById('site-email');
+  if (e) {
+    var a = document.createElement('a');
+    a.href = ['mai', 'lto:mail@', 'charaniarenewables.com'].join('');
+    a.textContent = 'mail@charaniarenewables.com';
+    a.style.color = 'inherit';
+    e.appendChild(a);
+  }
 })();
