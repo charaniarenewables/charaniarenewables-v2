@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.charaniarenewables.com/sitemap.xml
+
+# Disallow admin and private paths
+Disallow: /admin/
+Disallow: /.netlify/
+
+# Crawl-delay (optional — comment out if causing issues)
+# Crawl-delay: 1
