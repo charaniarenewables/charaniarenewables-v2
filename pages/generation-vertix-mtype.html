@@ -271,7 +271,7 @@
     </div>
   </div>
 
-  <section class="snap-section snap-hero" data-theme="dark" style="background-image:url('/assets/img/hero-generation-vertix.jpg');">
+  <section class="snap-section snap-hero" data-theme="dark" style="background-image:url('/assets/img/hero-generation-vertix.webp');">
     <div class="snap-hero__inner"><div class="container">
       <div class="kicker reveal-fade">Vertix &mdash; Small Commercial Wind</div>
       <h1 class="reveal-left">M-Type Wind Turbine</h1>
@@ -311,12 +311,10 @@
 </div>
     </div>
   </div></section>
-
-  <!-- IMAGE: section-vertix-mtype.png — M-Type turbine product shot -->
-  <section class="snap-section snap-gray" data-theme="light"><div class="container">
+<section class="snap-section snap-gray" data-theme="light"><div class="container">
     <div style="display:flex;gap:40px;align-items:flex-start;flex-wrap:wrap;">
       <div style="flex-shrink:0;width:200px;">
-        <img src="/assets/img/section-vertix-mtype.png" alt="Vertix M-Type" style="width:100%;border-radius:10px;background:var(--color-background-secondary);" loading="lazy"/>
+        <img src="/assets/img/section-vertix-mtype.webp" alt="Vertix M-Type" style="width:100%;border-radius:10px;background:var(--color-background-secondary);" loading="lazy"/>
       </div>
       <div style="flex:1;min-width:280px;">
         <div class="kicker">Full Specification</div>
@@ -348,10 +346,7 @@
       </div>
     </div>
   </div></section>
-
-  
-  <!-- Internal links -->
-  <section class="snap-section snap-gray" data-theme="light">
+<section class="snap-section snap-gray" data-theme="light">
     <div class="container">
       <div class="kicker">Related</div>
       <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;">
@@ -420,70 +415,7 @@
 
   
   <script src="/assets/js/main.js"></script>
-  <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
 
-  (function(){
-    var sections = document.querySelectorAll('.snap-section');
-    if(!sections.length) return;
-
-    sections.forEach(function(s){
-      if(!s.classList.contains('snap-hero')) s.classList.add('curtain');
-    });
-
-    document.body.classList.add('js-anim');
-
-    var hero = document.querySelector('.snap-hero');
-    if(hero) hero.classList.add('in-view');
-
-    function getActiveSection(){
-      var best = null, bestVisible = -1, vh = window.innerHeight;
-      sections.forEach(function(s){
-        var r = s.getBoundingClientRect();
-        var visible = Math.max(0, Math.min(r.bottom, vh) - Math.max(r.top, 0));
-        if(visible > bestVisible){ bestVisible = visible; best = s; }
-      });
-      return (bestVisible / vh >= 0.35) ? best : null;
-    }
-
-    function activateSection(s){
-      if(!s) return;
-      sections.forEach(function(sec){ sec.classList.remove('in-view'); });
-      requestAnimationFrame(function(){
-        requestAnimationFrame(function(){ s.classList.add('in-view'); });
-      });
-    }
-
-    var supportsScrollEnd = 'onscrollend' in window;
-    if(supportsScrollEnd){
-      window.addEventListener('scrollend', function(){
-        activateSection(getActiveSection());
-      }, {passive: true});
-    } else {
-      var st;
-      window.addEventListener('scroll', function(){
-        clearTimeout(st);
-        st = setTimeout(function(){ activateSection(getActiveSection()); }, 120);
-      }, {passive: true});
-    }
-
-    // Scroll fallback for fast scrolls
-    var rt;
-    window.addEventListener('scroll', function(){
-      clearTimeout(rt);
-      rt = setTimeout(function(){
-        var a = getActiveSection();
-        if(a && !a.classList.contains('in-view')) activateSection(a);
-      }, 80);
-    }, {passive: true});
-
-  })();
-  </script>
-  <script>
-  (function(){
-    var e = document.getElementById('site-email');
-    if(e){ var a = document.createElement('a'); a.href=['mai','lto:info@','charaniarenewables.com'].join(''); a.textContent='mail@charaniarenewables.com'; a.style.color='inherit'; e.appendChild(a); }
-  })();
-  </script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

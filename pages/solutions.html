@@ -153,8 +153,7 @@
   </div>
 
   <!-- HERO -->
-  <!-- IMAGE: hero-solutions.jpg — engineering team reviewing data, financial model, or hybrid system diagram -->
-  <section class="snap-section snap-hero" data-theme="dark" style="background-image:url('/assets/img/hero-solutions.jpg');">
+<section class="snap-section snap-hero" data-theme="dark" style="background-image:url('/assets/img/hero-solutions.webp');">
     <div class="snap-hero__inner">
       <div class="container">
         <div class="kicker reveal-fade">Solutions</div>
@@ -212,16 +211,14 @@
           <p style="line-height:1.75;color:var(--muted);margin-top:16px;">Engineering and installation are delivered through our EPC and installation partners. CR sits as design authority and project coordinator &mdash; one point of accountability from brief to handover.</p>
         </div>
         <div>
-          <!-- IMAGE: section-solutions-hed.jpg — data analysis, financial model or project planning -->
-          <img src="/assets/img/section-data.jpg" alt="HED hybrid energy design methodology" class="sec-img reveal-fade" loading="lazy" />
+<img src="/assets/img/section-data.webp" alt="HED hybrid energy design methodology" class="sec-img reveal-fade" loading="lazy" />
         </div>
       </div>
     </div>
   </section>
 
   <!-- WHO WE WORK WITH -->
-  <!-- IMAGE: hero-solutions-industrial.jpg — factory or industrial facility -->
-  <section class="snap-section snap-img" data-theme="dark" style="background-image:url('/assets/img/section-solutions-who.jpg');">
+<section class="snap-section snap-img" data-theme="dark" style="background-image:url('/assets/img/section-solutions-who.webp');">
     <div class="img-overlay"></div>
     <div class="container">
       <div class="reveal-left">
@@ -242,15 +239,13 @@
       </div>
       <div class="grid-2" style="gap:32px;">
         <div class="card reveal-up reveal-delay-0" style="padding:32px;">
-          <!-- IMAGE: section-solutions-hed-card.jpg — design or planning visual -->
-          <div class="kicker">HED</div>
+<div class="kicker">HED</div>
           <h3>Hybrid Engineering &amp; Design</h3>
           <p style="color:var(--muted);line-height:1.75;margin-bottom:20px;">The HED methodology in full: load analysis, resource assessment, technology selection, system architecture, financial modelling (LCOE, payback, NPV, IRR), SLD design and EPC coordination. For clients and EPC partners who need the full design and financial case built before committing to a project.</p>
           <a class="btn btn--primary" href="/pages/solutions-hybrid-engineering.html">HED &mdash; How It Works &rarr;</a>
         </div>
         <div class="card reveal-up reveal-delay-1" style="padding:32px;">
-          <!-- IMAGE: section-solutions-industrial-card.jpg — industrial facility or energy system -->
-          <div class="kicker">Industrial</div>
+<div class="kicker">Industrial</div>
           <h3>Industrial Energy Solutions</h3>
           <p style="color:var(--muted);line-height:1.75;margin-bottom:20px;">HED applied specifically to Pakistan&rsquo;s commercial and industrial sector. Hybrid uptime and energy resilience for factories, warehouses, hospitals and large commercial facilities. Peak demand reduction, grid backup, on-site generation and long-term energy cost management &mdash; built around your operating load and tariff structure.</p>
           <a class="btn btn--primary" href="/pages/solutions-industrial.html">Industrial Solutions &rarr;</a>
@@ -272,9 +267,7 @@
   </section>
 
   <!-- CTA -->
-  
-  <!-- Internal links -->
-  <section class="snap-section snap-gray" data-theme="light">
+<section class="snap-section snap-gray" data-theme="light">
     <div class="container">
       <div class="kicker">Related</div>
       <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;">
@@ -337,10 +330,8 @@
   </footer>
 
   <script src="/assets/js/main.js"></script>
-  <script>
-  document.getElementById('year').textContent=new Date().getFullYear();
-  (function(){var sections=document.querySelectorAll('.snap-section');if(!sections.length)return;sections.forEach(function(s){if(!s.classList.contains('snap-hero'))s.classList.add('curtain');});document.body.classList.add('js-anim');var hero=document.querySelector('.snap-hero');if(hero)hero.classList.add('in-view');function getActiveSection(){var best=null,bestVisible=-1,vh=window.innerHeight;sections.forEach(function(s){var r=s.getBoundingClientRect(),visible=Math.max(0,Math.min(r.bottom,vh)-Math.max(r.top,0));if(visible>bestVisible){bestVisible=visible;best=s;}});return(bestVisible/vh>=0.35)?best:null;}function activateSection(s){if(!s)return;sections.forEach(function(sec){sec.classList.remove('in-view');});requestAnimationFrame(function(){requestAnimationFrame(function(){s.classList.add('in-view');});});}var supportsScrollEnd='onscrollend' in window;if(supportsScrollEnd){window.addEventListener('scrollend',function(){activateSection(getActiveSection());},{passive:true});}else{var st;window.addEventListener('scroll',function(){clearTimeout(st);st=setTimeout(function(){activateSection(getActiveSection());},120);},{passive:true});}var rt;window.addEventListener('scroll',function(){clearTimeout(rt);rt=setTimeout(function(){var a=getActiveSection();if(a&&!a.classList.contains('in-view'))activateSection(a);},80);},{passive:true});})();
-  </script>
   <script>(function(){var e=document.getElementById('site-email');if(e){var a=document.createElement('a');a.href=['mai','lto:mail@','charaniarenewables.com'].join('');a.textContent='mail@charaniarenewables.com';a.style.color='inherit';e.appendChild(a);}})();</script>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

@@ -119,7 +119,7 @@
     "url": "https://www.charaniarenewables.com"
   },
   "model": "ZBox200",
-  "image": "https://www.charaniarenewables.com/assets/img/section-zetara-zbox200.png",
+  "image": "https://www.charaniarenewables.com/assets/img/section-zetara-zbox200.webp",
   "url": "https://www.charaniarenewables.com/pages/storage-zetara-zbox200.html",
   "category": "Battery Energy Storage System",
   "additionalProperty": [
@@ -309,7 +309,7 @@
     </div>
   </div>
 
-  <section class="snap-section snap-hero" data-theme="dark" style="background-image:url('/assets/img/hero-storage-default.jpg');">
+  <section class="snap-section snap-hero" data-theme="dark" style="background-image:url('/assets/img/hero-storage-default.webp');">
     <div class="snap-hero__inner"><div class="container">
       <div class="kicker reveal-fade">Zetara &mdash; High Voltage BESS</div>
       <h1 class="reveal-left">ZBox200 &mdash; 215 kWh</h1>
@@ -333,12 +333,10 @@
       <div class="card stat-box reveal-up reveal-delay-3"><div class="stat-box__num">Full</div><div class="stat-box__label">Engineering Scope</div><p class="stat-box__desc">Load study, SLD, EMS configuration and commissioning included in every ZBox200 project.</p></div>
     </div>
   </div></section>
-
-  <!-- IMAGE: section-zetara-zbox200.png — ZBox200 containerised BESS -->
-  <section class="snap-section snap-gray" data-theme="light"><div class="container">
+<section class="snap-section snap-gray" data-theme="light"><div class="container">
     <div style="display:flex;gap:40px;align-items:flex-start;flex-wrap:wrap;">
       <div style="flex-shrink:0;width:200px;">
-        <img src="/assets/img/section-zetara-zbox200.png" alt="Zetara ZBox200" style="width:100%;border-radius:10px;background:var(--color-background-secondary);" loading="lazy"/>
+        <img src="/assets/img/section-zetara-zbox200.webp" alt="Zetara ZBox200" style="width:100%;border-radius:10px;background:var(--color-background-secondary);" loading="lazy"/>
       </div>
       <div style="flex:1;min-width:280px;">
         <div class="kicker">Specification</div>
@@ -396,10 +394,7 @@
 <a href="/pages/storage-zetara-zbox200.html" class="card" style="border:1.5px solid var(--color-border-secondary);" style="text-decoration:none;display:block;"><div class="kicker">ZBox200</div><h3 style="margin:4px 0;">215.04 kWh</h3><p style="color:var(--muted);font-size:13px;">Containerised &bull; IP55 &bull; Large industrial</p></a>
 </div>
   </div></section>
-
-  
-  <!-- Internal links -->
-  <section class="snap-section snap-gray" data-theme="light">
+<section class="snap-section snap-gray" data-theme="light">
     <div class="container">
       <div class="kicker">Related</div>
       <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;">
@@ -463,70 +458,7 @@
 
   
   <script src="/assets/js/main.js"></script>
-  <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
 
-  (function(){
-    var sections = document.querySelectorAll('.snap-section');
-    if(!sections.length) return;
-
-    sections.forEach(function(s){
-      if(!s.classList.contains('snap-hero')) s.classList.add('curtain');
-    });
-
-    document.body.classList.add('js-anim');
-
-    var hero = document.querySelector('.snap-hero');
-    if(hero) hero.classList.add('in-view');
-
-    function getActiveSection(){
-      var best = null, bestVisible = -1, vh = window.innerHeight;
-      sections.forEach(function(s){
-        var r = s.getBoundingClientRect();
-        var visible = Math.max(0, Math.min(r.bottom, vh) - Math.max(r.top, 0));
-        if(visible > bestVisible){ bestVisible = visible; best = s; }
-      });
-      return (bestVisible / vh >= 0.35) ? best : null;
-    }
-
-    function activateSection(s){
-      if(!s) return;
-      sections.forEach(function(sec){ sec.classList.remove('in-view'); });
-      requestAnimationFrame(function(){
-        requestAnimationFrame(function(){ s.classList.add('in-view'); });
-      });
-    }
-
-    var supportsScrollEnd = 'onscrollend' in window;
-    if(supportsScrollEnd){
-      window.addEventListener('scrollend', function(){
-        activateSection(getActiveSection());
-      }, {passive: true});
-    } else {
-      var st;
-      window.addEventListener('scroll', function(){
-        clearTimeout(st);
-        st = setTimeout(function(){ activateSection(getActiveSection()); }, 120);
-      }, {passive: true});
-    }
-
-    // Scroll fallback for fast scrolls
-    var rt;
-    window.addEventListener('scroll', function(){
-      clearTimeout(rt);
-      rt = setTimeout(function(){
-        var a = getActiveSection();
-        if(a && !a.classList.contains('in-view')) activateSection(a);
-      }, 80);
-    }, {passive: true});
-
-  })();
-  </script>
-  <script>
-  (function(){
-    var e = document.getElementById('site-email');
-    if(e){ var a = document.createElement('a'); a.href=['mai','lto:info@','charaniarenewables.com'].join(''); a.textContent='mail@charaniarenewables.com'; a.style.color='inherit'; e.appendChild(a); }
-  })();
-  </script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

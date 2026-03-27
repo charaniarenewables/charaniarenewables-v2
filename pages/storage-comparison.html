@@ -284,7 +284,7 @@
   </div>
 
   <!-- HERO -->
-  <section class="snap-section snap-hero" data-theme="dark" style="background-image:url('/assets/img/section-renewables.jpg');">
+  <section class="snap-section snap-hero" data-theme="dark" style="background-image:url('/assets/img/section-renewables.webp');">
     <div class="snap-hero__inner">
       <div class="container">
         <div class="kicker reveal-fade">Storage &mdash; Compare &amp; Select</div>
@@ -329,12 +329,11 @@
         <h2>Selecting the Right System</h2>
         <p style="line-height:1.75;color:var(--muted);">The right battery system depends on your daily consumption, backup duration, peak demand, available space and budget. Our engineers run a load study before recommending any product. LV systems suit residential and small commercial loads; HV containerised BESS suit facilities with peak demand charges or high availability requirements.</p>
       </div>
-        <div><img src="/assets/img/hero-storage-aokly.jpg" alt="Selecting the Right System" class="sec-img reveal-fade" loading="lazy" /></div>
+        <div><img src="/assets/img/hero-storage-aokly.webp" alt="Selecting the Right System" class="sec-img reveal-fade" loading="lazy" /></div>
       </div>
     </div>
   </section>
-  <!-- IMAGE: section-storage-overview.jpg — battery storage product comparison visual -->
-  <section class="snap-section snap-gray" data-theme="light">
+<section class="snap-section snap-gray" data-theme="light">
     <div class="container">
       <div class="reveal-left">
         <div class="kicker">Battery Chemistry</div>
@@ -367,9 +366,7 @@
       </div>
     </div>
   </section>
-  
-  <!-- Internal links -->
-  <section class="snap-section snap-gray" data-theme="light">
+<section class="snap-section snap-gray" data-theme="light">
     <div class="container">
       <div class="kicker">Related</div>
       <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;">
@@ -439,70 +436,7 @@
 
   
   <script src="/assets/js/main.js"></script>
-  <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
 
-  (function(){
-    var sections = document.querySelectorAll('.snap-section');
-    if(!sections.length) return;
-
-    sections.forEach(function(s){
-      if(!s.classList.contains('snap-hero')) s.classList.add('curtain');
-    });
-
-    document.body.classList.add('js-anim');
-
-    var hero = document.querySelector('.snap-hero');
-    if(hero) hero.classList.add('in-view');
-
-    function getActiveSection(){
-      var best = null, bestVisible = -1, vh = window.innerHeight;
-      sections.forEach(function(s){
-        var r = s.getBoundingClientRect();
-        var visible = Math.max(0, Math.min(r.bottom, vh) - Math.max(r.top, 0));
-        if(visible > bestVisible){ bestVisible = visible; best = s; }
-      });
-      return (bestVisible / vh >= 0.35) ? best : null;
-    }
-
-    function activateSection(s){
-      if(!s) return;
-      sections.forEach(function(sec){ sec.classList.remove('in-view'); });
-      requestAnimationFrame(function(){
-        requestAnimationFrame(function(){ s.classList.add('in-view'); });
-      });
-    }
-
-    var supportsScrollEnd = 'onscrollend' in window;
-    if(supportsScrollEnd){
-      window.addEventListener('scrollend', function(){
-        activateSection(getActiveSection());
-      }, {passive: true});
-    } else {
-      var st;
-      window.addEventListener('scroll', function(){
-        clearTimeout(st);
-        st = setTimeout(function(){ activateSection(getActiveSection()); }, 120);
-      }, {passive: true});
-    }
-
-    // Scroll fallback for fast scrolls
-    var rt;
-    window.addEventListener('scroll', function(){
-      clearTimeout(rt);
-      rt = setTimeout(function(){
-        var a = getActiveSection();
-        if(a && !a.classList.contains('in-view')) activateSection(a);
-      }, 80);
-    }, {passive: true});
-
-  })();
-  </script>
-  <script>
-  (function(){
-    var e = document.getElementById('site-email');
-    if(e){ var a = document.createElement('a'); a.href=['mai','lto:info@','charaniarenewables.com'].join(''); a.textContent='mail@charaniarenewables.com'; a.style.color='inherit'; e.appendChild(a); }
-  })();
-  </script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

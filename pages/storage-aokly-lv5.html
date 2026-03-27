@@ -47,7 +47,7 @@
     "url": "https://www.charaniarenewables.com"
   },
   "model": "ALFP-48100H",
-  "image": "https://www.charaniarenewables.com/assets/img/section-aokly-lv5.png",
+  "image": "https://www.charaniarenewables.com/assets/img/section-aokly-lv5.webp",
   "url": "https://www.charaniarenewables.com/pages/storage-aokly-lv5.html",
   "category": "Residential Battery Storage",
   "additionalProperty": [
@@ -232,10 +232,7 @@
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true">
     <div class="scroll-progress__track"><div class="scroll-progress__fill" id="scrollFill"></div></div>
   </div>
-
-
-  <!-- IMAGE: hero-storage-aokly.jpg — Aokly LV battery installation -->
-  <section class="snap-section snap-hero" data-theme="dark" style="background-image:url('/assets/img/hero-storage-aokly.jpg');">
+<section class="snap-section snap-hero" data-theme="dark" style="background-image:url('/assets/img/hero-storage-aokly.webp');">
     <div class="snap-hero__inner"><div class="container">
       <div class="kicker reveal-fade">Storage &mdash; Aokly LV</div>
       <h1 class="reveal-left">Aokly LV 5</h1>
@@ -279,13 +276,11 @@
       </div>
     </div>
   </section>
-
-  <!-- IMAGE: section-aokly-lv5.png — Aokly LV 5 product shot -->
-  <section class="snap-section snap-gray" data-theme="light">
+<section class="snap-section snap-gray" data-theme="light">
     <div class="container">
       <div style="display:flex;gap:40px;align-items:flex-start;flex-wrap:wrap;">
         <div style="flex-shrink:0;width:200px;">
-          <img src="/assets/img/section-aokly-lv5.png" alt="Aokly LV 5" style="width:100%;border-radius:10px;background:var(--color-background-secondary);" loading="lazy"/>
+          <img src="/assets/img/section-aokly-lv5.webp" alt="Aokly LV 5" style="width:100%;border-radius:10px;background:var(--color-background-secondary);" loading="lazy"/>
         </div>
         <div style="flex:1;min-width:280px;">
           <div class="kicker">Full Specification</div>
@@ -363,10 +358,7 @@
       </div>
     </div>
   </section>
-
-  
-  <!-- Internal links -->
-  <section class="snap-section snap-gray" data-theme="light">
+<section class="snap-section snap-gray" data-theme="light">
     <div class="container">
       <div class="kicker">Related</div>
       <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;">
@@ -426,10 +418,8 @@
   </footer>
 
   <script src="/assets/js/main.js"></script>
-  <script>
-  document.getElementById('year').textContent=new Date().getFullYear();
-  (function(){var sections=document.querySelectorAll('.snap-section');if(!sections.length)return;sections.forEach(function(s){if(!s.classList.contains('snap-hero'))s.classList.add('curtain');});document.body.classList.add('js-anim');var hero=document.querySelector('.snap-hero');if(hero)hero.classList.add('in-view');function getActiveSection(){var best=null,bestVisible=-1,vh=window.innerHeight;sections.forEach(function(s){var r=s.getBoundingClientRect(),visible=Math.max(0,Math.min(r.bottom,vh)-Math.max(r.top,0));if(visible>bestVisible){bestVisible=visible;best=s;}});return(bestVisible/vh>=0.35)?best:null;}function activateSection(s){if(!s)return;sections.forEach(function(sec){sec.classList.remove('in-view');});requestAnimationFrame(function(){requestAnimationFrame(function(){s.classList.add('in-view');});});}var supportsScrollEnd='onscrollend' in window;if(supportsScrollEnd){window.addEventListener('scrollend',function(){activateSection(getActiveSection());},{passive:true});}else{var st;window.addEventListener('scroll',function(){clearTimeout(st);st=setTimeout(function(){activateSection(getActiveSection());},120);},{passive:true});}var rt;window.addEventListener('scroll',function(){clearTimeout(rt);rt=setTimeout(function(){var a=getActiveSection();if(a&&!a.classList.contains('in-view'))activateSection(a);},80);},{passive:true});})();
-  </script>
   <script>(function(){var e=document.getElementById('site-email');if(e){var a=document.createElement('a');a.href=['mai','lto:mail@','charaniarenewables.com'].join('');a.textContent='mail@charaniarenewables.com';a.style.color='inherit';e.appendChild(a);}})();</script>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

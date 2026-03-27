@@ -103,7 +103,7 @@
   <link rel="stylesheet" href="/assets/css/styles.css" />
   <style>
     /* Hero image — page specific */
-    .snap-hero { background-image: url('/assets/img/hero-generation-solar.jpg'); }
+    .snap-hero { background-image: url('/assets/img/hero-generation-solar.webp'); }
   </style>
 
   <script type="application/ld+json">
@@ -238,7 +238,7 @@
   </div>
 
   <!-- HERO -->
-  <section class="snap-section snap-hero" data-theme="dark" style="background-image:url('/assets/img/hero-generation-solar.jpg');">
+  <section class="snap-section snap-hero" data-theme="dark" style="background-image:url('/assets/img/hero-generation-solar.webp');">
     <div class="hero-gradient"></div>
     <div class="snap-hero__inner">
       <div class="container">
@@ -252,9 +252,7 @@
       </div>
     </div>
   </section>
-
-  <!-- IMAGE: section-generation-stats.jpg — section-generation-stats.jpg — section background image -->
-  <section class="snap-section snap-img" data-theme="dark" style="background-image:url('/assets/img/section-generation-stats.jpg'); border-top:4px solid #7FDB65;">
+<section class="snap-section snap-img" data-theme="dark" style="background-image:url('/assets/img/section-generation-stats.webp');">
     <div class="img-overlay"></div>
     <div class="container">
       <div class="reveal-fade" style="margin-bottom:20px;">
@@ -285,7 +283,7 @@
   <section class="snap-section" data-theme="light" style="background:#fff;">
     <div class="container">
       <div class="grid-2" style="align-items:center;gap:48px;">
-        <div><img src="/assets/img/section-generation-ourapproach.jpg" alt="Solar &amp; Hybrid Integration" class="sec-img reveal-right" loading="lazy" /></div>
+        <div><img src="/assets/img/section-generation-ourapproach.webp" alt="Solar &amp; Hybrid Integration" class="sec-img reveal-right" loading="lazy" /></div>
               <div class="reveal-left">
         <div class="kicker">Our Approach</div>
         <h2>Solar &amp; Hybrid Integration</h2>
@@ -294,9 +292,7 @@
       </div>
     </div>
   </section>
-  
-  <!-- Internal links -->
-  <section class="snap-section snap-gray" data-theme="light">
+<section class="snap-section snap-gray" data-theme="light">
     <div class="container">
       <div class="kicker">Related</div>
       <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;">
@@ -350,7 +346,7 @@
       </ul>
     </div>
   </section>
-  <section class="snap-section snap-img snap-dark" data-theme="dark" style="background-image:url('/assets/img/section-generation-cta.jpg');">
+  <section class="snap-section snap-img snap-dark" data-theme="dark" style="background-image:url('/assets/img/section-generation-cta.webp');">
     <div class="img-overlay"></div>
     <div class="container">
       <div class="reveal-fade">
@@ -410,79 +406,5 @@
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   <script src="/assets/js/main.js"></script>
-  <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  (function(){
-    var sections = document.querySelectorAll('.snap-section');
-    if(!sections.length) return;
-
-    // Add curtain to all non-hero sections
-    sections.forEach(function(s){
-      if(!s.classList.contains('snap-hero')) s.classList.add('curtain');
-    });
-
-    document.body.classList.add('js-anim');
-
-    // Hero visible immediately
-    var hero = document.querySelector('.snap-hero');
-    if(hero) hero.classList.add('in-view');
-
-    function getActiveSection(){
-      var best = null;
-      var bestVisible = -1;
-      var vh = window.innerHeight;
-      sections.forEach(function(s){
-        var r = s.getBoundingClientRect();
-        var visible = Math.max(0, Math.min(r.bottom, vh) - Math.max(r.top, 0));
-        if(visible > bestVisible){ bestVisible = visible; best = s; }
-      });
-      return (bestVisible / vh >= 0.35) ? best : null;
-    }
-
-    function activateSection(s){
-      if(!s) return;
-      sections.forEach(function(sec){ sec.classList.remove('in-view'); });
-      // rAF double-pump so browser commits hidden state before showing
-      requestAnimationFrame(function(){
-        requestAnimationFrame(function(){
-          s.classList.add('in-view');
-        });
-      });
-    }
-
-    // scrollend fires after snap settles — most reliable trigger
-    // Falls back to scroll with a debounce for older browsers
-    var supportsScrollEnd = 'onscrollend' in window;
-    if(supportsScrollEnd){
-      window.addEventListener('scrollend', function(){
-        activateSection(getActiveSection());
-      }, {passive: true});
-    } else {
-      var st;
-      window.addEventListener('scroll', function(){
-        clearTimeout(st);
-        st = setTimeout(function(){ activateSection(getActiveSection()); }, 120);
-      }, {passive: true});
-    }
-
-    // Scroll fallback for fast scrolls
-    var rt;
-    window.addEventListener('scroll', function(){
-      clearTimeout(rt);
-      rt = setTimeout(function(){
-        var a = getActiveSection();
-        if(a && !a.classList.contains('in-view')) activateSection(a);
-      }, 80);
-    }, {passive: true});
-
-  })();
-  </script>
-  <script>
-  (function(){
-    var e = document.getElementById('site-email');
-    if(e){ var a = document.createElement('a'); a.href=['mai','lto:info@','charaniarenewables.com'].join(''); a.textContent='mail@charaniarenewables.com'; a.style.color='inherit'; e.appendChild(a); }
-  })();
-  </script>
 </body>
 </html>

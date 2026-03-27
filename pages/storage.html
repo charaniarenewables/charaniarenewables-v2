@@ -153,8 +153,7 @@
   </div>
 
   <!-- HERO -->
-  <!-- IMAGE: hero-storage.jpg — battery storage installation, rack system or containerised BESS -->
-  <section class="snap-section snap-hero" data-theme="dark" style="background-image:url('/assets/img/hero-storage.jpg');">
+<section class="snap-section snap-hero" data-theme="dark" style="background-image:url('/assets/img/hero-storage.webp');">
     <div class="snap-hero__inner">
       <div class="container">
         <div class="kicker reveal-fade">Storage</div>
@@ -211,8 +210,7 @@
           <p style="line-height:1.75;color:var(--muted);margin-top:16px;">We built our own label &mdash; MountRex &mdash; to specifications we control and warranties we stand behind directly. As our commercial and industrial clients scaled up, we brought in Zetara for the high-voltage containerised systems that large sites require. Storage remains the core of every hybrid energy system we design. Generation captures energy. Storage makes it reliable.</p>
         </div>
         <div>
-          <!-- IMAGE: section-storage-story.jpg — battery rack installation showing scale -->
-          <img src="/assets/img/section-storage-story.jpg" alt="Battery energy storage systems Pakistan" class="sec-img reveal-fade" loading="lazy" />
+<img src="/assets/img/section-storage-story.webp" alt="Battery energy storage systems Pakistan" class="sec-img reveal-fade" loading="lazy" />
         </div>
       </div>
     </div>
@@ -249,8 +247,7 @@
   </section>
 
   <!-- WHY LFP -->
-  <!-- IMAGE: section-storage-lfp.jpg — battery cell or module close-up -->
-  <section class="snap-section snap-img" data-theme="dark" style="background-image:url('/assets/img/section-storage-lfp.jpg');">
+<section class="snap-section snap-img" data-theme="dark" style="background-image:url('/assets/img/section-storage-lfp.webp');">
     <div class="img-overlay"></div>
     <div class="container">
       <div class="reveal-left">
@@ -270,8 +267,7 @@
       </div>
       <div class="grid-3" style="gap:20px;">
         <div class="card reveal-up reveal-delay-0">
-          <!-- IMAGE: section-storage-mountrex.jpg — MountRex product -->
-          <div class="kicker">Own Label</div>
+<div class="kicker">Own Label</div>
           <h3>MountRex LV</h3>
           <p>Charania Renewables&rsquo; own battery label. Specified, tested and warranted in-house. MR-10, MR-20 and MR-30 kWh options. Direct warranty, no intermediary. Also available in sodium-ion for forward-looking commercial deployments.</p>
           <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;">
@@ -280,8 +276,7 @@
           </div>
         </div>
         <div class="card reveal-up reveal-delay-1">
-          <!-- IMAGE: section-storage-aokly.jpg — Aokly product -->
-          <div class="kicker">Channel Partner</div>
+<div class="kicker">Channel Partner</div>
           <h3>Aokly LV</h3>
           <p>Proven LV LFP storage delivered through our installation partner network. 6,000+ cycle life. Compatible with all major hybrid inverters. CR manages partner onboarding, sizing support and warranty coordination.</p>
           <div style="margin-top:16px;">
@@ -289,8 +284,7 @@
           </div>
         </div>
         <div class="card reveal-up reveal-delay-2">
-          <!-- IMAGE: section-storage-zetara.jpg — Zetara container system -->
-          <div class="kicker">C&amp;I Partner</div>
+<div class="kicker">C&amp;I Partner</div>
           <h3>Zetara HV BESS</h3>
           <p>High-voltage containerised BESS for commercial and industrial sites. Pre-assembled, pre-tested, EMS-configured. Engineered for peak shaving, demand reduction and backup. Factory acceptance tested before shipment.</p>
           <div style="margin-top:16px;">
@@ -306,8 +300,7 @@
     <div class="container">
       <div class="grid-2" style="align-items:center;gap:48px;">
         <div>
-          <!-- IMAGE: section-storage-sizing.jpg — load data or monitoring screen -->
-          <img src="/assets/img/section-storage-sizing.jpg" alt="Battery storage sizing and load analysis" class="sec-img reveal-fade" loading="lazy" />
+<img src="/assets/img/section-storage-sizing.webp" alt="Battery storage sizing and load analysis" class="sec-img reveal-fade" loading="lazy" />
         </div>
         <div class="reveal-left">
           <div class="kicker">We Size Before We Specify</div>
@@ -371,10 +364,8 @@
   </footer>
 
   <script src="/assets/js/main.js"></script>
-  <script>
-  document.getElementById('year').textContent=new Date().getFullYear();
-  (function(){var sections=document.querySelectorAll('.snap-section');if(!sections.length)return;sections.forEach(function(s){if(!s.classList.contains('snap-hero'))s.classList.add('curtain');});document.body.classList.add('js-anim');var hero=document.querySelector('.snap-hero');if(hero)hero.classList.add('in-view');function getActiveSection(){var best=null,bestVisible=-1,vh=window.innerHeight;sections.forEach(function(s){var r=s.getBoundingClientRect(),visible=Math.max(0,Math.min(r.bottom,vh)-Math.max(r.top,0));if(visible>bestVisible){bestVisible=visible;best=s;}});return(bestVisible/vh>=0.35)?best:null;}function activateSection(s){if(!s)return;sections.forEach(function(sec){sec.classList.remove('in-view');});requestAnimationFrame(function(){requestAnimationFrame(function(){s.classList.add('in-view');});});}var supportsScrollEnd='onscrollend' in window;if(supportsScrollEnd){window.addEventListener('scrollend',function(){activateSection(getActiveSection());},{passive:true});}else{var st;window.addEventListener('scroll',function(){clearTimeout(st);st=setTimeout(function(){activateSection(getActiveSection());},120);},{passive:true});}var rt;window.addEventListener('scroll',function(){clearTimeout(rt);rt=setTimeout(function(){var a=getActiveSection();if(a&&!a.classList.contains('in-view'))activateSection(a);},80);},{passive:true});})();
-  </script>
   <script>(function(){var e=document.getElementById('site-email');if(e){var a=document.createElement('a');a.href=['mai','lto:mail@','charaniarenewables.com'].join('');a.textContent='mail@charaniarenewables.com';a.style.color='inherit';e.appendChild(a);}})();</script>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

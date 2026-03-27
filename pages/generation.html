@@ -153,8 +153,7 @@
   </div>
 
   <!-- HERO -->
-  <!-- IMAGE: hero-generation.jpg — Vertix wind turbine or hybrid wind+solar installation -->
-  <section class="snap-section snap-hero" data-theme="dark" style="background-image:url('/assets/img/hero-generation.jpg');">
+<section class="snap-section snap-hero" data-theme="dark" style="background-image:url('/assets/img/hero-generation.webp');">
     <div class="snap-hero__inner">
       <div class="container">
         <div class="kicker reveal-fade">Generation</div>
@@ -211,16 +210,14 @@
           <p style="line-height:1.75;color:var(--muted);margin-top:16px;">Adding wind generation through Vertix changes this equation. Wind generates when solar does not &mdash; at night, in overcast conditions and during early morning and evening hours. The two sources have naturally complementary generation profiles. Combined with battery storage to smooth supply curves and absorb excess generation, a hybrid wind-solar-BESS system delivers a higher proportion of on-site generation than solar alone &mdash; and a more bankable energy cost projection over a 10&ndash;15 year horizon.</p>
         </div>
         <div>
-          <!-- IMAGE: section-generation-case.jpg — generation profile chart or hybrid system diagram -->
-          <img src="/assets/img/section-generation-case.jpg" alt="Hybrid wind and solar generation complementary profiles" class="sec-img reveal-fade" loading="lazy" />
+<img src="/assets/img/section-generation-case.webp" alt="Hybrid wind and solar generation complementary profiles" class="sec-img reveal-fade" loading="lazy" />
         </div>
       </div>
     </div>
   </section>
 
   <!-- VERTIX -->
-  <!-- IMAGE: section-generation-vertix.jpg — Vertix VAWT installed on rooftop or industrial site -->
-  <section class="snap-section snap-img" data-theme="dark" style="background-image:url('/assets/img/hero-generation-vertix.jpg');">
+<section class="snap-section snap-img" data-theme="dark" style="background-image:url('/assets/img/hero-generation-vertix.webp');">
     <div class="img-overlay"></div>
     <div class="container">
       <div class="reveal-left">
@@ -238,8 +235,7 @@
     <div class="container">
       <div class="grid-2" style="align-items:center;gap:48px;">
         <div>
-          <!-- IMAGE: section-generation-solar.jpg — solar array on commercial or industrial site -->
-          <img src="/assets/img/section-generation-ourapproach.jpg" alt="Solar PV integration in hybrid system" class="sec-img reveal-fade" loading="lazy" />
+<img src="/assets/img/section-generation-ourapproach.webp" alt="Solar PV integration in hybrid system" class="sec-img reveal-fade" loading="lazy" />
         </div>
         <div class="reveal-left">
           <div class="kicker">Solar Systems</div>
@@ -285,9 +281,7 @@
   </section>
 
   <!-- CTA -->
-  
-  <!-- Internal links -->
-  <section class="snap-section snap-gray" data-theme="light">
+<section class="snap-section snap-gray" data-theme="light">
     <div class="container">
       <div class="kicker">Related</div>
       <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;">
@@ -350,10 +344,8 @@
   </footer>
 
   <script src="/assets/js/main.js"></script>
-  <script>
-  document.getElementById('year').textContent=new Date().getFullYear();
-  (function(){var sections=document.querySelectorAll('.snap-section');if(!sections.length)return;sections.forEach(function(s){if(!s.classList.contains('snap-hero'))s.classList.add('curtain');});document.body.classList.add('js-anim');var hero=document.querySelector('.snap-hero');if(hero)hero.classList.add('in-view');function getActiveSection(){var best=null,bestVisible=-1,vh=window.innerHeight;sections.forEach(function(s){var r=s.getBoundingClientRect(),visible=Math.max(0,Math.min(r.bottom,vh)-Math.max(r.top,0));if(visible>bestVisible){bestVisible=visible;best=s;}});return(bestVisible/vh>=0.35)?best:null;}function activateSection(s){if(!s)return;sections.forEach(function(sec){sec.classList.remove('in-view');});requestAnimationFrame(function(){requestAnimationFrame(function(){s.classList.add('in-view');});});}var supportsScrollEnd='onscrollend' in window;if(supportsScrollEnd){window.addEventListener('scrollend',function(){activateSection(getActiveSection());},{passive:true});}else{var st;window.addEventListener('scroll',function(){clearTimeout(st);st=setTimeout(function(){activateSection(getActiveSection());},120);},{passive:true});}var rt;window.addEventListener('scroll',function(){clearTimeout(rt);rt=setTimeout(function(){var a=getActiveSection();if(a&&!a.classList.contains('in-view'))activateSection(a);},80);},{passive:true});})();
-  </script>
   <script>(function(){var e=document.getElementById('site-email');if(e){var a=document.createElement('a');a.href=['mai','lto:mail@','charaniarenewables.com'].join('');a.textContent='mail@charaniarenewables.com';a.style.color='inherit';e.appendChild(a);}})();</script>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
