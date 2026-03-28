@@ -133,7 +133,62 @@
   });
 })();
 
-// ─── Email obfuscation ───────────────────────────────────────────────────────
+// ─── Number counter animation ────────────────────────────────────────────────
+(function () {
+  var done = new Set();
+
+  function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+  function animateCounter(el) {
+    if (done.has(el)) return;
+    done.add(el);
+    var raw = el.getAttribute('data-count');
+    if (!raw) return;
+    var target   = parseFloat(raw);
+    var decimals = parseInt(el.getAttribute('data-decimals') || '0');
+    var prefix   = el.getAttribute('data-prefix') || '';
+    var suffix   = el.getAttribute('data-suffix') || '';
+    var duration = 1400;
+    var start    = performance.now();
+    function tick(now) {
+      var p   = Math.min((now - start) / duration, 1);
+      var val = target * easeOut(p);
+      var str = decimals > 0 ? val.toFixed(decimals) : Math.round(val).toLocaleString();
+      el.textContent = prefix + str + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+      else el.textContent = prefix + (decimals > 0 ? target.toFixed(decimals) : target.toLocaleString()) + suffix;
+    }
+    requestAnimationFrame(tick);
+  }
+
+  var nums = document.querySelectorAll('[data-count]');
+
+  // Fire immediately for elements already visible on page load
+  nums.forEach(function (el) {
+    var rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      animateCounter(el);
+    }
+  });
+
+  if (!('IntersectionObserver' in window)) {
+    nums.forEach(function (el) { animateCounter(el); });
+    return;
+  }
+
+  var counterObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  nums.forEach(function (el) { counterObserver.observe(el); });
+})();
+
+// ─── Email// ─── Email obfuscation ───────────────────────────────────────────────────────
 (function () {
   var addr = ['mai', 'lto:mail@', 'charaniarenewables.com'].join('');
   var text = 'mail@charaniarenewables.com';

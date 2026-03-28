@@ -410,6 +410,7 @@ img{max-width:100%; display:block}
   padding:16px;
   box-shadow: 0 8px 24px rgba(12,42,82,.06);
 }
+
 .card h3{
   margin:0 0 6px;
   font-size:16px;
@@ -631,18 +632,28 @@ body { overflow-x: hidden; }
 }
 
 /* ── Cards hover ── */
-.card {
-  transition: border-left-color .15s ease, border-left-width .15s ease, box-shadow .15s ease !important;
-  border-left: 3px solid transparent;
+
+
+/* ── Stat-box card hover — navy fill, green number ── */
+.card.stat-box {
+  transition: background .22s ease, border-color .22s ease, transform .18s ease;
 }
-.card:hover {
-  border-left-color: #7FDB65 !important;
-  border-left-width: 5px !important;
-  box-shadow: 0 8px 28px rgba(12,42,82,.12) !important;
+.card.stat-box:hover {
+  background: #0C2A52;
+  border-color: #0C2A52;
+  transform: translateY(-2px);
 }
-.snap-img .card:hover,
-.snap-dark .card:hover {
-  box-shadow: 0 16px 40px rgba(0,0,0,.4) !important;
+.card.stat-box:hover .stat-box__num  { color: #7FDB65; }
+.card.stat-box:hover .stat-box__label { color: rgba(255,255,255,.65); }
+.card.stat-box:hover .stat-box__desc  { color: rgba(255,255,255,.6); }
+
+/* ── Product / nav cards — gentle lift only ── */
+.card:not(.stat-box) {
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+.card:not(.stat-box):hover {
+  box-shadow: 0 12px 32px rgba(12,42,82,.14);
+  transform: translateY(-3px);
 }
 
 /* ── Scroll progress ── */
