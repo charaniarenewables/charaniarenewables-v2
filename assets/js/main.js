@@ -133,6 +133,42 @@
   });
 })();
 
+
+// ─── Hero text reveal ───────────────────────────────────────────────────────
+// Blank hero on load, then slide entire inner content up from below
+(function () {
+  document.querySelectorAll('.snap-hero').forEach(function (hero) {
+    // Find the inner content wrapper — works for both home and inner pages
+    var inner = hero.querySelector('.snap-hero__inner, .hero-cine__inner');
+    if (!inner) return;
+
+    // Hide immediately before paint
+    inner.style.opacity = '0';
+    inner.style.transform = 'translateX(-40px)';
+    inner.style.transition = 'opacity .8s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1)';
+
+    // Also strip any reveal-* classes from direct hero children
+    // so IntersectionObserver doesn't fire them separately
+    hero.querySelectorAll('[class*="reveal-"]').forEach(function (el) {
+      el.classList.remove('reveal-left','reveal-right','reveal-up',
+        'reveal-fade','reveal-punch',
+        'reveal-delay-0','reveal-delay-1','reveal-delay-2',
+        'reveal-delay-3','reveal-delay-4');
+      el.classList.add('is-revealed'); // mark as done so observer skips
+    });
+
+    // Reveal after a short breath — feels intentional, not instant
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        setTimeout(function () {
+          inner.style.opacity = '1';
+          inner.style.transform = 'translateY(0)';
+        }, 120);
+      });
+    });
+  });
+})();
+
 // ─── Number counter animation ────────────────────────────────────────────────
 (function () {
   var done = new Set();
@@ -149,8 +185,10 @@
     var prefix   = el.getAttribute('data-prefix') || '';
     var suffix   = el.getAttribute('data-suffix') || '';
     var duration = 1400;
-    var start    = performance.now();
+    var start    = null;
+
     function tick(now) {
+      if (!start) start = now;
       var p   = Math.min((now - start) / duration, 1);
       var val = target * easeOut(p);
       var str = decimals > 0 ? val.toFixed(decimals) : Math.round(val).toLocaleString();
@@ -158,17 +196,19 @@
       if (p < 1) requestAnimationFrame(tick);
       else el.textContent = prefix + (decimals > 0 ? target.toFixed(decimals) : target.toLocaleString()) + suffix;
     }
+    // Start from zero visually
+    el.textContent = prefix + (decimals > 0 ? (0).toFixed(decimals) : '0') + suffix;
     requestAnimationFrame(tick);
   }
 
   var nums = document.querySelectorAll('[data-count]');
 
-  // Fire immediately for elements already visible on page load
+  // Blank all counter elements immediately so static text never shows
   nums.forEach(function (el) {
-    var rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight && rect.bottom > 0) {
-      animateCounter(el);
-    }
+    var prefix  = el.getAttribute('data-prefix') || '';
+    var suffix  = el.getAttribute('data-suffix') || '';
+    var decimals = parseInt(el.getAttribute('data-decimals') || '0');
+    el.textContent = prefix + (decimals > 0 ? (0).toFixed(decimals) : '0') + suffix;
   });
 
   if (!('IntersectionObserver' in window)) {
@@ -183,7 +223,7 @@
         counterObserver.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.3 });
 
   nums.forEach(function (el) { counterObserver.observe(el); });
 })();
