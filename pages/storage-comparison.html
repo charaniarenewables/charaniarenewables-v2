@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LFP Battery Storage Comparison Pakistan — LV vs HV BESS Guide | Charania Renewables</title>
+  <title>Battery Storage Comparison Pakistan — LV &amp; HV BESS | Charania Renewables</title>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GD413WV1E2"></script>
   <script>
@@ -27,9 +27,9 @@
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=689858370464044&ev=PageView&noscript=1"/></noscript>
 
   <!-- Primary SEO -->
-  <meta name="description" content="Compare all Charania Renewables battery storage systems side by side. MountRex, Aokly LV and Zetara ZBox60/100/200. LFP vs NMC chemistry, LV vs HV architecture and application selection guide for Pakistan.">
+  <meta name="description" content="Compare all Charania Renewables battery storage products — Aokly LV, MountRex, Aokly HV, Zetara ZBox60R, ZBox100-HS and ZBox200. LV vs HV specs side by side. Pakistan.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://www.charaniarenewables.com/pages/storage-comparison.html">
+  href="https://www.charaniarenewables.com/pages/storage-comparison.html">
 
   <!-- Open Graph -->
   <meta property="og:site_name" content="Charania Renewables">
@@ -125,55 +125,6 @@
       "position": 3,
       "name": "Compare",
       "item": "https://www.charaniarenewables.com/pages/storage-comparison.html"
-    }
-  ]
-}
-  </script>
-
-  <script type="application/ld+json">
-  {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the difference between LV and HV battery storage?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "LV (low voltage, 48V) systems suit residential and small commercial sites. They are compatible with standard hybrid inverters and installed by channel partners. HV (high voltage, 500V+) systems are containerised, EMS-managed and engineered for factories and large commercial buildings — typically 60 kWh to 215+ kWh."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Why does Charania Renewables only use LFP chemistry?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "LFP (Lithium Iron Phosphate) is thermally stable at Pakistan's ambient temperatures — regularly 40-45°C in summer. NMC chemistry is susceptible to thermal runaway in these conditions. LFP also delivers 3,000-6,000+ cycles at 80% DoD versus 1,000-2,000 for NMC, making it significantly better value over a 10-15 year system life."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Which battery is right for my home?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "For residential use in Pakistan, the Aokly LV 5 (5.12 kWh) or LV 10 (10.24 kWh) are the most common choices. The right size depends on your daily consumption, backup duration required and existing inverter. Charania Renewables runs a sizing calculation from your actual bill data before recommending any product."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Which battery is right for my factory?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Industrial sites typically require HV BESS — the Zetara ZBox60 (61 kWh), ZBox100-HS (102 kWh) or ZBox200 (215 kWh), depending on your peak demand and backup duration. Every HV system is preceded by a load study and financial model showing payback period before any commitment."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How does the warranty work?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "All Aokly and MountRex warranty claims are handled directly by Charania Renewables — no overseas manufacturer referral. If there is a fault within the warranty period, Charania Renewables manages it. Zetara HV BESS warranty is covered under the project contract."
-      }
     }
   ]
 }
@@ -277,119 +228,408 @@
     </div>
   </header>
 
+
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true">
-    <div class="scroll-progress__track">
-      <div class="scroll-progress__fill" id="scrollFill"></div>
-    </div>
+    <div class="scroll-progress__track"><div class="scroll-progress__fill" id="scrollFill"></div></div>
   </div>
 
-  <!-- HERO -->
-  <section class="snap-section snap-hero" data-theme="dark" style="background-image:url('/assets/img/section-renewables.webp');">
-    <div class="snap-hero__inner">
-      <div class="container">
-        <div class="kicker reveal-fade">Storage &mdash; Compare &amp; Select</div>
-        <h1 class="reveal-left">Battery Storage Comparison</h1>
-        <p class="reveal-left reveal-delay-1">LV residential systems, HV commercial BESS and our own MountRex label &mdash; side by side to help you select the right technology for your site.</p>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;" class="reveal-fade reveal-delay-2">
-          <a class="btn btn--ghost-dark" href="/pages/contact.html">Request Assessment</a>
-          <a class="btn btn--ghost-dark" href="https://wa.me/923268422718" target="_blank" rel="noopener">WhatsApp Us</a>
+
+  <style>
+    .comp-tabs { display:flex; gap:0; border-bottom:2px solid var(--border); margin-bottom:32px; }
+    .comp-tab {
+      padding:12px 24px; font-size:14px; font-weight:600; cursor:pointer;
+      border:none; background:transparent; color:var(--muted);
+      border-bottom:3px solid transparent; margin-bottom:-2px;
+      transition:color .2s, border-color .2s;
+    }
+    .comp-tab.active { color:#0C2A52; border-bottom-color:#7FDB65; }
+    .comp-tab:hover:not(.active) { color:#0C2A52; }
+    .comp-panel { display:none; }
+    .comp-panel.active { display:block; }
+    .badge-lv {
+      display:inline-block; padding:3px 10px; border-radius:20px;
+      font-size:11px; font-weight:700; letter-spacing:.05em;
+      background:#0C2A52; color:#fff; margin-bottom:8px;
+    }
+    .badge-hv {
+      display:inline-block; padding:3px 10px; border-radius:20px;
+      font-size:11px; font-weight:700; letter-spacing:.05em;
+      background:#7FDB65; color:#0C2A52; margin-bottom:8px;
+    }
+    .selector-card {
+      border:1px solid var(--border); border-radius:12px; padding:20px;
+      cursor:pointer; transition:border-color .2s, box-shadow .2s;
+    }
+    .selector-card:hover { border-color:#7FDB65; box-shadow:0 2px 12px rgba(12,42,82,.08); }
+    .selector-card.active { border-color:#7FDB65; background:rgba(127,219,101,.04); }
+    @media (max-width:768px) {
+      .comp-tab { padding:10px 14px; font-size:13px; }
+    }
+  </style>
+
+  <section class="snap-section snap-hero" data-theme="dark" style="background-image:url('/assets/img/hero-storage-default.webp');">
+    <div class="snap-hero__inner"><div class="container">
+      <div class="kicker reveal-fade">Storage &mdash; Compare &amp; Select</div>
+      <h1 class="reveal-punch">Battery Storage Comparison</h1>
+      <p class="reveal-left reveal-delay-1">All Charania Renewables storage products side by side. Select the right system for your site &mdash; from residential LV banks to large commercial containerised BESS.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;" class="reveal-fade reveal-delay-2">
+        <a class="btn btn--ghost-dark" href="/pages/contact.html">Request Assessment</a>
+        <a class="btn btn--ghost-dark" href="/pages/storage.html">&larr; All Storage</a>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="snap-section" data-theme="light">
+    <div class="container">
+      <div class="reveal-fade" style="margin-bottom:32px;">
+        <div class="kicker">Which system is right for you?</div>
+        <h2>LV or HV &mdash; Start Here</h2>
+        <p style="color:var(--muted);max-width:70ch;margin-top:8px;">Low-voltage (LV) systems run at 48&ndash;52V and connect to standard hybrid inverters. High-voltage (HV) systems run at 200V+ and are sized for commercial and industrial loads. Click to jump to the right table.</p>
+      </div>
+      <div class="grid-2" style="gap:20px;max-width:700px;">
+        <div class="selector-card reveal-up reveal-delay-0" onclick="showTab('lv');document.getElementById('compare-tables').scrollIntoView({behavior:'smooth'})">
+          <span class="badge-lv">LV &mdash; 48&ndash;52V</span>
+          <h3 style="margin:8px 0 6px;">Residential &amp; Small Commercial</h3>
+          <p style="color:var(--muted);font-size:14px;margin:0;">Aokly LV 5 / 10 / 15 and MountRex LV. Pairs with standard 48V hybrid inverters. 5&ndash;15 kWh per unit.</p>
+          <div style="margin-top:14px;font-size:13px;font-weight:600;color:#7FDB65;">View LV comparison &rarr;</div>
+        </div>
+        <div class="selector-card reveal-up reveal-delay-1" onclick="showTab('hv');document.getElementById('compare-tables').scrollIntoView({behavior:'smooth'})">
+          <span class="badge-hv">HV &mdash; 200V+</span>
+          <h3 style="margin:8px 0 6px;">Commercial &amp; Industrial</h3>
+          <p style="color:var(--muted);font-size:14px;margin:0;">Aokly All-in-One, HV Stackable, 215 kWh, Zetara ZBox60R, ZBox100-HS and ZBox200. 20&ndash;215 kWh per cabinet.</p>
+          <div style="margin-top:14px;font-size:13px;font-weight:600;color:#0C2A52;">View HV comparison &rarr;</div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="snap-section " data-theme="light">
+  <section class="snap-section snap-gray" data-theme="light" id="compare-tables">
     <div class="container">
-      <div class="reveal-fade" style="margin-bottom:32px;">
-        <div class="kicker">Comparison</div>
-        <h2>LV vs HV: Key Differences</h2>
+
+      <div class="comp-tabs">
+        <button class="comp-tab active" onclick="showTab('lv')">
+          <span class="badge-lv" style="margin:0 6px 0 0;padding:2px 8px;font-size:10px;">LV</span>
+          Residential &mdash; 4 Products
+        </button>
+        <button class="comp-tab" onclick="showTab('hv')">
+          <span class="badge-hv" style="margin:0 6px 0 0;padding:2px 8px;font-size:10px;">HV</span>
+          Commercial &amp; Industrial &mdash; 6 Products
+        </button>
       </div>
-      <div class="grid-3" style="gap:20px;">
-        <div class="card reveal-up reveal-delay-0">
-          <div class="kicker">LV Systems</div>
-          <h3>Low Voltage (48V)</h3>
-          <p>Suited to homes and small businesses. Simple installation, channel-partner supported. Aokly and MountRex labels, 5&ndash;30 kWh.</p>
-        </div>        <div class="card reveal-up reveal-delay-1">
-          <div class="kicker">HV Systems</div>
-          <h3>High Voltage (480V+)</h3>
-          <p>Suited to factories, hospitals and large buildings. Containerised, EMS-managed, 100 kWh to multi-MWh scale. Zetara platform.</p>
-        </div>        <div class="card reveal-up reveal-delay-2">
-          <div class="kicker">Hybrid Engineered</div>
-          <h3>Custom Architecture</h3>
-          <p>For sites where storage is part of a larger solar, wind and grid integration. Engineered by our HED team.</p>
+
+      <!-- LV PANEL -->
+      <div class="comp-panel active" id="panel-lv">
+        <div style="margin-bottom:20px;">
+          <div class="kicker">Low Voltage Systems</div>
+          <h2 style="margin:4px 0 8px;">Aokly LV &amp; MountRex &mdash; Side by Side</h2>
+          <p style="color:var(--muted);font-size:14px;max-width:70ch;">All four systems run at 51.2V nominal and connect to standard 48V hybrid inverters via RS485 or CAN. Choose by capacity, IP rating and whether you want an Aokly channel-partner product or the MountRex own label with direct CR warranty.</p>
+        </div>
+        
+<div style="overflow-x:auto;">
+  <table style="width:100%;border-collapse:collapse;min-width:600px;">
+    <thead>
+      <tr style="border-bottom:2px solid var(--border);">
+        <th style="padding:10px 8px;font-size:13px;font-weight:700;text-align:center;text-align:left;color:var(--muted);font-weight:500;width:28%;">Parameter</th>
+        <th style="padding:10px 8px;font-size:13px;font-weight:700;text-align:center;">
+          <div style="color:#0C2A52;">Aokly LV 5</div>
+          <div style="font-size:11px;font-weight:400;color:var(--muted);">ALFP-48100H</div>
+        </th>
+        <th style="padding:10px 8px;font-size:13px;font-weight:700;text-align:center;">
+          <div style="color:#0C2A52;">Aokly LV 10</div>
+          <div style="font-size:11px;font-weight:400;color:var(--muted);">ALFP-48200H</div>
+        </th>
+        <th style="padding:10px 8px;font-size:13px;font-weight:700;text-align:center;">
+          <div style="color:#0C2A52;">Aokly LV 15</div>
+          <div style="font-size:11px;font-weight:400;color:var(--muted);">ALFP-48300F</div>
+        </th>
+        <th style="padding:10px 8px;font-size:13px;font-weight:700;text-align:center;background:rgba(127,219,101,.08);">
+          <div style="color:#0C2A52;">MountRex LV</div>
+          <div style="font-size:11px;font-weight:400;color:var(--muted);">51.2V100Ah</div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px;font-size:13px;text-align:left;color:var(--muted);font-weight:500;">Rated Energy</td><td style="padding:9px 8px;font-size:13px;text-align:center;">5.12 kWh</td><td style="padding:9px 8px;font-size:13px;text-align:center;">10.24 kWh</td><td style="padding:9px 8px;font-size:13px;text-align:center;">15.36 kWh</td><td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">5.12 kWh</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px;font-size:13px;text-align:left;color:var(--muted);font-weight:500;">Nominal Voltage</td><td style="padding:9px 8px;font-size:13px;text-align:center;">51.2V</td><td style="padding:9px 8px;font-size:13px;text-align:center;">51.2V</td><td style="padding:9px 8px;font-size:13px;text-align:center;">51.2V</td><td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">51.2V</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px;font-size:13px;text-align:left;color:var(--muted);font-weight:500;">Capacity</td><td style="padding:9px 8px;font-size:13px;text-align:center;">100Ah</td><td style="padding:9px 8px;font-size:13px;text-align:center;">200Ah</td><td style="padding:9px 8px;font-size:13px;text-align:center;">300Ah</td><td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">100Ah</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px;font-size:13px;text-align:left;color:var(--muted);font-weight:500;">Cell Chemistry</td><td style="padding:9px 8px;font-size:13px;text-align:center;" colspan="4">LFP (Lithium Iron Phosphate)</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px;font-size:13px;text-align:left;color:var(--muted);font-weight:500;">Cycle Life</td><td style="padding:9px 8px;font-size:13px;text-align:center;" colspan="3">&ge;6,000 @ 80% DoD, 25&deg;C</td><td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">&gt;6,000 @ 80% DoD</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px;font-size:13px;text-align:left;color:var(--muted);font-weight:500;">Design Life</td><td style="padding:9px 8px;font-size:13px;text-align:center;" colspan="3">&mdash;</td><td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">&gt;15 years</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px;font-size:13px;text-align:left;color:var(--muted);font-weight:500;">Max Charge Current</td><td style="padding:9px 8px;font-size:13px;text-align:center;">100A</td><td style="padding:9px 8px;font-size:13px;text-align:center;">200A</td><td style="padding:9px 8px;font-size:13px;text-align:center;">300A</td><td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">100A</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px;font-size:13px;text-align:left;color:var(--muted);font-weight:500;">Max Discharge Current</td><td style="padding:9px 8px;font-size:13px;text-align:center;">50A</td><td style="padding:9px 8px;font-size:13px;text-align:center;">100A</td><td style="padding:9px 8px;font-size:13px;text-align:center;">150A</td><td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">100A</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px;font-size:13px;text-align:left;color:var(--muted);font-weight:500;">Charge Voltage</td><td style="padding:9px 8px;font-size:13px;text-align:center;" colspan="3">54.76V</td><td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">56.0&ndash;57.0V</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px;font-size:13px;text-align:left;color:var(--muted);font-weight:500;">Discharge Cut-off</td><td style="padding:9px 8px;font-size:13px;text-align:center;" colspan="3">43.2V</td><td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">44.8V</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px;font-size:13px;text-align:left;color:var(--muted);font-weight:500;">Charge Temp</td><td style="padding:9px 8px;font-size:13px;text-align:center;" colspan="3">0&deg;C to 55&deg;C</td><td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">0&deg;C to 50&deg;C</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px;font-size:13px;text-align:left;color:var(--muted);font-weight:500;">Discharge Temp</td><td style="padding:9px 8px;font-size:13px;text-align:center;" colspan="4">&minus;20&deg;C to 60&deg;C (Aokly) &nbsp;|&nbsp; &minus;20&deg;C to 55&deg;C (MountRex)</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px;font-size:13px;text-align:left;color:var(--muted);font-weight:500;">IP Rating</td><td style="padding:9px 8px;font-size:13px;text-align:center;">IP54</td><td style="padding:9px 8px;font-size:13px;text-align:center;">IP30</td><td style="padding:9px 8px;font-size:13px;text-align:center;">IP30</td><td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">No IP rating listed</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px;font-size:13px;text-align:left;color:var(--muted);font-weight:500;">Dimensions (mm)</td><td style="padding:9px 8px;font-size:13px;text-align:center;">442&times;600&times;170</td><td style="padding:9px 8px;font-size:13px;text-align:center;">600&times;800&times;150</td><td style="padding:9px 8px;font-size:13px;text-align:center;">811&times;450&times;260</td><td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">550&times;400&times;178</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px;font-size:13px;text-align:left;color:var(--muted);font-weight:500;">Weight</td><td style="padding:9px 8px;font-size:13px;text-align:center;">49 kg</td><td style="padding:9px 8px;font-size:13px;text-align:center;">97 kg</td><td style="padding:9px 8px;font-size:13px;text-align:center;">119 kg</td><td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">44.5 kg</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px;font-size:13px;text-align:left;color:var(--muted);font-weight:500;">Display / Comms</td><td style="padding:9px 8px;font-size:13px;text-align:center;" colspan="3">RS485 / CAN</td><td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">LCD + WiFi + RS485/CAN</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px;font-size:13px;text-align:left;color:var(--muted);font-weight:500;">Certifications</td><td style="padding:9px 8px;font-size:13px;text-align:center;" colspan="3">CE, ROHS, REACH, UN38.3, MSDS</td><td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">Zetara spec</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px;font-size:13px;text-align:left;color:var(--muted);font-weight:500;">Label</td><td style="padding:9px 8px;font-size:13px;text-align:center;" colspan="3">Aokly (channel partner)</td><td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">MountRex (CR own label)</td></tr>
+      <tr><td style="padding:9px 8px;font-size:13px;text-align:left;color:var(--muted);font-weight:500;">Warranty</td><td style="padding:9px 8px;font-size:13px;text-align:center;" colspan="3">7 years via CR</td><td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">7 years via CR</td></tr>
+    </tbody>
+  </table>
+</div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;">
+          <a href="/pages/storage-aokly-lv5.html" class="btn btn--ghost" style="font-size:13px;">Aokly LV 5 &rarr;</a>
+          <a href="/pages/storage-aokly-lv10.html" class="btn btn--ghost" style="font-size:13px;">Aokly LV 10 &rarr;</a>
+          <a href="/pages/storage-aokly-lv15.html" class="btn btn--ghost" style="font-size:13px;">Aokly LV 15 &rarr;</a>
+          <a href="/pages/storage-mountrex.html" class="btn btn--ghost" style="font-size:13px;">MountRex LV &rarr;</a>
+        </div>
+      </div>
+
+      <!-- HV PANEL -->
+      <div class="comp-panel" id="panel-hv">
+        <div style="margin-bottom:20px;">
+          <div class="kicker">High Voltage Systems</div>
+          <h2 style="margin:4px 0 8px;">Aokly HV &amp; Zetara &mdash; Side by Side</h2>
+          <p style="color:var(--muted);font-size:14px;max-width:70ch;">Six HV systems covering 20 kWh to 215 kWh per cabinet. Aokly systems are modular and scalable. Zetara systems are engineered C&amp;I units with HVAC cooling and integrated fire suppression. All LFP chemistry.</p>
+        </div>
+        
+<div style="overflow-x:auto;">
+  <table style="width:100%;border-collapse:collapse;min-width:900px;">
+    <thead>
+      <tr style="border-bottom:2px solid var(--border);">
+        <th style="padding:10px 8px;font-size:13px;font-weight:700;text-align:center;text-align:left;color:var(--muted);font-weight:500;width:20%;">Parameter</th>
+        <th style="padding:10px 8px;font-size:13px;font-weight:700;text-align:center;background:rgba(12,42,82,.03);">
+          <div style="color:#0C2A52;font-size:11px;">AOKLY</div>
+          <div style="color:#0C2A52;">All-in-One</div>
+          <div style="font-size:10px;font-weight:400;color:var(--muted);">LV-AST-3H12K5.32Aa</div>
+        </th>
+        <th style="padding:10px 8px;font-size:13px;font-weight:700;text-align:center;background:rgba(12,42,82,.03);">
+          <div style="color:#0C2A52;font-size:11px;">AOKLY</div>
+          <div style="color:#0C2A52;">HV Stackable</div>
+          <div style="font-size:10px;font-weight:400;color:var(--muted);">ALFP-410100</div>
+        </th>
+        <th style="padding:10px 8px;font-size:13px;font-weight:700;text-align:center;background:rgba(12,42,82,.03);">
+          <div style="color:#0C2A52;font-size:11px;">AOKLY</div>
+          <div style="color:#0C2A52;">215 kWh</div>
+          <div style="font-size:10px;font-weight:400;color:var(--muted);">Container Series</div>
+        </th>
+        <th style="padding:10px 8px;font-size:13px;font-weight:700;text-align:center;background:rgba(127,219,101,.08);">
+          <div style="color:#0C2A52;font-size:11px;">ZETARA</div>
+          <div style="color:#0C2A52;">ZBox60R</div>
+          <div style="font-size:10px;font-weight:400;color:var(--muted);">614.4V max</div>
+        </th>
+        <th style="padding:10px 8px;font-size:13px;font-weight:700;text-align:center;background:rgba(127,219,101,.08);">
+          <div style="color:#0C2A52;font-size:11px;">ZETARA</div>
+          <div style="color:#0C2A52;">ZBox100-HS</div>
+          <div style="font-size:10px;font-weight:400;color:var(--muted);">Magic-ZBox100-HS</div>
+        </th>
+        <th style="padding:10px 8px;font-size:13px;font-weight:700;text-align:center;background:rgba(127,219,101,.08);">
+          <div style="color:#0C2A52;font-size:11px;">ZETARA</div>
+          <div style="color:#0C2A52;">ZBox200</div>
+          <div style="font-size:10px;font-weight:400;color:var(--muted);">ZHES51280SN</div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px;font-size:13px;text-align:left;color:var(--muted);font-weight:500;">System Type</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">All-in-One + inverter</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">HV battery only</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">Containerised C&amp;I</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">Modular rack</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">Hybrid BESS</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">Containerised C&amp;I</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px;font-size:13px;text-align:left;color:var(--muted);font-weight:500;">Rated Energy</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">10.24&ndash;20.48 kWh</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">40.96 kWh</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">215 kWh</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">25.6&ndash;61.44 kWh</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">102.4 kWh</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">215.04 kWh</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px;font-size:13px;text-align:left;color:var(--muted);font-weight:500;">DC Bus Voltage</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">204.8&ndash;409.6V</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">409.6V</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">768V</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">200&ndash;700V</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">512V</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">768V</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px;font-size:13px;text-align:left;color:var(--muted);font-weight:500;">Rated AC Power</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">12 kVA</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">&mdash;</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">100 kW</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">&mdash;</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">50 kW</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">&mdash;</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px;font-size:13px;text-align:left;color:var(--muted);font-weight:500;">Inverter Included</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">Yes &mdash; integrated</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">No</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">No</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">No</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">Yes &mdash; hybrid</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">No</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px;font-size:13px;text-align:left;color:var(--muted);font-weight:500;">PV Input</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">2 MPPT, 1000V max</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">&mdash;</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">&mdash;</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">&mdash;</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">4 MPPT, 75 kW</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">&mdash;</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px;font-size:13px;text-align:left;color:var(--muted);font-weight:500;">EPS / Backup</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">&lt;20ms switchover</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">&mdash;</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">&mdash;</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">&mdash;</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">Yes</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">&mdash;</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px;font-size:13px;text-align:left;color:var(--muted);font-weight:500;">Cell Chemistry</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);" colspan="6">LFP (Lithium Iron Phosphate) across all systems</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px;font-size:13px;text-align:left;color:var(--muted);font-weight:500;">IP Rating</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">IP65</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">IP65</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">IP54 (cabinet)</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">IP20</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">IP55 / IP65</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">IP55</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px;font-size:13px;text-align:left;color:var(--muted);font-weight:500;">Cooling</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">Natural</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">Natural</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">Active (fan)</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">Natural</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">HVAC</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">HVAC</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px;font-size:13px;text-align:left;color:var(--muted);font-weight:500;">Fire Suppression</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">&mdash;</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">&mdash;</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">Integrated</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">&mdash;</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">Integrated</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">Integrated</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px;font-size:13px;text-align:left;color:var(--muted);font-weight:500;">Max Parallel</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">&mdash;</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">&mdash;</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">&mdash;</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">3 cabinets (200 kWh)</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">&mdash;</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">10 cabinets (2.15 MWh)</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px;font-size:13px;text-align:left;color:var(--muted);font-weight:500;">Weight</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">180&ndash;285 kg</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">405 kg</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">2,350 kg</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">550 kg</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">1,220 kg</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">max 2,150 kg</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px;font-size:13px;text-align:left;color:var(--muted);font-weight:500;">Best For</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">Residential all-in-one</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">C&amp;I with own inverter</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);">Large industrial</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">Small commercial rack</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">C&amp;I hybrid system</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);">Large industrial</td>
+      </tr>
+      <tr><td style="padding:9px 8px;font-size:13px;text-align:left;color:var(--muted);font-weight:500;">Warranty</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(12,42,82,.03);" colspan="3">7 years via CR</td>
+        <td style="padding:9px 8px;font-size:13px;text-align:center;background:rgba(127,219,101,.08);" colspan="3">Zetara warranty via CR</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;">
+          <a href="/pages/storage-aokly-stackable.html" class="btn btn--ghost" style="font-size:13px;">Aokly All-in-One &rarr;</a>
+          <a href="/pages/storage-aokly-rack.html" class="btn btn--ghost" style="font-size:13px;">Aokly HV Stackable &rarr;</a>
+          <a href="/pages/storage-aokly-215k.html" class="btn btn--ghost" style="font-size:13px;">Aokly 215 kWh &rarr;</a>
+          <a href="/pages/storage-zetara-zbox60.html" class="btn btn--ghost" style="font-size:13px;">Zetara ZBox60R &rarr;</a>
+          <a href="/pages/storage-zetara-zbox100.html" class="btn btn--ghost" style="font-size:13px;">Zetara ZBox100-HS &rarr;</a>
+          <a href="/pages/storage-zetara-zbox200.html" class="btn btn--ghost" style="font-size:13px;">Zetara ZBox200 &rarr;</a>
+        </div>
+      </div>
+
+      <script>
+      function showTab(tab) {
+        document.querySelectorAll('.comp-tab').forEach(function(t) { t.classList.remove('active'); });
+        document.querySelectorAll('.comp-panel').forEach(function(p) { p.classList.remove('active'); });
+        document.getElementById('panel-' + tab).classList.add('active');
+        var tabs = document.querySelectorAll('.comp-tab');
+        if (tab === 'lv') tabs[0].classList.add('active');
+        else tabs[1].classList.add('active');
+      }
+      </script>
+
+    </div>
+  </section>
+
+  <section class="snap-section" data-theme="light">
+    <div class="container">
+      <div class="grid-2" style="gap:48px;">
+        <div class="reveal-left">
+          <div class="kicker">LV vs HV &mdash; Quick Guide</div>
+          <h2>Which Architecture?</h2>
+          <p style="color:var(--muted);line-height:1.75;margin-bottom:16px;">The choice between LV and HV is usually determined by your inverter and load size — not by brand preference.</p>
+          <table style="width:100%;border-collapse:collapse;font-size:14px;">
+            <tr style="border-bottom:1px solid var(--border);">
+              <th style="text-align:left;padding:8px 0;color:var(--muted);font-weight:500;width:40%;">Scenario</th>
+              <th style="text-align:center;padding:8px 4px;color:var(--muted);font-weight:500;">LV</th>
+              <th style="text-align:center;padding:8px 4px;color:var(--muted);font-weight:500;">HV</th>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 0;">Residential home</td><td style="text-align:center;color:#7FDB65;font-weight:700;">&#10003;</td><td style="text-align:center;color:var(--muted);">&mdash;</td></tr>
+            <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 0;">Small office / shop (under 50 kW)</td><td style="text-align:center;color:#7FDB65;font-weight:700;">&#10003;</td><td style="text-align:center;color:#7FDB65;font-weight:700;">&#10003;</td></tr>
+            <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 0;">Factory / hospital (50 kW+)</td><td style="text-align:center;color:var(--muted);">&mdash;</td><td style="text-align:center;color:#7FDB65;font-weight:700;">&#10003;</td></tr>
+            <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 0;">Existing 48V hybrid inverter</td><td style="text-align:center;color:#7FDB65;font-weight:700;">&#10003;</td><td style="text-align:center;color:var(--muted);">&mdash;</td></tr>
+            <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 0;">Need integrated inverter in battery</td><td style="text-align:center;color:var(--muted);">&mdash;</td><td style="text-align:center;color:#7FDB65;font-weight:700;">&#10003;</td></tr>
+            <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 0;">Outdoor / weatherproof required</td><td style="text-align:center;color:var(--muted);">&mdash;</td><td style="text-align:center;color:#7FDB65;font-weight:700;">&#10003;</td></tr>
+            <tr><td style="padding:8px 0;">Budget-conscious residential</td><td style="text-align:center;color:#7FDB65;font-weight:700;">&#10003;</td><td style="text-align:center;color:var(--muted);">&mdash;</td></tr>
+          </table>
+        </div>
+        <div class="reveal-fade reveal-delay-1">
+          <div class="kicker">Our Products</div>
+          <h2>At a Glance</h2>
+          <div style="display:flex;flex-direction:column;gap:12px;margin-top:4px;">
+            <div style="padding:16px;border:1px solid var(--border);border-radius:10px;">
+              <div class="kicker" style="margin-bottom:4px;">LV Residential</div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;">
+                <a href="/pages/storage-aokly-lv5.html" style="font-size:12px;padding:4px 10px;border:1px solid var(--border);border-radius:6px;text-decoration:none;color:var(--color-text);">Aokly LV 5 — 5.12 kWh</a>
+                <a href="/pages/storage-aokly-lv10.html" style="font-size:12px;padding:4px 10px;border:1px solid var(--border);border-radius:6px;text-decoration:none;color:var(--color-text);">Aokly LV 10 — 10.24 kWh</a>
+                <a href="/pages/storage-aokly-lv15.html" style="font-size:12px;padding:4px 10px;border:1px solid var(--border);border-radius:6px;text-decoration:none;color:var(--color-text);">Aokly LV 15 — 15.36 kWh</a>
+                <a href="/pages/storage-mountrex.html" style="font-size:12px;padding:4px 10px;border:1px solid var(--border);border-radius:6px;text-decoration:none;color:var(--color-text);">MountRex — 5.12 kWh</a>
+              </div>
+            </div>
+            <div style="padding:16px;border:1px solid var(--border);border-radius:10px;">
+              <div class="kicker" style="margin-bottom:4px;">HV Aokly</div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;">
+                <a href="/pages/storage-aokly-stackable.html" style="font-size:12px;padding:4px 10px;border:1px solid var(--border);border-radius:6px;text-decoration:none;color:var(--color-text);">All-in-One — 10&ndash;20 kWh</a>
+                <a href="/pages/storage-aokly-rack.html" style="font-size:12px;padding:4px 10px;border:1px solid var(--border);border-radius:6px;text-decoration:none;color:var(--color-text);">HV Stackable — 40.96 kWh</a>
+                <a href="/pages/storage-aokly-215k.html" style="font-size:12px;padding:4px 10px;border:1px solid var(--border);border-radius:6px;text-decoration:none;color:var(--color-text);">Container — 215 kWh</a>
+              </div>
+            </div>
+            <div style="padding:16px;border:1px solid var(--border);border-radius:10px;">
+              <div class="kicker" style="margin-bottom:4px;">HV Zetara</div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;">
+                <a href="/pages/storage-zetara-zbox60.html" style="font-size:12px;padding:4px 10px;border:1px solid var(--border);border-radius:6px;text-decoration:none;color:var(--color-text);">ZBox60R — 25&ndash;61 kWh</a>
+                <a href="/pages/storage-zetara-zbox100.html" style="font-size:12px;padding:4px 10px;border:1px solid var(--border);border-radius:6px;text-decoration:none;color:var(--color-text);">ZBox100-HS — 102 kWh</a>
+                <a href="/pages/storage-zetara-zbox200.html" style="font-size:12px;padding:4px 10px;border:1px solid var(--border);border-radius:6px;text-decoration:none;color:var(--color-text);">ZBox200 — 215 kWh</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
-  <section class="snap-section " data-theme="light">
-    <div class="container">
-      <div class="grid-2" style="align-items:center;gap:48px;">
-              <div class="reveal-left">
-        <div class="kicker">Selection Guide</div>
-        <h2>Selecting the Right System</h2>
-        <p style="line-height:1.75;color:var(--muted);">The right battery system depends on your daily consumption, backup duration, peak demand, available space and budget. Our engineers run a load study before recommending any product. LV systems suit residential and small commercial loads; HV containerised BESS suit facilities with peak demand charges or high availability requirements.</p>
-      </div>
-        <div><img src="/assets/img/hero-storage-aokly.webp" alt="Selecting the Right System" class="sec-img reveal-fade" loading="lazy" /></div>
-      </div>
-    </div>
-  </section>
-<section class="snap-section snap-gray" data-theme="light">
-    <div class="container">
-      <div class="reveal-left">
-        <div class="kicker">Battery Chemistry</div>
-        <h2>Chemistry: LFP vs NMC</h2>
-        <p style="color:var(--muted);max-width:70ch;margin-bottom:20px;">Both Aokly and MountRex use Lithium Iron Phosphate (LFP) chemistry. Here is why that matters.</p>
-        <ul style="padding-left:20px;color:var(--muted);line-height:1.9;"><li style='margin-bottom:10px;'>LFP is thermally stable &mdash; far lower risk of thermal runaway compared to NMC.</li><li style='margin-bottom:10px;'>LFP delivers 3000&ndash;6000+ cycles at 80% DoD vs 1000&ndash;2000 for NMC.</li><li style='margin-bottom:10px;'>Energy density is lower than NMC but fully acceptable for stationary storage.</li><li style='margin-bottom:10px;'>LFP is better suited to Pakistan&rsquo;s ambient temperatures and grid cycling patterns.</li></ul>
-      </div>
-    </div>
-  </section>
+
   <section class="snap-section snap-dark" data-theme="dark">
-    <div class="container">
-      <div class="reveal-fade" style="margin-bottom:32px;">
-        <div class="kicker">Use Cases</div>
-        <h2>Applications by System</h2>
+    <div class="container"><div class="reveal-fade">
+      <div class="kicker">Not Sure?</div>
+      <h2 style="color:#fff;margin:10px 0 16px;">Let Our Engineers Size It</h2>
+      <p style="color:rgba(255,255,255,.78);max-width:58ch;margin:0 0 24px;">Share your utility bill, load profile and site details &mdash; we will recommend the right system, size it correctly and connect you with the right installation channel. No obligation.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a class="btn btn--ghost-dark" href="/pages/contact.html">Request Assessment</a>
+        <a class="btn btn--ghost-dark" href="https://wa.me/923268422718">WhatsApp Us</a>
       </div>
-      <div class="grid-3" style="gap:20px;">
-        <div class="card reveal-up reveal-delay-0">
-          <div class="kicker">Residential Backup</div>
-          <h3>Home &amp; Small Business</h3>
-          <p>Daily solar charge/discharge cycling. Overnight backup during grid outages. 5&ndash;20 kWh range.</p>
-        </div>        <div class="card reveal-up reveal-delay-1">
-          <div class="kicker">Peak Shaving</div>
-          <h3>Commercial &amp; Industrial</h3>
-          <p>Discharge during peak tariff hours to reduce demand charges. 100 kWh to multi-MWh.</p>
-        </div>        <div class="card reveal-up reveal-delay-2">
-          <div class="kicker">Grid Support</div>
-          <h3>Utility &amp; IPP</h3>
-          <p>Frequency regulation, spinning reserve and load shifting at grid edge. Zetara platform.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-<section class="snap-section snap-gray" data-theme="light">
-    <div class="container">
-      <div class="kicker">Related</div>
-      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;">
-        <a href="/pages/solutions-peak-shaving.html" class="btn btn--ghost" style="font-size:13px;">Peak Shaving Guide &rarr;</a>
-        <a href="/pages/solutions-solar-battery.html" class="btn btn--ghost" style="font-size:13px;">Solar Battery Guide &rarr;</a>
-        <a href="/pages/storage-mountrex.html" class="btn btn--ghost" style="font-size:13px;">MountRex LV &rarr;</a>
-        <a href="/pages/storage-aokly.html" class="btn btn--ghost" style="font-size:13px;">Aokly LV Range &rarr;</a>
-        <a href="/pages/storage-zetara.html" class="btn btn--ghost" style="font-size:13px;">Zetara HV BESS &rarr;</a>
-      </div>
-    </div>
-  </section>
-<section class="snap-section snap-dark" data-theme="dark">
-    <div class="container">
-      <div class="reveal-fade">
-        <div class="kicker">Get Started</div>
-        <h2 style="color:#fff;margin:12px 0 16px;">Not Sure Which System?</h2>
-        <p style="color:rgba(255,255,255,.78);max-width:58ch;margin:0 0 28px;">Our engineers will run a free load analysis and recommend the right system for your site, load profile and budget.</p>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;">
-          <a class="btn btn--ghost-dark" href="/pages/contact.html">Request Assessment</a>
-          <a class="btn btn--ghost-dark" href="https://wa.me/923268422718" target="_blank" rel="noopener">WhatsApp Us</a>
-        </div>
-      </div>
-    </div>
+    </div></div>
   </section>
 
   <footer class="footer">
@@ -398,11 +638,7 @@
         <div>
           <h4>Charania Renewables</h4>
           <p class="small">Hybrid energy integrator delivering engineered storage, generation, structures and hybrid system design.</p>
-          <p class="small" style="margin-top:10px;">
-            <b>Phone:</b> +92 21-35635067<br/>
-            <b>WhatsApp:</b> +92-326-8422718<br/>
-            <b>Email:</b> <span id="site-email" style="color:inherit;"></span>
-          </p>
+          <p class="small" style="margin-top:10px;"><b>Phone:</b> +92 21-35635067<br/><b>WhatsApp:</b> +92-326-8422718<br/><b>Email:</b> <span id="site-email" style="color:inherit;"></span></p>
         </div>
         <div>
                               <h4>Quick links</h4>
@@ -422,9 +658,7 @@
         <div>
           <h4>Karachi</h4>
           <p class="small">Suite 1803, 18th Floor Sumya Sky View,<br/>17 Dr Ziauddin Ahmed Road, Civil Lines,<br/>Karachi, 75530 Pakistan</p>
-          <p class="small" style="margin-top:10px;">
-            <a class="btn btn--primary btn--footer-cta" href="/pages/contact.html" style="padding:10px 18px;">Request a meeting<i class="btn-arrow">&nbsp;&rarr;</i></a>
-          </p>
+          <p class="small" style="margin-top:10px;"><a class="btn btn--primary btn--footer-cta" href="/pages/contact.html" style="padding:10px 18px;">Request a meeting<i class="btn-arrow">&nbsp;&rarr;</i></a></p>
         </div>
       </div>
       <div class="footer__bottom">
@@ -434,7 +668,6 @@
     </div>
   </footer>
 
-  
   <script src="/assets/js/main.js"></script>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
