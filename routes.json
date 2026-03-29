@@ -4,28 +4,78 @@
     "file": "index.html"
   },
   "storage": {
-    "slug": "/storage",
+    "slug": "/pages/storage",
+    "file": "pages/storage.html",
     "brand": "MountRex",
     "children": [
-      {
-        "title": "Aokly × Charania Renewables (LV)",
-        "slug": "/pages/storage-aokly",
-        "file": "pages/storage-aokly.html"
-      },
       {
         "title": "MountRex (LV)",
         "slug": "/pages/storage-mountrex",
         "file": "pages/storage-mountrex.html"
       },
       {
-        "title": "zetara × Charania Renewables (HV)",
+        "title": "Aokly × Charania Renewables (LV)",
+        "slug": "/pages/storage-aokly",
+        "file": "pages/storage-aokly.html",
+        "children": [
+          {
+            "title": "Aokly 5 kWh",
+            "slug": "/pages/storage-aokly-lv5",
+            "file": "pages/storage-aokly-lv5.html"
+          },
+          {
+            "title": "Aokly 10 kWh",
+            "slug": "/pages/storage-aokly-lv10",
+            "file": "pages/storage-aokly-lv10.html"
+          },
+          {
+            "title": "Aokly 15 kWh",
+            "slug": "/pages/storage-aokly-lv15",
+            "file": "pages/storage-aokly-lv15.html"
+          },
+          {
+            "title": "Aokly All-in-One Stackable",
+            "slug": "/pages/storage-aokly-stackable",
+            "file": "pages/storage-aokly-stackable.html"
+          },
+          {
+            "title": "Aokly HV Rack",
+            "slug": "/pages/storage-aokly-rack",
+            "file": "pages/storage-aokly-rack.html"
+          },
+          {
+            "title": "Aokly 215 kWh Container",
+            "slug": "/pages/storage-aokly-215k",
+            "file": "pages/storage-aokly-215k.html"
+          }
+        ]
+      },
+      {
+        "title": "Zetara × Charania Renewables (HV)",
         "slug": "/pages/storage-zetara",
-        "file": "pages/storage-zetara.html"
+        "file": "pages/storage-zetara.html",
+        "children": [
+          {
+            "title": "Zetara ZBox60R",
+            "slug": "/pages/storage-zetara-zbox60",
+            "file": "pages/storage-zetara-zbox60.html"
+          },
+          {
+            "title": "Zetara ZBox100-HS",
+            "slug": "/pages/storage-zetara-zbox100",
+            "file": "pages/storage-zetara-zbox100.html"
+          },
+          {
+            "title": "Zetara ZBox200",
+            "slug": "/pages/storage-zetara-zbox200",
+            "file": "pages/storage-zetara-zbox200.html"
+          }
+        ]
       },
       {
         "title": "MountRex Sodium",
-        "slug": "/storage/mountrex-sodium",
-        "file": "storage/mountrex-sodium.html",
+        "slug": "/pages/storage-sodium",
+        "file": "pages/storage-sodium.html",
         "status": "coming-soon"
       },
       {
@@ -36,57 +86,88 @@
     ]
   },
   "generation": {
-    "slug": "/generation",
+    "slug": "/pages/generation",
+    "file": "pages/generation.html",
     "children": [
       {
         "title": "Vertix Wind Systems",
         "slug": "/pages/generation-vertix",
-        "file": "pages/generation-vertix.html"
+        "file": "pages/generation-vertix.html",
+        "brand": "Vertix",
+        "children": [
+          {
+            "title": "Wind System Guide",
+            "slug": "/pages/generation-vertix-system-guide",
+            "file": "pages/generation-vertix-system-guide.html"
+          },
+          {
+            "title": "Wind Turbine Comparison",
+            "slug": "/pages/generation-vertix-comparison",
+            "file": "pages/generation-vertix-comparison.html"
+          },
+          {
+            "title": "GV-3KW VAWT",
+            "slug": "/pages/generation-vertix-gv3k",
+            "file": "pages/generation-vertix-gv3k.html"
+          },
+          {
+            "title": "GVH-5KW VAWT",
+            "slug": "/pages/generation-vertix-gv5k",
+            "file": "pages/generation-vertix-gv5k.html"
+          },
+          {
+            "title": "H-Type Turbine",
+            "slug": "/pages/generation-vertix-htype",
+            "file": "pages/generation-vertix-htype.html"
+          },
+          {
+            "title": "M-Type Turbine",
+            "slug": "/pages/generation-vertix-mtype",
+            "file": "pages/generation-vertix-mtype.html"
+          },
+          {
+            "title": "Q-Type Turbine",
+            "slug": "/pages/generation-vertix-qtype",
+            "file": "pages/generation-vertix-qtype.html"
+          }
+        ]
       },
       {
         "title": "Solar Systems",
         "slug": "/pages/generation-solar",
-        "file": "pages/generation-solar.html",
-        "sections": [
-          "Solar Overview",
-          "Solar + Hybrid Integration",
-          "Solar + BESS Combo"
-        ]
+        "file": "pages/generation-solar.html"
       }
     ]
   },
   "structures": {
-    "slug": "/structures",
+    "slug": "/pages/structures-lmaxx",
+    "file": "pages/structures-lmaxx.html",
     "brand": "Lmaxx",
     "children": [
       {
-        "title": "Lmaxx Overview",
-        "slug": "/pages/structures-lmaxx",
-        "file": "pages/structures-lmaxx.html"
+        "title": "Lmaxx Base",
+        "slug": "/pages/structures-base",
+        "file": "pages/structures-base.html"
       },
       {
-        "title": "Rooftop Mounting",
-        "slug": "/pages/structures-rooftop",
-        "file": "pages/structures-rooftop.html"
+        "title": "Lmaxx Elevate",
+        "slug": "/pages/structures-elevate",
+        "file": "pages/structures-elevate.html"
       },
       {
-        "title": "Ground Mounting",
-        "slug": "/pages/structures-ground",
-        "file": "pages/structures-ground.html"
-      },
-      {
-        "title": "Custom / Industrial",
-        "slug": "/pages/structures-custom",
-        "file": "pages/structures-custom.html"
+        "title": "Lmaxx Span",
+        "slug": "/pages/structures-span",
+        "file": "pages/structures-span.html"
       }
     ]
   },
   "solutions": {
-    "slug": "/solutions",
-    "brand": "HDE",
+    "slug": "/pages/solutions",
+    "file": "pages/solutions.html",
+    "brand": "HED",
     "children": [
       {
-        "title": "Hybrid Design & Engineering (HDE)",
+        "title": "HED — Hybrid Engineering & Design",
         "slug": "/pages/solutions-hybrid-engineering",
         "file": "pages/solutions-hybrid-engineering.html"
       },
@@ -96,30 +177,26 @@
         "file": "pages/solutions-industrial.html"
       },
       {
-        "title": "Hybrid Systems",
-        "slug": "/pages/solutions-hybrid-systems",
-        "file": "pages/solutions-hybrid-systems.html"
+        "title": "Peak Shaving & MDI Reduction",
+        "slug": "/pages/solutions-peak-shaving",
+        "file": "pages/solutions-peak-shaving.html"
       },
       {
-        "title": "Peak Shaving & Backup",
-        "slug": "/pages/solutions-peakshaving",
-        "file": "pages/solutions-peakshaving.html"
+        "title": "Load Shedding Solutions",
+        "slug": "/pages/solutions-load-shedding",
+        "file": "pages/solutions-load-shedding.html"
+      },
+      {
+        "title": "Solar Battery Guide",
+        "slug": "/pages/solutions-solar-battery",
+        "file": "pages/solutions-solar-battery.html"
       }
     ]
   },
   "about": {
-    "slug": "/about",
+    "slug": "/pages/about-who",
+    "file": "pages/about-who.html",
     "children": [
-      {
-        "title": "Who We Are",
-        "slug": "/pages/about-who",
-        "file": "pages/about-who.html"
-      },
-      {
-        "title": "Charania Group / Legacy",
-        "slug": "/pages/about-group",
-        "file": "pages/about-group.html"
-      },
       {
         "title": "Partners",
         "slug": "/pages/about-partners",

@@ -4,261 +4,289 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
+  <!-- HOME -->
   <url>
     <loc>https://www.charaniarenewables.com/</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
+  <!-- STORAGE -->
   <url>
     <loc>https://www.charaniarenewables.com/pages/storage.html</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://www.charaniarenewables.com/pages/storage-comparison.html</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://www.charaniarenewables.com/pages/storage-mountrex.html</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.charaniarenewables.com/pages/storage-aokly.html</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.charaniarenewables.com/pages/storage-aokly-lv5.html</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://www.charaniarenewables.com/pages/storage-aokly-lv10.html</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://www.charaniarenewables.com/pages/storage-aokly-lv15.html</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://www.charaniarenewables.com/pages/storage-aokly-stackable.html</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://www.charaniarenewables.com/pages/storage-aokly-rack.html</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://www.charaniarenewables.com/pages/storage-aokly-215k.html</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://www.charaniarenewables.com/pages/storage-zetara.html</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.charaniarenewables.com/pages/storage-zetara-zbox60.html</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://www.charaniarenewables.com/pages/storage-zetara-zbox100.html</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.charaniarenewables.com/pages/storage-zetara-zbox200.html</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://www.charaniarenewables.com/pages/storage-sodium.html</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
+  <!-- GENERATION -->
   <url>
     <loc>https://www.charaniarenewables.com/pages/generation.html</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.charaniarenewables.com/pages/generation-vertix.html</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
+    <loc>https://www.charaniarenewables.com/pages/generation-vertix-system-guide.html</loc>
+    <lastmod>2026-03-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.charaniarenewables.com/pages/generation-vertix-comparison.html</loc>
+    <lastmod>2026-03-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
     <loc>https://www.charaniarenewables.com/pages/generation-vertix-gv3k.html</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://www.charaniarenewables.com/pages/generation-vertix-gv5k.html</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
+    <loc>https://www.charaniarenewables.com/pages/generation-vertix-htype.html</loc>
+    <lastmod>2026-03-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
     <loc>https://www.charaniarenewables.com/pages/generation-vertix-mtype.html</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://www.charaniarenewables.com/pages/generation-vertix-qtype.html</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://www.charaniarenewables.com/pages/generation-solar.html</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
+  <!-- STRUCTURES -->
   <url>
     <loc>https://www.charaniarenewables.com/pages/structures-lmaxx.html</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://www.charaniarenewables.com/pages/structures-base.html</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://www.charaniarenewables.com/pages/structures-elevate.html</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://www.charaniarenewables.com/pages/structures-span.html</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
+  <!-- SOLUTIONS -->
   <url>
     <loc>https://www.charaniarenewables.com/pages/solutions.html</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://www.charaniarenewables.com/pages/solutions-hybrid-engineering.html</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.charaniarenewables.com/pages/solutions-industrial.html</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://www.charaniarenewables.com/pages/solutions-peak-shaving.html</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://www.charaniarenewables.com/pages/solutions-load-shedding.html</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://www.charaniarenewables.com/pages/solutions-solar-battery.html</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
+  <!-- ABOUT -->
   <url>
     <loc>https://www.charaniarenewables.com/pages/about-who.html</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://www.charaniarenewables.com/pages/about-partners.html</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://www.charaniarenewables.com/pages/about-quality.html</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
+  <!-- CONTACT -->
   <url>
     <loc>https://www.charaniarenewables.com/pages/contact.html</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
