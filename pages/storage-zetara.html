@@ -132,105 +132,7 @@
 </head>
 <body class="is-inner">
 
-  <header class="site-header" id="siteHeader">
-    <div class="site-header__inner">
-      <a class="brand" href="/index.html" aria-label="Charania Renewables Home">
-        <img class="brand-logo brand-logo--color" src="/assets/img/logo-cr-color.png" alt="Charania Renewables" />
-        <img class="brand-logo brand-logo--white" src="/assets/img/logo-cr-white.png" alt="Charania Renewables" />
-      </a>
-      <nav class="main-nav" aria-label="Primary">
-        <div class="nav-item has-dd">
-          <a href="/pages/storage.html" class="nav-link" aria-haspopup="true">Storage</a>
-          <div class="dropdown"><div class="dropdown__col">
-            <a href="/pages/storage-mountrex.html">MountRex (LV)</a>
-            <a href="/pages/storage-aokly.html">Aokly &times; Charania Renewables (LV)</a>
-            <a href="/pages/storage-zetara-zbox60.html">Zetara &times; Charania Renewables (HV)</a>
-            <a href="/pages/storage-sodium.html">MountRex Sodium</a>
-            <a href="/pages/storage-comparison.html">Comparison &amp; Applications</a>
-          </div></div>
-        </div>
-        <div class="nav-item has-dd">
-          <a href="/pages/generation.html" class="nav-link" aria-haspopup="true">Generation</a>
-          <div class="dropdown"><div class="dropdown__col">
-            <a href="/pages/generation-vertix.html">Vertix</a>
-            <a href="/pages/generation-vertix-system-guide.html">Wind System Guide</a>
-            <a href="/pages/generation-vertix-comparison.html">Wind Turbine Comparison</a>
-            <a href="/pages/generation-solar.html">Solar Systems</a>
-          </div></div>
-        </div>
-        <div class="nav-item has-dd">
-          <a href="/pages/structures-lmaxx.html" class="nav-link" aria-haspopup="true">Structures</a>
-          <div class="dropdown"><div class="dropdown__col">
-            <a href="/pages/structures-base.html">Lmaxx Base</a>
-            <a href="/pages/structures-elevate.html">Lmaxx Elevate</a>
-            <a href="/pages/structures-span.html">Lmaxx Span</a>
-          </div></div>
-        </div>
-        <div class="nav-item has-dd">
-          <a href="/pages/solutions.html" class="nav-link" aria-haspopup="true">Solutions</a>
-          <div class="dropdown"><div class="dropdown__col">
-            <a href="/pages/solutions-hybrid-engineering.html">HED &mdash; Hybrid Engineering &amp; Design</a>
-            <a href="/pages/solutions-industrial.html">Industrial Energy Solutions</a>
-            <a href="/pages/solutions-peak-shaving.html">Peak Shaving &amp; MDI Reduction</a>
-            <a href="/pages/solutions-load-shedding.html">Load Shedding Solutions</a>
-            <a href="/pages/solutions-solar-battery.html">Solar Battery Guide</a>
-          </div></div>
-        </div>
-        <div class="nav-item has-dd">
-          <a href="/pages/about-who.html" class="nav-link" aria-haspopup="true">About</a>
-          <div class="dropdown"><div class="dropdown__col">
-            <a href="/pages/about-partners.html">Partners</a>
-            <a href="/pages/about-quality.html">Quality, Warranty &amp; Safety</a>
-          </div></div>
-        </div>
-        <a class="nav-link" href="/pages/contact.html">Contact</a>
-      </nav>
-      <div class="header-actions">
-        <button class="menu-btn" type="button" id="menuBtn" aria-label="Open menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-    <div class="mobile-panel" id="mobilePanel" aria-hidden="true">
-      <div class="mobile-panel__inner">
-        <details><summary>Storage</summary>
-          <a href="/pages/storage.html">Storage Overview</a>
-          <a href="/pages/storage-mountrex.html">MountRex (LV)</a>
-          <a href="/pages/storage-aokly.html">Aokly &times; Charania Renewables (LV)</a>
-          <a href="/pages/storage-zetara-zbox100.html">Zetara &times; Charania Renewables (HV)</a>
-          <a href="/pages/storage-sodium.html">MountRex Sodium</a>
-          <a href="/pages/storage-comparison.html">Comparison &amp; Applications</a>
-        </details>
-        <details><summary>Generation</summary>
-          <a href="/pages/generation.html">Generation Overview</a>
-          <a href="/pages/generation-vertix.html">Vertix</a>
-          <a href="/pages/generation-vertix-system-guide.html">Wind System Guide</a>
-          <a href="/pages/generation-vertix-comparison.html">Wind Turbine Comparison</a>
-          <a href="/pages/generation-solar.html">Solar Systems</a>
-        </details>
-        <details><summary>Structures</summary>
-          <a href="/pages/structures-lmaxx.html">Lmaxx Overview</a>
-          <a href="/pages/structures-base.html">Lmaxx Base</a>
-          <a href="/pages/structures-elevate.html">Lmaxx Elevate</a>
-          <a href="/pages/structures-span.html">Lmaxx Span</a>
-        </details>
-        <details><summary>Solutions</summary>
-          <a href="/pages/solutions.html">Solutions Overview</a>
-          <a href="/pages/solutions-hybrid-engineering.html">HED &mdash; Hybrid Engineering &amp; Design</a>
-          <a href="/pages/solutions-industrial.html">Industrial Energy Solutions</a>
-          <a href="/pages/solutions-peak-shaving.html">Peak Shaving &amp; MDI Reduction</a>
-          <a href="/pages/solutions-load-shedding.html">Load Shedding Solutions</a>
-          <a href="/pages/solutions-solar-battery.html">Solar Battery Guide</a>
-        </details>
-        <details><summary>About</summary>
-          <a href="/pages/about-who.html">About Overview</a>
-          <a href="/pages/about-partners.html">Partners</a>
-          <a href="/pages/about-quality.html">Quality, Warranty &amp; Safety</a>
-        </details>
-        <a href="/pages/contact.html">Contact</a>
-      </div>
-    </div>
-  </header>
+  <div id="site-nav"></div>
 
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true">
     <div class="scroll-progress__track">
@@ -391,6 +293,9 @@
     </div>
   </section>
 
+  <div id="site-footer"></div>
+
   <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/includes.js"></script>
 </body>
 </html>
